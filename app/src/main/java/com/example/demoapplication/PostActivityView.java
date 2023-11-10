@@ -63,7 +63,7 @@ public class PostActivityView extends AppCompatActivity {
 
     private String accessPostEligibility() {
 
-        String uncertainPostResult = "You will be considered for extra spaces, and not guaranteed entry.";
+        String uncertainResult = "You will be considered for extra spaces, and not guaranteed entry.";
         String acceptanceResult = "Congratulations! You are guaranteed to make POSt!";
         String failedResult = "Unfortunately, you cannot make POSt.";
         String invalidInput = "Invalid program entered!";
@@ -88,11 +88,11 @@ public class PostActivityView extends AppCompatActivity {
 
             else if (Objects.equals(enrollmentProgram, "Mathematics") ||
                     Objects.equals(enrollmentProgram, "Statistics")) {
-                return uncertainPostResult;
+                return uncertainResult;
             }
 
             else {
-                if (CSCA67_GPA >= 3.7 && MATA31_GPA >= 3.7) return uncertainPostResult;
+                if (CSCA67_GPA >= 3.7 && MATA31_GPA >= 3.7) return uncertainResult;
                 else return failedResult;
             }
         }
@@ -112,7 +112,7 @@ public class PostActivityView extends AppCompatActivity {
             }
 
             else
-                return uncertainPostResult;
+                return uncertainResult;
         }
 
         else if (Objects.equals(desiredProgram, "Mathematics - Specialist")) {
@@ -132,7 +132,7 @@ public class PostActivityView extends AppCompatActivity {
             }
 
             else
-                return uncertainPostResult;
+                return uncertainResult;
         }
 
         else if (Objects.equals(desiredProgram, "Statistics - Major")) {
@@ -149,7 +149,7 @@ public class PostActivityView extends AppCompatActivity {
             }
 
             else
-                return uncertainPostResult;
+                return uncertainResult;
         }
 
         else if (Objects.equals(desiredProgram, "Statistics - Specialist")) {
@@ -167,7 +167,7 @@ public class PostActivityView extends AppCompatActivity {
             }
 
             else
-                return uncertainPostResult;
+                return uncertainResult;
         }
 
         return invalidInput;
