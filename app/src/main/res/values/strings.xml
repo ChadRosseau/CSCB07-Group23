@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Demo Application</string>
+
+    <!--    Strings for "post" page-->
+    <string name="program_select">Select your program:</string>
+    <string-array name="program_dropdown">
+        <item>Computer Science</item>
+        <item>Mathematics</item>
+        <item>Statistics</item>
+    </string-array>
+    <string name="enter_grades">Please enter your mark for each course below:</string>
+    <string name="grade_label">Enter your GPA…</string>
+    <string name="course1">CSCA08</string>
+    <string name="course2">MATA31</string>
+    <string name="course3">CSCA67</string>
+    <string name="course4">CSCA48</string>
+    <string name="course5">MATA37</string>
+    <string name="course6">MATA22</string>
+    <string name="show_result">Result</string>
+
 </resources>
