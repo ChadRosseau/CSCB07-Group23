@@ -2,20 +2,41 @@
     <string name="app_name">Demo Application</string>
 
     <!--    Strings for "post" page-->
-    <string name="program_select">Select your program:</string>
-    <string-array name="program_dropdown">
+    <string name="enrolled_program_select">Select your program of enrollment:</string>
+    <string name="desired_program_select">Select your desired program to make POST:</string>
+    <string-array name="enrolled_program_dropdown">
         <item>Computer Science</item>
         <item>Mathematics</item>
         <item>Statistics</item>
+        <item>Other</item>
     </string-array>
-    <string name="enter_grades">Please enter your mark for each course below:</string>
-    <string name="grade_label">Enter your GPA…</string>
-    <string name="course1">CSCA08</string>
-    <string name="course2">MATA31</string>
-    <string name="course3">CSCA67</string>
-    <string name="course4">CSCA48</string>
-    <string name="course5">MATA37</string>
-    <string name="course6">MATA22</string>
-    <string name="show_result">Result</string>
+    <string-array name="desired_program_dropdown">
+        <item>Computer Science - Specialist or Major</item>
+        <item>Mathematics - Specialist</item>
+        <item>Mathematics - Major</item>
+        <item>Statistics - Specialist</item>
+        <item>Statistics - Major</item>
+    </string-array>
+    <string name="enter_grades">Please select your GPA for each course below:</string>
+    <string name="csca08">CSCA08</string>
+    <string name="mata31">MATA31</string>
+    <string name="csca67">CSCA67</string>
+    <string name="csca48">CSCA48</string>
+    <string name="mata37">MATA37</string>
+    <string name="mata22">MATA22</string>
+    <string-array name="gpa_dropdown">
+        <item>4.0</item>
+        <item>3.7</item>
+        <item>3.3</item>
+        <item>3.0</item>
+        <item>2.7</item>
+        <item>2.3</item>
+        <item>2.0</item>
+        <item>1.7</item>
+        <item>1.3</item>
+        <item>1.0</item>
+        <item>0.7</item>
+    </string-array>
+    <string name="get_result">Result</string>
 
 </resources>
