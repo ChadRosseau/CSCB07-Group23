@@ -14,7 +14,7 @@ public class MainActivityModel {
     FirebaseDatabase db;
 
     public MainActivityModel(){
-        db = FirebaseDatabase.getInstance("https://fir-application-901b3-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
     }
 
     public void queryDB(MainActivityPresenter presenter, String username){
