@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">Demo Application</string>
 
+    <!--    Strings for home page -->
+    <string name="welcome">Welcome to makeshift Quercus</string>
+
+    <!--    Strings for announcements page-->
+    <string name="notification_start">Welcome to notifications page</string>
+
+    <!--    Strings for event page-->
+    <string name="events_start">Welcome to events page</string>
+
+    <!--    Strings for complaints page-->
+    <string name="complaints_start">Welcome to complaints page</string>
+    
     <!--    Strings for "post" page-->
     <string name="program_select">Select your program:</string>
     <string-array name="program_dropdown">
@@ -17,5 +29,7 @@
     <string name="course5">MATA37</string>
     <string name="course6">MATA22</string>
     <string name="show_result">Result</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
