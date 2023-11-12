@@ -5,7 +5,7 @@ public class Complaint extends Upload{
 	
 	private Complaint() {}
 
-	public Complaint(String complaintId, int timestamp, String title, String content, String author) {
+	public Complaint(String complaintId, long timestamp, String title, String content, String author) {
 		super(timestamp, title, content, author);
 		this.complaintId = complaintId;
 	}

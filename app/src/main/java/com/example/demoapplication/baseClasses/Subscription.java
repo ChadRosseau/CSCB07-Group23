@@ -21,7 +21,7 @@ public class Subscription {
 	public List<String> getEvents() {
 		return events;
 	}
-	public void setEvent_id(List<String> events) {
+	public void setEvents(List<String> events) {
 		this.events = events;
 	}
 }

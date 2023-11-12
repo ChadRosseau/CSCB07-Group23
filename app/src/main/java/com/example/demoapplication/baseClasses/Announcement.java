@@ -5,12 +5,12 @@ public class Announcement extends Upload {
 	
 	private Announcement() {}
 
-	public Announcement(String announcementId, int timestamp, String title, String content, String author) {
+	public Announcement(String announcementId, long timestamp, String title, String content, String author) {
 		super(timestamp, title, content, author);
 		this.announcementId = announcementId;
 	}
 
-	public String getAnnouncement_id() {
+	public String getAnnouncementId() {
 		return announcementId;
 	}
 

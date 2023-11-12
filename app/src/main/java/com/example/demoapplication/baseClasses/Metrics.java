@@ -21,7 +21,7 @@ public class Metrics {
 		this.eventId = eventId;
 	}
 
-	public double getRating_sum() {
+	public double getRatingSum() {
 		return ratingSum;
 	}
 
