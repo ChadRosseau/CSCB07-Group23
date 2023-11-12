@@ -1,6 +1,8 @@
-package com.example.demoapplication;
+package com.example.demoapplication.base_classes;
 
-public class Announcement extends Upload{
+import com.example.demoapplication.Upload;
+
+public class Announcement extends Upload {
 	private String announcement_id;
 	
 	private Announcement() {}

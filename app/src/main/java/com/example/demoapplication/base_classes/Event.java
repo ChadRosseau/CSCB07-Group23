@@ -1,4 +1,4 @@
-package com.example.demoapplication;
+package com.example.demoapplication.base_classes;
 
 public class Event {
 	private String event_id;

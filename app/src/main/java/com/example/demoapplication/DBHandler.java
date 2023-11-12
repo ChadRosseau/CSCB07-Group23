@@ -1,25 +1,32 @@
 package com.example.demoapplication;
 
-import android.view.View;
-import android.widget.EditText;
-
+import com.example.demoapplication.MainActivityPresenter;
+import com.example.demoapplication.handlers.AdminHandler;
+import com.example.demoapplication.handlers.StudentHandler;
+import com.example.demoapplication.handlers.subhandlers.AuthHandler;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+public class DBHandler {
 
-public class MainActivityModel {
-    DBHandler dbHandler;
-    FirebaseDatabase db;
+    private final FirebaseDatabase db;
+    AdminHandler admin;
+    StudentHandler student;
+    AuthHandler auth;
+    
 
-    public MainActivityModel(){
-        db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
-        dbHandler = new DBHandler(this.db);
+    public DBHandler(FirebaseDatabase db){
+        this.db = db;
+        DatabaseReference ref = db.getReference();
+        this.auth = new AuthHandler(db, ref);
+        this.student = new StudentHandler(db, ref);
+        this.admin = new AdminHandler(db, ref);
     }
 
     public void queryDB(MainActivityPresenter presenter, String username){
-        DatabaseReference ref = db.getReference();
+        DatabaseReference ref= db.getReference();
         DatabaseReference query = ref.child("users").child(username);
 
         query.addValueEventListener(new ValueEventListener() {
