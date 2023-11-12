@@ -1,23 +1,23 @@
 package com.example.demoapplication.base_classes;
 
-import com.example.demoapplication.Upload;
+import com.example.demoapplication.base_classes.Upload;
 
 public class Announcement extends Upload {
-	private String announcement_id;
+	private String announcementId;
 	
 	private Announcement() {}
 
-	public Announcement(String announcement_id, int timestamp, String title, String content, String author) {
+	public Announcement(String announcementId, int timestamp, String title, String content, String author) {
 		super(timestamp, title, content, author);
-		this.announcement_id = announcement_id;
+		this.announcementId = announcementId;
 	}
 
 	public String getAnnouncement_id() {
-		return announcement_id;
+		return announcementId;
 	}
 
-	public void setAnnouncement_id(String announcement_id) {
-		this.announcement_id = announcement_id;
+	public void setAnnouncementId(String announcementId) {
+		this.announcementId = announcementId;
 	}
 	
 }

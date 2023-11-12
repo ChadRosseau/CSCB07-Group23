@@ -3,24 +3,24 @@ package com.example.demoapplication.base_classes;
 import java.util.Map;
 
 public class Feedback {
-	private String event_id;
+	private String eventId;
 	private Map<String, String> comments;
 	private Map<String, Integer> ratings;
 	
 	private Feedback() {}
 
-	public Feedback(String event_id, Map<String, String> comments, Map<String, Integer> ratings) {
-		this.event_id = event_id;
+	public Feedback(String eventId, Map<String, String> comments, Map<String, Integer> ratings) {
+		this.eventId = eventId;
 		this.comments = comments;
 		this.ratings = ratings;
 	}
 
-	public String getEvent_id() {
-		return event_id;
+	public String getEventId() {
+		return eventId;
 	}
 
-	public void setEvent_id(String event_id) {
-		this.event_id = event_id;
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
 	}
 
 	public Map<String, String> getComments() {

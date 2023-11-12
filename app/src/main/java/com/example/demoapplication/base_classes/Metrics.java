@@ -1,39 +1,39 @@
 package com.example.demoapplication.base_classes;
 
 public class Metrics {
-	private String event_id;
-	private double rating_sum;
-	private int rating_count;
+	private String eventId;
+	private double ratingSum;
+	private int ratingCount;
 	
 	private Metrics() {}
 
 	public Metrics(String event_id, double rating_sum, int rating_count) {
-		this.event_id = event_id;
-		this.rating_sum = rating_sum;
-		this.rating_count = rating_count;
+		this.eventId = event_id;
+		this.ratingSum = ratingSum;
+		this.ratingCount = ratingCount;
 	}
 
-	public String getEvent_id() {
-		return event_id;
+	public String getEventId() {
+		return eventId;
 	}
 
-	public void setEvent_id(String event_id) {
-		this.event_id = event_id;
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
 	}
 
 	public double getRating_sum() {
-		return rating_sum;
+		return ratingSum;
 	}
 
-	public void setRating_sum(double rating_sum) {
-		this.rating_sum = rating_sum;
+	public void setRatingSum(double ratingSum) {
+		this.ratingSum = ratingSum;
 	}
 
-	public int getRating_count() {
-		return rating_count;
+	public int getRatingCount() {
+		return ratingCount;
 	}
 
-	public void setRating_count(int rating_count) {
-		this.rating_count = rating_count;
+	public void setRatingCount(int ratingCount) {
+		this.ratingCount = ratingCount;
 	}
 }

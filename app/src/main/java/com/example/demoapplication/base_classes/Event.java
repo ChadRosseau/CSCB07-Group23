@@ -1,27 +1,27 @@
 package com.example.demoapplication.base_classes;
 
 public class Event {
-	private String event_id;
+	private String eventId;
 	private String title;
 	private String description;
-	private int attendee_count;
-	private int date;
+	private int attendeeCount;
+	private long date;
 	
 	private Event() {}
 	
-	public Event(String event_id, String title, String description, int attendee_count, int date) {
-		this.event_id = event_id;
+	public Event(String eventId, String title, String description, int attendeeCount, long date) {
+		this.eventId = eventId;
 		this.title = title;
 		this.description = description;
-		this.attendee_count = attendee_count;
+		this.attendeeCount = attendeeCount;
 		this.date = date;
 	}
 
-	public String getEvent_id() {
-		return event_id;
+	public String getEventId() {
+		return eventId;
 	}
-	public void setEvent_id(String event_id) {
-		this.event_id = event_id;
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
 	}
 	public String getTitle() {
 		return title;
@@ -35,16 +35,16 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getAttendee_count() {
-		return attendee_count;
+	public int getAttendeeCount() {
+		return attendeeCount;
 	}
-	public void setAttendee_count(int attendee_count) {
-		this.attendee_count = attendee_count;
+	public void setAttendeeCount(int attendeeCount) {
+		this.attendeeCount = attendeeCount;
 	}
-	public int getDate() {
+	public long getDate() {
 		return date;
 	}
-	public void setDate(int date) {
+	public void setDate(long date) {
 		this.date = date;
 	}
 }

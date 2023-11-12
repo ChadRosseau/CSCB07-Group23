@@ -1,21 +1,21 @@
 package com.example.demoapplication.base_classes;
 
 public class Upload {
-	private int timestamp;
+	private long timestamp;
 	private String title;
 	private String content;
 	private String author;
 	
 	protected Upload() {}
 	
-	public Upload(int timestamp, String title, String content, String author) {
+	public Upload(long timestamp, String title, String content, String author) {
 		this.timestamp = timestamp;
 		this.title = title;
 		this.content = content;
 		this.author = author;
 	}
 	
-	public int getTimestamp() {
+	public long getTimestamp() {
 		return timestamp;
 	}
 	public void setTimestamp(int timestamp) {
