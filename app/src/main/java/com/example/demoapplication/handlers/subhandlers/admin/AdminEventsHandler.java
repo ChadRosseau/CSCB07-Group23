@@ -59,6 +59,27 @@ public class AdminEventsHandler extends EventsHandler {
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle error
             }
+        };    public void getEventFeedback(MainActivityPresenter presenter, String eventId) {
+        // Generate target DBRef.
+        DatabaseReference target = root.child("eventList").child(eventId);
+        // Create callback function
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.exists()) {
+                    System.out.println("Event does not exist");
+                    // Logic for non-existent event / error handling.
+                    // presenter.setViewText("Event does not exist");
+                }
+                Feedback feedback = snapshot.getValue(Feedback.class);
+                // Logic for what to do with Feedback object, such as call Presenter methods.
+                // presenter.setViewText("Event exists");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
         };
 
         // Track listener to remove when finished.

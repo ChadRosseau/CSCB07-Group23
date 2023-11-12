@@ -15,13 +15,24 @@ import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.List;
 
+/**
+ * Handles complaints for the admin.
+ * Extends the ComplaintsHandler class.
+ */
 public class AdminComplaintsHandler extends ComplaintsHandler {
+    /**
+     * Constructor for AdminComplaintsHandler.
+     *
+     * @param db  The Firebase database instance.
+     * @param ref The database reference.
+     */
     public AdminComplaintsHandler(FirebaseDatabase db, DatabaseReference ref) {
         super(db, ref);
     }
 
-
-
+    /**
+     * Retrieves complaints from the Firebase Realtime Database.
+     */
     public void getComplaints(){
         DatabaseReference target = root.child("complaints");
 
@@ -39,7 +50,9 @@ public class AdminComplaintsHandler extends ComplaintsHandler {
 
             }
         };
-
+        /**
+         * Adds a listener to the complaints node in the database.
+         */
         this.listenerTracker.addListener(target, listener);
     }
 }

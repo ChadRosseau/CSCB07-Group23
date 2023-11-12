@@ -7,12 +7,31 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Date;
 
+
+/**
+ * Handles announcements for the admin.
+ * Extends the AnnouncementsHandler class.
+ */
 public class AdminAnnouncementsHandler extends AnnouncementsHandler {
 
+    /**
+     * Constructor for AdminAnnouncementsHandler.
+     *
+     * @param db  The Firebase database instance.
+     * @param ref The database reference.
+     */
     public AdminAnnouncementsHandler(FirebaseDatabase db, DatabaseReference ref) {
         super(db, ref);
     }
 
+    /**
+     * Creates a new announcement and adds it to the Firebase Realtime Database.
+     *
+     * @param title   The title of the announcement.
+     * @param content The content of the announcement.
+     * @param author  The author of the announcement.
+     * @return The newly created Announcement object.
+     */
     Announcement createAnnouncement(String title, String content, String author) {
         DatabaseReference target = root.child("annoucements").push();
         String announcementId = target.getKey();
