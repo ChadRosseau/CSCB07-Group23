@@ -7,8 +7,8 @@ public class Metrics {
 	
 	private Metrics() {}
 
-	public Metrics(String event_id, double rating_sum, int rating_count) {
-		this.eventId = event_id;
+	public Metrics(String eventId, double ratingSum, int ratingCount) {
+		this.eventId = eventId;
 		this.ratingSum = ratingSum;
 		this.ratingCount = ratingCount;
 	}

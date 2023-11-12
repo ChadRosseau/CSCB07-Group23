@@ -1,20 +1,20 @@
 package com.example.demoapplication.base_classes;
 
 public class Complaint extends Upload{
-	private String complaint_id;
+	private String complaintId;
 	
 	private Complaint() {}
 
-	public Complaint(String complaint_id, int timestamp, String title, String content, String author) {
+	public Complaint(String complaintId, int timestamp, String title, String content, String author) {
 		super(timestamp, title, content, author);
-		this.complaint_id = complaint_id;
+		this.complaintId = complaintId;
 	}
 
-	public String getComplaint_id() {
-		return complaint_id;
+	public String getComplaintId() {
+		return complaintId;
 	}
 
-	public void setComplaint_id(String complaint_id) {
-		this.complaint_id = complaint_id;
+	public void setComplaintId(String complaintId) {
+		this.complaintId = complaintId;
 	}
 }

@@ -3,22 +3,22 @@ package com.example.demoapplication.base_classes;
 import java.util.List;
 
 public class Attendees {
-	private String event_id;
+	private String eventId;
 	private List<String> attendees;
 	
 	private Attendees() {}
 
-	public Attendees(String event_id, List<String> attendees) {
-		this.event_id = event_id;
+	public Attendees(String eventId, List<String> attendees) {
+		this.eventId = eventId;
 		this.attendees = attendees;
 	}
 
-	public String getEvent_id() {
-		return event_id;
+	public String getEventId() {
+		return eventId;
 	}
 
-	public void setEvent_id(String event_id) {
-		this.event_id = event_id;
+	public void setEventId(String eventId) {
+		this.eventId = eventId;
 	}
 
 	public List<String> getAttendees() {
