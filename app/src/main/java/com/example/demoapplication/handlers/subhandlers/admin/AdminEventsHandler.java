@@ -12,7 +12,7 @@ public class AdminEventsHandler extends EventsHandler {
         super(db, ref);
     }
 
-    Event createEvent(String title, String description, int attendeeCount) {
+    Event createEvent(String title, String description) {
         // Generate a unique DB reference for new object.
         DatabaseReference target = root.child("eventList").push();
         // Retrieve key from new reference.
@@ -20,7 +20,7 @@ public class AdminEventsHandler extends EventsHandler {
         // Generate timestamp for event.
         long date = Helper.createTimestamp();
         // Create new event object using combination of parameters and generated data.
-        Event newEvent = new Event(eventId, title, description, attendeeCount, date);
+        Event newEvent = new Event(eventId, title, description, 0, date);
         // Set target DB ref to new object.
         target.setValue(newEvent);
 
