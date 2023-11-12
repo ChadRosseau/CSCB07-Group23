@@ -10,16 +10,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivityModel {
-    DBHandler dbHandler;
+
     FirebaseDatabase db;
 
     public MainActivityModel(){
-        db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
-        dbHandler = new DBHandler(this.db);
+        db = FirebaseDatabase.getInstance("https://fir-application-901b3-default-rtdb.firebaseio.com/");
     }
 
     public void queryDB(MainActivityPresenter presenter, String username){
-        DatabaseReference ref = db.getReference();
+        DatabaseReference ref= db.getReference();
         DatabaseReference query = ref.child("users").child(username);
 
         query.addValueEventListener(new ValueEventListener() {
