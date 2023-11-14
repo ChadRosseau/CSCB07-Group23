@@ -31,6 +31,7 @@ public class MainActivityModel {
         return ref.push();
     }
 
+    // Used to add and manage listener on a database node.
     public <T extends BaseClass> void createSubscription(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
         // Create callback function
         ValueEventListener listener = new ValueEventListener() {
@@ -70,10 +71,12 @@ public class MainActivityModel {
         tracker.addListener(target, listener);
     }
 
+    // Used to add and manage listener on a child node of a database node.
     public <T extends BaseClass> void createSubscriptionOnChild(DatabaseReference parentRef, String childKey, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
         this.createSubscription(parentRef.child(childKey), tracker, cls, callback);
     }
 
+    // Used to set the data at a given reference in the database.
     public <T> void setRef(DatabaseReference target, T obj) {
         target.setValue(obj);
     }
