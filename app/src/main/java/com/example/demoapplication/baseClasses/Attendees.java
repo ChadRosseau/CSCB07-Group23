@@ -1,8 +1,11 @@
 package com.example.demoapplication.baseClasses;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
-public class Attendees {
+public class Attendees extends BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("eventAttendees");
 	private String eventId;
 	private List<String> attendees;
 	

@@ -1,6 +1,9 @@
 package com.example.demoapplication.baseClasses;
 
-public class Metrics {
+import com.google.firebase.database.DatabaseReference;
+
+public class Metrics extends BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("feedbackMetrics");
 	private String eventId;
 	private double ratingSum;
 	private int ratingCount;

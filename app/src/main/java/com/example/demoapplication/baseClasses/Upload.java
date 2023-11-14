@@ -1,6 +1,8 @@
 package com.example.demoapplication.baseClasses;
 
-public class Upload {
+import com.google.firebase.database.DatabaseReference;
+
+public abstract class Upload extends BaseClass {
 	private long timestamp;
 	private String title;
 	private String content;

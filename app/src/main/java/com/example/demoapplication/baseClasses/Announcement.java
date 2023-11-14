@@ -1,6 +1,9 @@
 package com.example.demoapplication.baseClasses;
 
+import com.google.firebase.database.DatabaseReference;
+
 public class Announcement extends Upload {
+	public static DatabaseReference parentRef = root.child("announcements");
 	private String announcementId;
 	
 	private Announcement() {}

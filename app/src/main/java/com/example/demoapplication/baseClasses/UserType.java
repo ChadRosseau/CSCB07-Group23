@@ -1,4 +1,6 @@
 package com.example.demoapplication.baseClasses;
 
-public interface ListenerCallback<T> {
+public enum UserType {
+    Admin,
+    Student,
 }

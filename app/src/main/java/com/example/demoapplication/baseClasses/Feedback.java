@@ -1,12 +1,15 @@
 package com.example.demoapplication.baseClasses;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.Map;
 
-public class Feedback {
+public class Feedback extends BaseClass{
+	public static DatabaseReference parentRef = root.child("events").child("feedbackList");
 	private String eventId;
 	private Map<String, String> comments;
 	private Map<String, Integer> ratings;
-	
+
 	private Feedback() {}
 
 	public Feedback(String eventId, Map<String, String> comments, Map<String, Integer> ratings) {

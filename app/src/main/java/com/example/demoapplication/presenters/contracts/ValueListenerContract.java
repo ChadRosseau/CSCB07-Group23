@@ -1,6 +1,5 @@
-package com.example.demoapplication.handlers.contracts;
+package com.example.demoapplication.presenters.contracts;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 

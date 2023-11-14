@@ -1,12 +1,15 @@
 package com.example.demoapplication.baseClasses;
 
-public class Event {
+import com.google.firebase.database.DatabaseReference;
+
+public class Event extends BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("eventList");
 	private String eventId;
 	private String title;
 	private String description;
 	private int attendeeCount;
 	private long date;
-	
+
 	private Event() {}
 	
 	public Event(String eventId, String title, String description, int attendeeCount, long date) {

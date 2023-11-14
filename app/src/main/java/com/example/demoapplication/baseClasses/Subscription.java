@@ -1,22 +1,17 @@
 package com.example.demoapplication.baseClasses;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
-public class Subscription {
-	private String uid;
+public class Subscription extends BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("userSubscriptions");
 	private List<String> events;
 	
 	private Subscription() {}
 	
-	public Subscription(String uid, List<String> events) {
-		this.uid = uid;
+	public Subscription(List<String> events) {
 		this.events = events;
-	}
-	public String getUid() {
-		return uid;
-	}
-	public void setUid(String uid) {
-		this.uid = uid;
 	}
 	public List<String> getEvents() {
 		return events;
