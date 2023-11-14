@@ -10,6 +10,7 @@
         android:theme="@style/Theme.DemoApplication">
         <activity
             android:name=".Student_complaints"
+            android:label="Complaints"
             android:exported="false" />
         <!--
                <activity
