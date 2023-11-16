@@ -2,7 +2,7 @@
 <resources>
 
     <!--    Strings for "post" page-->
-    <dimen name="course_marginTop">20dp</dimen>
+    <dimen name="course_marginTop">15dp</dimen>
     <dimen name="course_width">70dp</dimen>
     <dimen name="course_height">38dp</dimen>
     <dimen name="grade_width">120dp</dimen>
