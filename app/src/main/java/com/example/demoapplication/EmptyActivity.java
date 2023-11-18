@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Student_complaints extends AppCompatActivity {
+public class EmptyActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_student_complaints);
+        setContentView(R.layout.empty);
+        getSupportFragmentManager().beginTransaction().replace(R.id.studentComplaints, new StudentComplaints()).commit();
     }
 }

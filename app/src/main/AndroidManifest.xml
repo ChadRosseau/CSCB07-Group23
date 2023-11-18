@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoApplication">
         <activity
-            android:name=".Student_complaints"
+            android:name=".EmptyActivity"
             android:label="Complaints"
             android:exported="false" />
         <!--
