@@ -8,10 +8,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoApplication">
+<<<<<<< HEAD
  <!--       <activity
             android:name=".MainActivity"
             android:exported="false" />
 -->
+=======
+        <activity
+            android:name=".EmptyActivity"
+            android:label="Complaints"
+            android:exported="false" />
+        <!--
+               <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        -->
+>>>>>>> login
         <activity
             android:name=".Login"
             android:exported="true"

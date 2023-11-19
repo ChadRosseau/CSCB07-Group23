@@ -1,17 +1,16 @@
-// PostActivityView.java
+// PostView.java
 package com.example.demoapplication;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
-public class PostActivityView extends Fragment {
+public class PostView extends Fragment {
 
     private Spinner csca08Spinner, mata31Spinner, csca67Spinner,
             csca48Spinner, mata37Spinner, mata22Spinner;

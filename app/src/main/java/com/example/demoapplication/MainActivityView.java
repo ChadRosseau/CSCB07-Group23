@@ -41,7 +41,7 @@ public class MainActivityView extends AppCompatActivity {
                     replaceFragment(new NotificationsFragment());
                     break;
                 case R.id.post:
-                    replaceFragment(new PostActivityView());
+                    replaceFragment(new PostView());
                 case R.id.events:
                     replaceFragment(new EventsFragment());
                     break;
