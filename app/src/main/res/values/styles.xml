@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/black</item>
-        <item name="colorAccent">@color/purple_700</item>
+        <item name="colorAccent">@color/palatte_9</item>
     </style>
     <!--    Strings for "post" page-->
     <style name="gradeStyle">
