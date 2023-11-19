@@ -29,7 +29,7 @@ public class MainActivityView extends AppCompatActivity {
         replaceFragment(new HomeFragmentView());
 //        editText = (EditText) findViewById(R.id.editTextTextPersonName);
 //        textView = (TextView) findViewById(R.id.output);
-//        presenter = new MainActivityPresenter(this, new MainActivityModel());
+        presenter = new MainActivityPresenter(this, new MainActivityModel());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
