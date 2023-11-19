@@ -10,6 +10,6 @@ public class EmptyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.empty);
-        getSupportFragmentManager().beginTransaction().replace(R.id.studentComplaints, new StudentComplaints()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.Complaints, new AdminComplaints()).commit();
     }
 }
