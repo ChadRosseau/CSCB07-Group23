@@ -25,7 +25,7 @@ public class MainActivityModel {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                presenter.setViewText(snapshot.exists());
+//                presenter.setViewText(snapshot.exists());
             }
 
             @Override
@@ -33,5 +33,6 @@ public class MainActivityModel {
             }
         });
     }
+
 
 }

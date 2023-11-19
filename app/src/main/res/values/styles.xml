@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!--    Strings for nav bar-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/palatte_9</item>
+    </style>
     <!--    Strings for "post" page-->
     <style name="gradeStyle">
         <item name="android:layout_width">@dimen/grade_width</item>

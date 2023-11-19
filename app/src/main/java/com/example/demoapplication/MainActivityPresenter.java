@@ -11,25 +11,25 @@ public class MainActivityPresenter {
     }
 
 
-    public void checkDB(String username) {
-        if (username.equals(""))
-        {
-            view.setOutputText("String cannot be empty!");
-        }
-        else
-        {
-            model.queryDB(this, username);
-        }
-    }
+//    public void checkDB(String username) {
+//        if (username.equals(""))
+//        {
+////            view.setOutputText("String cannot be empty!");
+//        }
+//        else
+//        {
+//            model.queryDB(this, username);
+//        }
+//    }
 
-    public void setViewText(boolean exists) {
-        if (exists)
-        {
-            view.setOutputText("Found it!");
-        }
-        else
-        {
-            view.setOutputText("Couldn't find it!");
-        }
-    }
+//    public void setViewText(boolean exists) {
+//        if (exists)
+//        {
+//            view.setOutputText("Found it!");
+//        }
+//        else
+//        {
+//            view.setOutputText("Couldn't find it!");
+//        }
+//    }
 }
