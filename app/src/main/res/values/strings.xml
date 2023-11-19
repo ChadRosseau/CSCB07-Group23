@@ -15,7 +15,7 @@
     
     <!--    Strings for "post" page-->
     <string name="enrolled_program_select">Select your program of enrollment:</string>
-    <string name="desired_program_select">Select your desired program to make POST:</string>
+    <string name="desired_program_select">Select your desired program to make POSt:</string>
     <string-array name="enrolled_program_dropdown">
         <item>Computer Science</item>
         <item>Mathematics</item>
@@ -29,7 +29,7 @@
         <item>Statistics - Specialist</item>
         <item>Statistics - Major</item>
     </string-array>
-    <string name="enter_grades">Please select your GPA for each course below:</string>
+    <string name="enter_grades">Please select your GPA for each course below:\n(Choose 0.0 if you have not taken or passed the course)</string>
     <string name="csca08">CSCA08</string>
     <string name="mata31">MATA31</string>
     <string name="csca67">CSCA67</string>
@@ -37,6 +37,7 @@
     <string name="mata37">MATA37</string>
     <string name="mata22">MATA22</string>
     <string-array name="gpa_dropdown">
+        <item>0.0</item>
         <item>4.0</item>
         <item>3.7</item>
         <item>3.3</item>
@@ -49,8 +50,7 @@
         <item>1.0</item>
         <item>0.7</item>
     </string-array>
-    <string name="get_result">Result</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_result">Assess Eligibility</string>
+
 
 </resources>

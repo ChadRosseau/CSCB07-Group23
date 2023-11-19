@@ -11,11 +11,7 @@
         <activity
             android:name=".MainActivityView"
             android:exported="false" />
-        <!--
-               <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        -->
+
         <activity
             android:name=".LoginActivityView"
             android:exported="true"
