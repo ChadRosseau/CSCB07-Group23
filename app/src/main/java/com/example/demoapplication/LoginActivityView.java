@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Login extends AppCompatActivity {
+public class LoginActivityView extends AppCompatActivity {
 
     public Button sign_in_button;
 
@@ -19,7 +19,7 @@ public class Login extends AppCompatActivity {
         sign_in_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Login.this, EmptyActivity.class));
+                startActivity(new Intent(LoginActivityView.this, MainActivityView.class));
             }
         });
     }

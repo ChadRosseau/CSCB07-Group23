@@ -1,16 +1,21 @@
 // PostView.java
-package com.example.demoapplication;
+package com.example.demoapplication.fragments;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.demoapplication.R;
+
 import java.util.Objects;
 
-public class PostView extends Fragment {
+public class PostFragmentView extends Fragment {
 
     private Spinner csca08Spinner, mata31Spinner, csca67Spinner,
             csca48Spinner, mata37Spinner, mata22Spinner;
@@ -21,26 +26,36 @@ public class PostView extends Fragment {
     private Button buttonPostResult;
     private EditText editTextPostResult;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.post);
+    public PostFragmentView() {
+        // Required empty public constructor
     }
 
     @Override
-    public void onViewCreated() {
-        csca08Spinner = findViewById(R.id.csca08GPA);
-        mata31Spinner = findViewById(R.id.mata31GPA);
-        csca67Spinner = findViewById(R.id.csca67GPA);
-        csca48Spinner = findViewById(R.id.csca48GPA);
-        mata37Spinner = findViewById(R.id.mata37GPA);
-        mata22Spinner = findViewById(R.id.mata22GPA);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
-        enrolledProgramSpinner = findViewById(R.id.spinner_enrolled_program);
-        desiredProgramSpinner = findViewById(R.id.spinner_desired_program);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.post, container, false);
+    }
 
-        buttonPostResult = findViewById(R.id.postGetResult);
-        editTextPostResult = findViewById(R.id.postResult);
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        csca08Spinner = view.findViewById(R.id.csca08GPA);
+        mata31Spinner = view.findViewById(R.id.mata31GPA);
+        csca67Spinner = view.findViewById(R.id.csca67GPA);
+        csca48Spinner = view.findViewById(R.id.csca48GPA);
+        mata37Spinner = view.findViewById(R.id.mata37GPA);
+        mata22Spinner = view.findViewById(R.id.mata22GPA);
+
+        enrolledProgramSpinner = view.findViewById(R.id.spinner_enrolled_program);
+        desiredProgramSpinner = view.findViewById(R.id.spinner_desired_program);
+
+        buttonPostResult = view.findViewById(R.id.postGetResult);
+        editTextPostResult = view.findViewById(R.id.postResult);
 
         buttonPostResult.setOnClickListener(new View.OnClickListener() {
             @Override
