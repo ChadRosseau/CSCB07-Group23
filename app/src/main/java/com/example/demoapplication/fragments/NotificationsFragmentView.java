@@ -3,6 +3,8 @@ package com.example.demoapplication.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,57 +12,59 @@ import android.view.ViewGroup;
 
 import com.example.demoapplication.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link NotificationsFragmentView#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+import java.util.ArrayList;
+
 public class NotificationsFragmentView extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private List<NotificationItem> notificationList;
 
     public NotificationsFragmentView() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AnnouncementsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static NotificationsFragmentView newInstance(String param1, String param2) {
-        NotificationsFragmentView fragment = new NotificationsFragmentView();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    public static NotificationsFragmentView newInstance(String param1, String param2) {
+//        NotificationsFragmentView fragment = new NotificationsFragmentView();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+        // Initialize the notification list using database
+        notificationList = new ArrayList<>();
+        notificationList.add(new NotificationItem("Notification 1", "announcement", "2023/11/11", "You are beautiful."));
+        notificationList.add(new NotificationItem("Notification 2",  "event", "2022/1/1", "Free pizza today."));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.notifications, container, false);
+        View view = inflater.inflate(R.layout.notifications, container, false);
+
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+
+        NotificationAdapter adapter = new NotificationAdapter(notificationList);
+        recyclerView.setAdapter(adapter);
+
+        return view;
+    }
+
+    // Setter method to update the notification list
+    public void setNotificationList(List<NotificationItem> notificationList) {
+        this.notificationList = notificationList;
+        // Notify the adapter that the data set has changed
+        if (getView() != null) {
+            RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
+            NotificationAdapter adapter = new NotificationAdapter(notificationList);
+            recyclerView.setAdapter(adapter);
+        }
     }
 }
