@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityModel {
-    public FirebaseDatabase db;
+    FirebaseDatabase db;
 
     public MainActivityModel(){
         db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
@@ -80,5 +80,6 @@ public class MainActivityModel {
     public <T> void setRef(DatabaseReference target, T obj) {
         target.setValue(obj);
     }
+
 
 }
