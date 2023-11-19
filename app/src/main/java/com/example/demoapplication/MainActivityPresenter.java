@@ -1,13 +1,23 @@
 package com.example.demoapplication;
 
+import com.example.demoapplication.presenters.AdminPresenter;
+import com.example.demoapplication.presenters.StudentPresenter;
+import com.example.demoapplication.presenters.subpresenters.AuthPresenter;
+
 public class MainActivityPresenter {
 
     MainActivityModel model;
     MainActivityView view;
+    AdminPresenter admin;
+    StudentPresenter student;
+    AuthPresenter auth;
 
     public MainActivityPresenter(MainActivityView view, MainActivityModel model) {
         this.model = model;
         this.view = view;
+        this.auth = new AuthPresenter(view, model);
+        this.student = new StudentPresenter(view, model);
+        this.admin = new AdminPresenter(view, model);
     }
 
 
