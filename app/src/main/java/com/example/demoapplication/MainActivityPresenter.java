@@ -21,18 +21,6 @@ public class MainActivityPresenter {
     }
 
 
-<<<<<<< HEAD
-    public void checkDB(String username) {
-        if (username.equals(""))
-        {
-            view.setOutputText("String cannot be empty!");
-        }
-//        else
-        {
-//            model.queryDB(this, username);
-        }
-    }
-=======
 //    public void checkDB(String username) {
 //        if (username.equals(""))
 //        {
@@ -43,7 +31,6 @@ public class MainActivityPresenter {
 //            model.queryDB(this, username);
 //        }
 //    }
->>>>>>> main
 
 //    public void setViewText(boolean exists) {
 //        if (exists)
