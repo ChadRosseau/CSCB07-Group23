@@ -1,20 +1,18 @@
 package com.example.demoapplication;
-import androidx.fragment.app.Fragment;
+
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.example.demoapplication.databinding.ActivityMainBinding;
+import com.example.demoapplication.fragments.ComplaintsFragmentView;
 import com.example.demoapplication.fragments.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.NotificationsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
-import com.example.demoapplication.fragments.ComplaintsFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
 

@@ -23,6 +23,10 @@ public class PostFragmentView extends Fragment {
     private Float CSCA08_GPA, MATA31_GPA, CSCA67_GPA, CSCA48_GPA, MATA37_GPA, MATA22_GPA;
     private Spinner enrolledProgramSpinner, desiredProgramSpinner;
     private String enrollmentProgram, desiredProgram;
+
+    private final String uncertainResult = "You will be considered for extra spaces, and not guaranteed entry.";
+    private final String acceptanceResult = "Congratulations! You are guaranteed to make POSt!";
+    private final String failedResult = "Unfortunately, you cannot make POSt.";
     private Button buttonPostResult;
     private EditText editTextPostResult;
 
@@ -60,14 +64,14 @@ public class PostFragmentView extends Fragment {
         buttonPostResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveSpinnerValues();
-                String post_result = accessPostEligibility();
+                setSpinnerValues();
+                String post_result = assessPostEligibility();
                 editTextPostResult.setText(post_result);
             }
         });
     }
 
-    private void saveSpinnerValues() {
+    private void setSpinnerValues() {
         CSCA08_GPA = Float.parseFloat(csca08Spinner.getSelectedItem().toString());
         MATA31_GPA = Float.parseFloat(mata31Spinner.getSelectedItem().toString());
         CSCA67_GPA = Float.parseFloat(csca67Spinner.getSelectedItem().toString());
@@ -79,116 +83,143 @@ public class PostFragmentView extends Fragment {
         desiredProgram = desiredProgramSpinner.getSelectedItem().toString();
     }
 
-    private String accessPostEligibility() {
 
-        String uncertainResult = "You will be considered for extra spaces, and not guaranteed entry.";
-        String acceptanceResult = "Congratulations! You are guaranteed to make POSt!";
-        String failedResult = "Unfortunately, you cannot make POSt.";
-        String invalidInput = "Invalid program entered!";
+    private boolean hasNotPassedRequiredCourses(Float [] required_courses) {
+        for (Float course : required_courses) {
+            if (course == 0.0)
+                return true;
+        }
+        return false;
+    }
 
+    private String assessPostEligibility() {
 
-        if (Objects.equals(desiredProgram, "Computer Science - Specialist or Major")) {
+        if (Objects.equals(desiredProgram, "Computer Science - Specialist or Major"))
+            return assessCSMajorSpecialistEligibility();
 
-            if (Objects.equals(enrollmentProgram, "Computer Science")) {
+        else if (Objects.equals(desiredProgram, "Mathematics - Major"))
+            return assessMathMajorEligibility();
 
-                float averageGPA = (MATA31_GPA + CSCA67_GPA + CSCA48_GPA
-                        + MATA37_GPA + MATA22_GPA) / 5;
+        else if (Objects.equals(desiredProgram, "Mathematics - Specialist"))
+            return assessMathSpecialistEligibility();
 
-                if (averageGPA >= 2.5 && CSCA48_GPA >= 3.0 &&
-                        ((CSCA67_GPA >= 1.7 && MATA22_GPA >= 1.7) ||
-                                (CSCA67_GPA >= 1.7 && MATA37_GPA >= 1.7) ||
-                                (MATA22_GPA >= 1.7 && MATA37_GPA >= 1.7)))
-                    return acceptanceResult;
+        else if (Objects.equals(desiredProgram, "Statistics - Major"))
+            return assessStatsMajorEligibility();
 
-                else
-                    return failedResult;
-            }
+        else if (Objects.equals(desiredProgram, "Statistics - Specialist"))
+            return assessStatsSpecialistEligibility();
 
-            else if (Objects.equals(enrollmentProgram, "Mathematics") ||
-                    Objects.equals(enrollmentProgram, "Statistics")) {
-                return uncertainResult;
-            }
+        return "Invalid program entered!";
+    }
 
-            else {
-                if (CSCA67_GPA >= 3.7 && MATA31_GPA >= 3.7) return uncertainResult;
-                else return failedResult;
-            }
+    private String assessCSMajorSpecialistEligibility() {
+
+        Float [] required_courses = {CSCA08_GPA, MATA31_GPA, CSCA67_GPA, CSCA48_GPA, MATA37_GPA, MATA22_GPA};
+        if (hasNotPassedRequiredCourses(required_courses)) return failedResult;
+
+        if (Objects.equals(enrollmentProgram, "Computer Science")) {
+
+            float averageGPA = (MATA31_GPA + CSCA67_GPA + CSCA48_GPA
+                    + MATA37_GPA + MATA22_GPA) / 5;
+
+            if (averageGPA >= 2.5 && CSCA48_GPA >= 3.0 &&
+                    ((CSCA67_GPA >= 1.7 && MATA22_GPA >= 1.7) ||
+                            (CSCA67_GPA >= 1.7 && MATA37_GPA >= 1.7) ||
+                            (MATA22_GPA >= 1.7 && MATA37_GPA >= 1.7)))
+                return acceptanceResult;
+
+            return failedResult;
         }
 
-        else if (Objects.equals(desiredProgram, "Mathematics - Major")) {
-
-            if (Objects.equals(enrollmentProgram, "Mathematics")) {
-
-                float averageGPA = (MATA31_GPA + CSCA67_GPA + MATA37_GPA + MATA22_GPA) / 4;
-
-                if (averageGPA >= 2.0 &&
-                        (CSCA67_GPA >= 3.0 || MATA22_GPA >= 3.0 || MATA37_GPA >= 3.0))
-                    return acceptanceResult;
-
-                else
-                    return failedResult;
-            }
-
-            else
-                return uncertainResult;
+        else if (Objects.equals(enrollmentProgram, "Mathematics") ||
+                Objects.equals(enrollmentProgram, "Statistics")) {
+            return uncertainResult;
         }
 
-        else if (Objects.equals(desiredProgram, "Mathematics - Specialist")) {
-
-            if (Objects.equals(enrollmentProgram, "Mathematics")) {
-
-                float averageGPA = (MATA31_GPA + CSCA67_GPA + MATA37_GPA + MATA22_GPA) / 4;
-
-                if (averageGPA >= 2.5 &&
-                        ((CSCA67_GPA >= 3.0 && MATA22_GPA >= 3.0) ||
-                                (CSCA67_GPA >= 3.0 && MATA37_GPA >= 3.0) ||
-                                (MATA22_GPA >= 3.0 && MATA37_GPA >= 3.0)))
-                    return acceptanceResult;
-
-                else
-                    return failedResult;
-            }
-
-            else
+        else {
+            if (CSCA67_GPA >= 3.7 && MATA31_GPA >= 3.7)
                 return uncertainResult;
+            return failedResult;
+        }
+    }
+
+    private String assessMathMajorEligibility() {
+
+        Float [] required_courses = {CSCA08_GPA, MATA31_GPA, CSCA67_GPA, MATA37_GPA, MATA22_GPA};
+        if (hasNotPassedRequiredCourses(required_courses)) return failedResult;
+
+        if (Objects.equals(enrollmentProgram, "Mathematics")) {
+
+            float averageGPA = (MATA31_GPA + CSCA67_GPA + MATA37_GPA + MATA22_GPA) / 4;
+
+            if (averageGPA >= 2.0 &&
+                    (CSCA67_GPA >= 3.0 || MATA22_GPA >= 3.0 || MATA37_GPA >= 3.0))
+                return acceptanceResult;
+
+            return failedResult;
         }
 
-        else if (Objects.equals(desiredProgram, "Statistics - Major")) {
+        return uncertainResult;
+    }
 
-            if (Objects.equals(enrollmentProgram, "Statistics")) {
+    private String assessMathSpecialistEligibility() {
 
-                float averageGPA = (MATA31_GPA + MATA37_GPA + CSCA08_GPA + MATA22_GPA) / 4;
+        Float [] required_courses = {CSCA08_GPA, MATA31_GPA, CSCA67_GPA, MATA37_GPA, MATA22_GPA};
+        if (hasNotPassedRequiredCourses(required_courses)) return failedResult;
 
-                if (averageGPA >= 2.3)
-                    return acceptanceResult;
+        if (Objects.equals(enrollmentProgram, "Mathematics")) {
 
-                else
-                    return failedResult;
-            }
+            float averageGPA = (MATA31_GPA + CSCA67_GPA + MATA37_GPA + MATA22_GPA) / 4;
 
-            else
-                return uncertainResult;
+            if (averageGPA >= 2.5 &&
+                    ((CSCA67_GPA >= 3.0 && MATA22_GPA >= 3.0) ||
+                            (CSCA67_GPA >= 3.0 && MATA37_GPA >= 3.0) ||
+                            (MATA22_GPA >= 3.0 && MATA37_GPA >= 3.0)))
+                return acceptanceResult;
+
+            return failedResult;
         }
 
-        else if (Objects.equals(desiredProgram, "Statistics - Specialist")) {
+        else return uncertainResult;
+    }
 
-            if (Objects.equals(enrollmentProgram, "Statistics")) {
+    private String assessStatsMajorEligibility() {
 
-                float averageGPA = (MATA31_GPA + MATA37_GPA + CSCA08_GPA +
-                        CSCA67_GPA + MATA22_GPA) / 5;
+        Float [] required_courses = {CSCA08_GPA, MATA31_GPA, MATA37_GPA, MATA22_GPA};
+        if (hasNotPassedRequiredCourses(required_courses)) return failedResult;
 
-                if (averageGPA >= 2.5)
-                    return acceptanceResult;
 
-                else
-                    return failedResult;
-            }
+        if (Objects.equals(enrollmentProgram, "Statistics")) {
 
-            else
-                return uncertainResult;
+            float averageGPA = (MATA31_GPA + MATA37_GPA + CSCA08_GPA + MATA22_GPA) / 4;
+
+            if (averageGPA >= 2.3)
+                return acceptanceResult;
+
+            return failedResult;
         }
 
-        return invalidInput;
+        return uncertainResult;
+    }
+
+    private String assessStatsSpecialistEligibility() {
+
+        Float [] required_courses = {CSCA08_GPA, MATA31_GPA, CSCA67_GPA, MATA37_GPA, MATA22_GPA};
+        if (hasNotPassedRequiredCourses(required_courses)) return failedResult;
+
+
+        if (Objects.equals(enrollmentProgram, "Statistics")) {
+
+            float averageGPA = (MATA31_GPA + MATA37_GPA + CSCA08_GPA +
+                    CSCA67_GPA + MATA22_GPA) / 5;
+
+            if (averageGPA >= 2.5)
+                return acceptanceResult;
+
+            return failedResult;
+        }
+
+        return uncertainResult;
     }
 }
 
