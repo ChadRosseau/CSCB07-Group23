@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.students;
 
 import android.os.Bundle;
 
@@ -10,19 +10,19 @@ import android.view.ViewGroup;
 
 import com.example.demoapplication.R;
 
-public class ComplaintsFragmentView extends Fragment {
+public class StudentComplaintsFragmentView extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
     private String mParam1;
     private String mParam2;
 
-    public ComplaintsFragmentView() {
+    public StudentComplaintsFragmentView() {
         // Required empty public constructor
     }
 
-    public static ComplaintsFragmentView newInstance(String param1, String param2) {
-        ComplaintsFragmentView fragment = new ComplaintsFragmentView();
+    public static StudentComplaintsFragmentView newInstance(String param1, String param2) {
+        StudentComplaintsFragmentView fragment = new StudentComplaintsFragmentView();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
