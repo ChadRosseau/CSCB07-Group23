@@ -47,7 +47,7 @@ public class NotificationsFragmentView extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notifications, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewNotifications);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
@@ -62,7 +62,7 @@ public class NotificationsFragmentView extends Fragment {
         this.notificationList = notificationList;
         // Notify the adapter that the data set has changed
         if (getView() != null) {
-            RecyclerView recyclerView = getView().findViewById(R.id.recyclerView);
+            RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewNotifications);
             NotificationAdapter adapter = new NotificationAdapter(notificationList);
             recyclerView.setAdapter(adapter);
         }
