@@ -18,9 +18,8 @@ import com.example.demoapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminNotificationsFragmentView extends Fragment {
+public class AdminNotificationsFragmentView extends NotificationsFragmentView {
 
-    private List<NotificationItem> notificationList;
     public AdminNotificationsFragmentView() {
         // Required empty public constructor
     }
@@ -34,15 +33,6 @@ public class AdminNotificationsFragmentView extends Fragment {
 //    }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        notificationList = new ArrayList<>();
-        notificationList.add(new NotificationItem("Notification 1", "announcement", "2023/11/11", "You are beautiful."));
-        notificationList.add(new NotificationItem("Notification 2",  "event", "2022/1/1", "Free pizza today."));
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -50,7 +40,6 @@ public class AdminNotificationsFragmentView extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewNotifications);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-
         NotificationAdapter adapter = new NotificationAdapter(notificationList);
         recyclerView.setAdapter(adapter);
 
@@ -62,16 +51,6 @@ public class AdminNotificationsFragmentView extends Fragment {
         });
 
         return view;
-    }
-
-    public void setNotificationList(List<NotificationItem> notificationList) {
-        this.notificationList = notificationList;
-        // Notify the adapter that the data set has changed
-        if (getView() != null) {
-            RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewNotifications);
-            NotificationAdapter adapter = new NotificationAdapter(notificationList);
-            recyclerView.setAdapter(adapter);
-        }
     }
 
     private void showCreateFragment() {

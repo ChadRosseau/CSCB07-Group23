@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class NotificationsFragmentView extends Fragment {
 
-    private List<NotificationItem> notificationList;
+    protected List<NotificationItem> notificationList;
 
     public NotificationsFragmentView() {
         // Required empty public constructor
