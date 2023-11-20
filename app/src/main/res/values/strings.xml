@@ -2,7 +2,7 @@
     <string name="app_name">Demo Application</string>
 
     <!--    Strings for home page -->
-    <string name="welcome">Welcome to makeshift Quercus</string>
+    <string name="welcome">Welcome to makeshift Quercus!</string>
 
     <!--    Strings for announcements page-->
     <string name="notification_start">Welcome to notifications page</string>
