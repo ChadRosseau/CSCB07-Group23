@@ -12,7 +12,7 @@
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>
-    
+
     <!--    Strings for "post" page-->
     <string name="enrolled_program_select">Select your program of enrollment:</string>
     <string name="desired_program_select">Select your desired program to make POSt:</string>
@@ -51,6 +51,8 @@
         <item>0.7</item>
     </string-array>
     <string name="get_result">Assess Eligibility</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
