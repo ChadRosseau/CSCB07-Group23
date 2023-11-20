@@ -37,10 +37,12 @@ public class AdminNotificationsFragmentView extends NotificationsFragmentView {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.admin_notifications, container, false);
+
         RecyclerView recyclerView = view.findViewById(R.id.recyclerViewNotifications);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        NotificationAdapter adapter = new NotificationAdapter(notificationList);
+
+        NotificationAdapter adapter = new NotificationAdapter(notificationList, this);
         recyclerView.setAdapter(adapter);
 
         Button createButton = view.findViewById(R.id.createButton);
