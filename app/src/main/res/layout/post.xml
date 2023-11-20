@@ -7,12 +7,12 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:id="@+id/postConstraintLayout"
+        android:layout_width="351dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="75dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="75dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,29 +23,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/program_select"
+                android:id="@+id/enrolled_program_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@string/program_select"
+                android:layout_marginTop="30dp"
+                android:text="@string/enrolled_program_select"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
-                android:id="@+id/spinner_post"
+                android:id="@+id/spinner_enrolled_program"
                 style="@android:style/Widget.DeviceDefault.Light.Spinner"
-                android:layout_width="347dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:entries="@array/program_dropdown"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:entries="@array/enrolled_program_dropdown"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/program_select" />
+                app:layout_constraintTop_toBottomOf="@+id/enrolled_program_select" />
+
+            <TextView
+                android:id="@+id/desired_program_select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="@string/desired_program_select"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinner_enrolled_program" />
+
+            <Spinner
+                android:id="@+id/spinner_desired_program"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:entries="@array/desired_program_dropdown"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desired_program_select" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -53,16 +74,16 @@
             android:id="@+id/gradesConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/programConstraintLayout"
-            app:layout_constraintStart_toStartOf="@+id/programConstraintLayout"
+            app:layout_constraintBottom_toTopOf="@+id/post_resultConstraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/programConstraintLayout">
 
             <TextView
                 android:id="@+id/enter_grades"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="25dp"
                 android:text="@string/enter_grades"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -79,113 +100,119 @@
                 app:layout_constraintTop_toBottomOf="@+id/enter_grades">
 
                 <TextView
-                    android:id="@+id/course1"
+                    android:id="@+id/csca08"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course1"
+                    android:text="@string/csca08"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/course2"
+                    android:id="@+id/mata31"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course2"
+                    android:text="@string/mata31"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course1" />
+                    app:layout_constraintTop_toBottomOf="@+id/csca08" />
 
                 <TextView
-                    android:id="@+id/course3"
+                    android:id="@+id/csca67"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course3"
+                    android:text="@string/csca67"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course2" />
+                    app:layout_constraintTop_toBottomOf="@+id/mata31" />
 
                 <TextView
-                    android:id="@+id/course4"
+                    android:id="@+id/csca48"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course4"
+                    android:text="@string/csca48"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course3" />
+                    app:layout_constraintTop_toBottomOf="@+id/csca67" />
 
                 <TextView
-                    android:id="@+id/course5"
+                    android:id="@+id/mata37"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course5"
+                    android:text="@string/mata37"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course4" />
+                    app:layout_constraintTop_toBottomOf="@+id/csca48" />
 
                 <TextView
-                    android:id="@+id/course6"
+                    android:id="@+id/mata22"
                     android:layout_width="@dimen/course_width"
                     android:layout_height="@dimen/course_height"
                     android:layout_marginTop="@dimen/course_marginTop"
                     android:gravity="center"
-                    android:text="@string/course6"
+                    android:text="@string/mata22"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/course5" />
+                    app:layout_constraintTop_toBottomOf="@+id/mata37" />
 
-                <EditText
-                    android:id="@+id/course1grade"
-                    style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course1"
-                    app:layout_constraintStart_toEndOf="@+id/course1"
-                    app:layout_constraintTop_toTopOf="@+id/course1"
-                    tools:ignore="TouchTargetSizeCheck" />
 
-                <EditText
-                    android:id="@+id/course2grade"
+                <Spinner
+                    android:id="@+id/csca08GPA"
                     style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course2"
-                    app:layout_constraintStart_toEndOf="@+id/course2"
-                    app:layout_constraintTop_toTopOf="@+id/course2" />
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/csca08"
+                    app:layout_constraintStart_toEndOf="@+id/csca08"
+                    app:layout_constraintTop_toTopOf="@+id/csca08"
+                    app:layout_constraintVertical_bias="0.0" />
 
-                <EditText
-                    android:id="@+id/course3grade"
+                <Spinner
+                    android:id="@+id/mata31GPA"
                     style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course3"
-                    app:layout_constraintStart_toEndOf="@+id/course3"
-                    app:layout_constraintTop_toTopOf="@+id/course3" />
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/mata31"
+                    app:layout_constraintStart_toEndOf="@+id/mata31"
+                    app:layout_constraintTop_toTopOf="@+id/mata31"
+                    app:layout_constraintVertical_bias="0.0" />
 
-                <EditText
-                    android:id="@+id/course4grade"
+                <Spinner
+                    android:id="@+id/csca67GPA"
                     style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course4"
-                    app:layout_constraintStart_toEndOf="@+id/course4"
-                    app:layout_constraintTop_toTopOf="@+id/course4" />
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/csca67"
+                    app:layout_constraintStart_toEndOf="@+id/csca67"
+                    app:layout_constraintTop_toTopOf="@+id/csca67"
+                    app:layout_constraintVertical_bias="0.0" />
 
-                <EditText
-                    android:id="@+id/course5grade"
+                <Spinner
+                    android:id="@+id/csca48GPA"
                     style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course5"
-                    app:layout_constraintStart_toEndOf="@+id/course5"
-                    app:layout_constraintTop_toTopOf="@+id/course5" />
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/csca48"
+                    app:layout_constraintStart_toEndOf="@+id/csca48"
+                    app:layout_constraintTop_toTopOf="@+id/csca48"
+                    app:layout_constraintVertical_bias="0.0" />
 
-                <EditText
-                    android:id="@+id/course6grade"
+                <Spinner
+                    android:id="@+id/mata37GPA"
                     style="@style/gradeStyle"
-                    android:text="@string/grade_label"
-                    app:layout_constraintBottom_toBottomOf="@+id/course6"
-                    app:layout_constraintStart_toEndOf="@+id/course6"
-                    app:layout_constraintTop_toTopOf="@+id/course6" />
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/mata37"
+                    app:layout_constraintStart_toEndOf="@+id/mata37"
+                    app:layout_constraintTop_toTopOf="@+id/mata37"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Spinner
+                    android:id="@+id/mata22GPA"
+                    style="@style/gradeStyle"
+                    android:entries="@array/gpa_dropdown"
+                    app:layout_constraintBottom_toBottomOf="@+id/mata22"
+                    app:layout_constraintStart_toEndOf="@+id/mata22"
+                    app:layout_constraintTop_toTopOf="@+id/mata22"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -195,35 +222,48 @@
             android:id="@+id/post_resultConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/postConstraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/gradesConstraintLayout">
 
             <Button
-                android:id="@+id/post_result"
+                android:id="@+id/postGetResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="@string/show_result"
+                android:text="@string/get_result"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <EditText-->
+<!--                android:id="@+id/postResult"-->
+<!--                style="@style/Widget.AppCompat.EditText"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ems="10"-->
+<!--                android:inputType="textMultiLine"-->
+<!--                android:textSize="12sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/postGetResult" />-->
 
             <EditText
                 android:id="@+id/postResult"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
+                android:layout_marginTop="5dp"
                 android:ems="10"
-                android:inputType="text"
+                android:focusable="false"
+                android:inputType="none"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/post_result"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/postGetResult" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
