@@ -55,14 +55,14 @@ public class CreateNotificationView extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 submitNotification(v);
+                ((MainActivityView)requireActivity())
+                            .replaceFragment(new AdminNotificationsFragmentView());
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (getActivity() instanceof MainActivityView) {
-                    ((MainActivityView)getActivity())
+                ((MainActivityView)requireActivity())
                             .replaceFragment(new AdminNotificationsFragmentView());
-                }
             }
         });
         return view;

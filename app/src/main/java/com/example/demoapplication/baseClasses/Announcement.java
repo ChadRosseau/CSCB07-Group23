@@ -20,6 +20,17 @@ public class Announcement extends Upload {
 	}
 	public String getType(){return type;}
 
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(!(obj instanceof Announcement)){
+			return false;
+		}
+		Announcement other = (Announcement)obj;
+		return this.announcementId.equals(other.getAnnouncementId());
+	}
 	public void setAnnouncementId(String announcementId) {
 		this.announcementId = announcementId;
 	}
