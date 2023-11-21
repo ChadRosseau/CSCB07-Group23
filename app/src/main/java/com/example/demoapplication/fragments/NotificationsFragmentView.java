@@ -39,9 +39,7 @@ public class NotificationsFragmentView extends Fragment implements NotificationA
         super.onCreate(savedInstanceState);
 
         // Initialize the notification list using database
-        ((MainActivityView)requireActivity()).presenter.student.announcements.getAnnouncements();
-        notificationList = ((MainActivityView)requireActivity()).presenter.student.announcements.getNotificationList();
-        notificationList.add(new NotificationItem("Notification 1", "Announcement", "Nov 19, 2023", "You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. "));
+        ((MainActivityView)requireActivity()).presenter.student.announcements.getAnnouncements(this);
     }
 
     @Override
