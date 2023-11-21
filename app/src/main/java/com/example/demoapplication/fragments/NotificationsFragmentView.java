@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
+import com.example.demoapplication.baseClasses.Announcement;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -39,8 +40,14 @@ public class NotificationsFragmentView extends Fragment implements NotificationA
 
         // Initialize the notification list using database
         notificationList = new ArrayList<>();
-        notificationList.add(new NotificationItem("Notification 1", "Announcement", "Nov 19, 2023", "You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. "));
-        notificationList.add(new NotificationItem("Notification 2",  "Event", "Nov 20, 2023", "Free pizza today."));
+        ((MainActivityView)requireActivity()).presenter.student.announcements.getAnnouncements();
+//        notificationList.add(new NotificationItem("Notification 1", "Announcement", "Nov 19, 2023", "You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. "));
+//        notificationList.add(new NotificationItem("Notification 2",  "Event", "Nov 20, 2023", "Free pizza today."));
+        for (Announcement announcement : ((MainActivityView)requireActivity())
+                .presenter.student.announcements.announcements){
+            notificationList.add(new NotificationItem(announcement.getTitle(),
+                    announcement.getType(), "Nov 20, 2023", announcement.getContent()));
+        }
     }
 
     @Override

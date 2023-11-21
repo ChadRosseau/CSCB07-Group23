@@ -8,8 +8,8 @@ public class MainActivityPresenter {
 
     MainActivityModel model;
     MainActivityView view;
-    AdminPresenter admin;
-    StudentPresenter student;
+    public AdminPresenter admin;
+    public StudentPresenter student;
     AuthPresenter auth;
 
     public MainActivityPresenter(MainActivityView view, MainActivityModel model) {

@@ -18,7 +18,7 @@ import com.example.demoapplication.fragments.PostFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
 
-    MainActivityPresenter presenter;
+    public MainActivityPresenter presenter;
     ActivityMainBinding binding;
 
     @Override
@@ -53,7 +53,7 @@ public class MainActivityView extends AppCompatActivity {
             return true;
         });
     }
-    private void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
