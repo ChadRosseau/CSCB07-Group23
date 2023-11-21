@@ -20,7 +20,7 @@ public class AdminEventsPresenter extends EventsPresenter {
 
     public Event createEvent(String title, String description, Date date) {
         // Generate a unique DB reference for new object.
-        DatabaseReference target = model.createChildRef(Event.parentRef);
+        DatabaseReference target = model.createChildRef(Event.getParentRef());
         // Retrieve key from new reference.
         String eventId = target.getKey();
         // Generate timestamp for event.
@@ -41,6 +41,6 @@ public class AdminEventsPresenter extends EventsPresenter {
                 System.out.println(feedback);
             }
         };
-        model.createSubscriptionOnChild(Feedback.parentRef, eventId, this.listenerTracker, Feedback.class, callback);
+        model.createSubscriptionOnChild(Feedback.getParentRef(), eventId, this.listenerTracker, Feedback.class, callback);
     }
 }

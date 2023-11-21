@@ -1,6 +1,7 @@
 package com.example.demoapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class LoginActivityView extends AppCompatActivity {
@@ -16,8 +18,10 @@ public class LoginActivityView extends AppCompatActivity {
 
     private EditText emailField;
     private EditText passwordField;
-    public Button signUpButton;
-    public Button signInButton;
+    private SwitchCompat adminSwitch;
+    private Button signUpButton;
+    private Button signInButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,7 @@ public class LoginActivityView extends AppCompatActivity {
 
         emailField = (EditText)findViewById(R.id.emailField);
         passwordField = (EditText)findViewById(R.id.passwordField);
+        adminSwitch = (SwitchCompat)findViewById(R.id.adminSwitch);
 
         signUpButton = (Button)findViewById(R.id.sign_up);
         signInButton = (Button)findViewById(R.id.sign_in);
@@ -50,7 +55,8 @@ public class LoginActivityView extends AppCompatActivity {
     public void signUp() {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
-        presenter.signUp(email, password);
+        boolean isAdmin = adminSwitch.isActivated();
+        presenter.signUp(email, password, isAdmin);
     }
 
     public void signIn() {

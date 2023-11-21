@@ -2,8 +2,7 @@ package com.example.demoapplication.baseClasses;
 
 import com.google.firebase.database.DatabaseReference;
 
-public class Event extends BaseClass {
-	public static DatabaseReference parentRef = root.child("events").child("eventList");
+public class Event implements BaseClass {
 	private String eventId;
 	private String title;
 	private String description;
@@ -49,5 +48,8 @@ public class Event extends BaseClass {
 	}
 	public void setDate(long date) {
 		this.date = date;
+	}
+	public static DatabaseReference getParentRef() {
+		return root.child("events").child("eventList");
 	}
 }

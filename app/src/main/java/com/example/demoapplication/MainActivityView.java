@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.databinding.ActivityMainBinding;
 import com.example.demoapplication.fragments.ComplaintsFragmentView;
 import com.example.demoapplication.fragments.EventsFragmentView;
@@ -30,6 +31,7 @@ public class MainActivityView extends AppCompatActivity {
         presenter = new MainActivityPresenter(this, new MainActivityModel());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+//            if (presenter.auth.getCurrentUserType() == UserType.Admin) {}
             switch(item.getItemId()){
                 case R.id.home:
                     replaceFragment(new HomeFragmentView());

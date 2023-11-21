@@ -22,7 +22,7 @@ public abstract class SubPresenter {
         this.view = view;
         this.model = model;
         this.listenerTracker = new ListenerTracker();
-        this.auth = new AuthModel();
+        this.auth = AuthModel.getInstance();
     }
 
     // Generates and manages a listener given a target and a callback function.

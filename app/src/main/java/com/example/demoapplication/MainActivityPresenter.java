@@ -9,6 +9,7 @@ public class MainActivityPresenter {
     MainActivityView view;
     AdminPresenter admin;
     StudentPresenter student;
+    AuthModel auth;
 
     public MainActivityPresenter(MainActivityView view, MainActivityModel model) {
         this.model = model;
@@ -16,6 +17,7 @@ public class MainActivityPresenter {
 //        this.auth = new AuthPresenter(view, model);
         this.student = new StudentPresenter(view, model);
         this.admin = new AdminPresenter(view, model);
+        this.auth = AuthModel.getInstance();
     }
 
 

@@ -83,8 +83,8 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordField"
         app:layout_constraintVertical_bias="0.251" />
 
-    <Switch
-        android:id="@+id/switch2"
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/adminSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleX="1.6"

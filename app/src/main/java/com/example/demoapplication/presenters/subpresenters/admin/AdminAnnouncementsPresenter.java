@@ -15,7 +15,7 @@ public class AdminAnnouncementsPresenter extends AnnouncementsPresenter {
 
     Announcement createAnnouncement(String title, String content, String author) {
         // Get reference to push target
-        DatabaseReference target = model.createChildRef(Announcement.parentRef);
+        DatabaseReference target = model.createChildRef(Announcement.getParentRef());
         // Create additional necessary information
         String announcementId = target.getKey();
         long timestamp = Helper.createTimestamp();
