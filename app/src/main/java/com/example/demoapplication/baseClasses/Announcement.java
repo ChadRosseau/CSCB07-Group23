@@ -20,5 +20,4 @@ public class Announcement extends Upload {
 	public void setAnnouncementId(String announcementId) {
 		this.announcementId = announcementId;
 	}
-	
 }
