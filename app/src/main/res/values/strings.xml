@@ -61,7 +61,7 @@
     <string name="description">Description...</string>
     <string name="submit">Submit</string>
     <string-array name="notification_type_dropdown">
-        <item>Regular</item>
+        <item>Announcement</item>
         <item>Event</item>
     </string-array>
 
