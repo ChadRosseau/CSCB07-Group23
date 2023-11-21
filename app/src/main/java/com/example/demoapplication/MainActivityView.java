@@ -12,9 +12,11 @@ import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.databinding.ActivityMainBinding;
 import com.example.demoapplication.fragments.ComplaintsFragmentView;
+import com.example.demoapplication.fragments.CreateNotificationView;
 import com.example.demoapplication.fragments.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.NotificationsFragmentView;
+import com.example.demoapplication.fragments.AdminNotificationsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
@@ -37,7 +39,7 @@ public class MainActivityView extends AppCompatActivity {
                     replaceFragment(new HomeFragmentView());
                     break;
                 case R.id.notifications:
-                    replaceFragment(new NotificationsFragmentView());
+                    replaceFragment(new AdminNotificationsFragmentView());
                     break;
                 case R.id.post:
                     replaceFragment(new PostFragmentView());
@@ -57,6 +59,17 @@ public class MainActivityView extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.commit();
+    }
+
+    public void showCreateFragment() {
+        CreateNotificationView createNotificationView = new CreateNotificationView();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.setCustomAnimations(R.anim.transition_up, 0);
+        fragmentTransaction.replace(R.id.frame_layout, createNotificationView);
+
         fragmentTransaction.commit();
     }
 }

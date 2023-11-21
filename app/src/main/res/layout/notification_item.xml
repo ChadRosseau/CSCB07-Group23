@@ -16,10 +16,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="6dp">
 
         <TextView
-            android:id="@+id/typeTextView"
+            android:id="@+id/timestampTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -27,7 +28,7 @@
             android:textColor="#009688" />
 
         <TextView
-            android:id="@+id/timestampTextView"
+            android:id="@+id/typeTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -39,6 +40,7 @@
 
     <TextView
         android:id="@+id/contentTextView"
+        android:maxLines="2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
