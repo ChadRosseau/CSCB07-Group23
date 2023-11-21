@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.List;
 
 public class Attendees implements BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("eventAttendees");
 	private String eventId;
 	private List<String> attendees;
 	
@@ -31,7 +32,4 @@ public class Attendees implements BaseClass {
 		this.attendees = attendees;
 	}
 
-	public static DatabaseReference getParentRef() {
-		return root.child("events").child("eventAttendees");
-	}
 }

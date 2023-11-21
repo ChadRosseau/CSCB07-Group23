@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.Map;
 
 public class Feedback implements BaseClass {
+	public static DatabaseReference parentRef = root.child("events").child("feedbackList");
 	private String eventId;
 	private Map<String, String> comments;
 	private Map<String, Integer> ratings;
@@ -41,7 +42,4 @@ public class Feedback implements BaseClass {
 		this.ratings = ratings;
 	}
 
-	public static DatabaseReference getParentRef() {
-		return root.child("events").child("feedbackList");
-	}
 }

@@ -31,6 +31,6 @@ public class AdminComplaintsPresenter extends ComplaintsPresenter {
                 }
             }
         };
-        model.createSubscription(Complaint.getParentRef(), this.listenerTracker, Complaint.class, callback);
+        model.createSubscription(Complaint.parentRef, this.listenerTracker, Complaint.class, callback);
     }
 }

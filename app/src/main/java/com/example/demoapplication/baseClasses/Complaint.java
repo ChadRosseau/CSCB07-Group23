@@ -3,6 +3,7 @@ package com.example.demoapplication.baseClasses;
 import com.google.firebase.database.DatabaseReference;
 
 public class Complaint extends Upload {
+	public static DatabaseReference parentRef = root.child("complaints");
 	private String complaintId;
 	
 	private Complaint() {}
@@ -18,9 +19,5 @@ public class Complaint extends Upload {
 
 	public void setComplaintId(String complaintId) {
 		this.complaintId = complaintId;
-	}
-
-	public static DatabaseReference getParentRef() {
-		return root.child("complaints");
 	}
 }

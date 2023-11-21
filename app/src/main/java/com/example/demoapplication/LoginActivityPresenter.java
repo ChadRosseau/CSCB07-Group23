@@ -2,6 +2,7 @@ package com.example.demoapplication;
 
 import androidx.annotation.NonNull;
 
+import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.baseClasses.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,11 +37,16 @@ public class LoginActivityPresenter {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     FirebaseUser user = task.getResult().getUser();
-                    if (user == null) return;
-                    String uid = user.getUid();
-                    DatabaseReference target = model.db.getReference().child("auth").child("userTypes").child(uid);
-                    model.setRef(target, isAdmin ? UserType.Admin : UserType.Student);
-                    handleLogin(task.isSuccessful(), LoginType.SignUp);
+                    if (!task.isSuccessful() || user == null) {
+                        handleLogin(false, LoginType.SignUp);
+                    } else {
+                        String uid = user.getUid();
+                        String displayName = user.getDisplayName();
+                        UserData userData = new UserData(uid, displayName, isAdmin ? UserType.Admin : UserType.Student);
+                        DatabaseReference target = UserData.parentRef.child(uid);
+                        model.setRef(target, userData);
+                        handleLogin(task.isSuccessful(), LoginType.SignUp);
+                    }
                 }
             };
             this.model.createNewUser(email, password, listener);

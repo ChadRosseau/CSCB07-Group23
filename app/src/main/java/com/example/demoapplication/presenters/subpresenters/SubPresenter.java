@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 public abstract class SubPresenter {
     protected MainActivityView view;
     protected MainActivityModel model;
-    protected ListenerTracker listenerTracker;
+    protected final ListenerTracker listenerTracker;
     protected AuthModel auth;
 
     public SubPresenter(MainActivityView view, MainActivityModel model) {

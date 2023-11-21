@@ -3,6 +3,7 @@ package com.example.demoapplication;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Complaint;
 import com.example.demoapplication.baseClasses.ItemListenerCallback;
+import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.presenters.contracts.ListenerTracker;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,10 +16,10 @@ public class AuthModel extends MainActivityModel {
     protected FirebaseAuth mAuth;
 
     private FirebaseUser currentUser;
-    private UserType currentUserType;
-    private ListenerTracker listenerTracker;
+    private UserData currentUserData;
+    private final ListenerTracker listenerTracker;
 
-    private AuthModel() {
+    protected AuthModel() {
         mAuth = FirebaseAuth.getInstance();
         listenerTracker = new ListenerTracker();
         fetchCurrentUser();
@@ -30,30 +31,28 @@ public class AuthModel extends MainActivityModel {
     }
 
     // Used when user may have changed.
-    public FirebaseUser fetchCurrentUser() {
+    public void fetchCurrentUser() {
         this.listenerTracker.killListeners();
         this.currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-        ItemListenerCallback<UserType> callback = new ItemListenerCallback<UserType>() {
-            public void execute(UserType type) {
-                currentUserType = type;
+        ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
+            public void execute(UserData data) {
+                currentUserData = data;
             }
         };
-        this.createSubscription(UserType.getParentRef().child(currentUser.getUid()), this.listenerTracker, UserType.class, callback);
+        this.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
         }
-        return this.currentUser;
     }
 
     // Used when sure user hasn't changed.
-    public FirebaseUser getCurrentUser() {
-        return this.currentUser;
-    }
-
-    public UserType getCurrentUserType() {
-        return this.currentUserType;
+    public UserData getCurrentUserData() {
+        return this.currentUserData;
     }
 
     public void logout() {
+        this.listenerTracker.killListeners();
         this.mAuth.signOut();
+        this.currentUser = null;
+        this.currentUserData = null;
     }
 }

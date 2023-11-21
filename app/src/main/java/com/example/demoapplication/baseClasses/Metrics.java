@@ -7,7 +7,7 @@ public class Metrics implements BaseClass {
 	private String eventId;
 	private double ratingSum;
 	private int ratingCount;
-	
+
 	private Metrics() {}
 
 	public Metrics(String eventId, double ratingSum, int ratingCount) {
@@ -38,8 +38,5 @@ public class Metrics implements BaseClass {
 
 	public void setRatingCount(int ratingCount) {
 		this.ratingCount = ratingCount;
-	}
-	public static DatabaseReference getParentRef() {
-		return root.child("events").child("feedbackMetrics");
 	}
 }
