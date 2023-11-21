@@ -1,5 +1,7 @@
 package com.example.demoapplication;
 
+import android.util.Log;
+
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Complaint;
 import com.example.demoapplication.baseClasses.ItemListenerCallback;
@@ -34,14 +36,16 @@ public class AuthModel extends MainActivityModel {
     public void fetchCurrentUser() {
         this.listenerTracker.killListeners();
         this.currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
+
+        if (currentUser == null) {
+            return;
+        }
         ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
             public void execute(UserData data) {
                 currentUserData = data;
             }
         };
         this.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
-        }
     }
 
     // Used when sure user hasn't changed.

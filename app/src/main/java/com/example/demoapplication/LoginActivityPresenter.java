@@ -1,5 +1,7 @@
 package com.example.demoapplication;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.demoapplication.baseClasses.UserData;
@@ -36,17 +38,17 @@ public class LoginActivityPresenter {
             OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    FirebaseUser user = task.getResult().getUser();
-                    if (!task.isSuccessful() || user == null) {
+                    if (!task.isSuccessful()) {
                         handleLogin(false, LoginType.SignUp);
-                    } else {
-                        String uid = user.getUid();
-                        String displayName = user.getDisplayName();
-                        UserData userData = new UserData(uid, displayName, isAdmin ? UserType.Admin : UserType.Student);
-                        DatabaseReference target = UserData.parentRef.child(uid);
-                        model.setRef(target, userData);
-                        handleLogin(task.isSuccessful(), LoginType.SignUp);
+                        return;
                     }
+                    FirebaseUser user = task.getResult().getUser();
+                    if (user == null) {
+                        handleLogin(false, LoginType.SignUp);
+                        return;
+                    }
+                    model.createNewUserData(user, isAdmin ? UserType.Admin : UserType.Student);
+                    handleLogin(task.isSuccessful(), LoginType.SignUp);
                 }
             };
             this.model.createNewUser(email, password, listener);
@@ -60,6 +62,7 @@ public class LoginActivityPresenter {
             OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                     handleLogin(task.isSuccessful(), LoginType.SignIn);
                 }
             };
@@ -70,7 +73,7 @@ public class LoginActivityPresenter {
     public void handleLogin(boolean success, LoginType type) {
         if (!success) view.displayLoginFailed(type);
         else {
-            model.fetchCurrentUser();
+
             view.goToMain();
         }
     }
