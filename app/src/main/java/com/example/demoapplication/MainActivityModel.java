@@ -1,5 +1,6 @@
 package com.example.demoapplication;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -39,7 +40,6 @@ public class MainActivityModel {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Handle null case
                 if (!snapshot.exists()) {
-                    System.err.println("Does not exist");
                     // Logic for non-existent event / error handling.
                     return;
                 }

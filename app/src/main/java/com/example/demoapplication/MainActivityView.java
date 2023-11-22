@@ -1,12 +1,15 @@
 package com.example.demoapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.demoapplication.baseClasses.UserData;
+import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.databinding.ActivityMainBinding;
 import com.example.demoapplication.fragments.ComplaintsFragmentView;
 import com.example.demoapplication.fragments.EventsFragmentView;
@@ -22,14 +25,13 @@ public class MainActivityView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        replaceFragment(new HomeFragmentView());
+        presenter = new MainActivityPresenter(this, new MainActivityModel());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new HomeFragmentView());
-//        editText = (EditText) findViewById(R.id.editTextTextPersonName);
-//        textView = (TextView) findViewById(R.id.output);
-        presenter = new MainActivityPresenter(this, new MainActivityModel());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+//            if (presenter.auth.getCurrentUserData().getUserType() == UserType.Admin) {}
             switch(item.getItemId()){
                 case R.id.home:
                     replaceFragment(new HomeFragmentView());
@@ -58,7 +60,12 @@ public class MainActivityView extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+<<<<<<< HEAD
     public void replaceFragment(Fragment fragment, int animation){
+=======
+    public void showCreateFragment() {
+        CreateNotificationView createNotificationView = new CreateNotificationView();
+>>>>>>> main
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

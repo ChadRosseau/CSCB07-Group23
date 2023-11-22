@@ -2,6 +2,10 @@ package com.example.demoapplication.helpers;
 
 import android.os.Build;
 
+<<<<<<< HEAD
+=======
+import java.text.DateFormat;
+>>>>>>> main
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
@@ -14,13 +18,14 @@ public abstract class Helper {
         }
         return Instant.now().getEpochSecond();
     }
+
     public static String formatTimestamp(long timestamp) {
         Date date = new Date ();
-        date.setTime((long)timestamp*1000);
+        date.setTime(timestamp*1000);
         // Create a SimpleDateFormat object with the desired format
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.CANADA);
 
-        // Format the inputDate using the SimpleDateFormat
+        // Format the date using the SimpleDateFormat
         return dateFormat.format(date);
     }
 }
