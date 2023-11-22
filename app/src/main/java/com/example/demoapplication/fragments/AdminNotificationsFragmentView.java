@@ -1,9 +1,8 @@
 package com.example.demoapplication.fragments;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,9 +13,6 @@ import android.widget.Button;
 
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AdminNotificationsFragmentView extends NotificationsFragmentView {
 
@@ -36,16 +32,10 @@ public class AdminNotificationsFragmentView extends NotificationsFragmentView {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.admin_notifications, container, false);
+        View view = super.onCreateView(inflater, container, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewNotifications);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-
-        NotificationAdapter adapter = new NotificationAdapter(notificationList, this);
-        recyclerView.setAdapter(adapter);
-
-        Button createButton = view.findViewById(R.id.createButton);
+        Button createButton = view.findViewById(R.id.createNotificationButton);
+        createButton.setVisibility(View.VISIBLE);
         createButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 showCreateFragment();

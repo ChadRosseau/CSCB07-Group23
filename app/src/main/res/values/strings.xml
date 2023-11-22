@@ -54,7 +54,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_a_title">Choose a title:</string>
-    <string name="create">Create</string>
+    <string name="create">Create Announcement</string>
     <string name="title">Title...</string>
     <string name="choose_a_type">Choose a type:</string>
     <string name="add_a_description">Add a description:</string>
