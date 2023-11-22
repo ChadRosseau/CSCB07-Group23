@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.notifications;
 
 import android.os.Bundle;
 
@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
-import com.example.demoapplication.baseClasses.Announcement;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class NotificationsFragmentView extends Fragment implements NotificationAdapter.OnItemClickListener {
 

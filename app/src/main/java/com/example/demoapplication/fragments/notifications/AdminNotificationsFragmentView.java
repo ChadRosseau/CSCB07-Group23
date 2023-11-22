@@ -1,10 +1,6 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.notifications;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +43,8 @@ public class AdminNotificationsFragmentView extends NotificationsFragmentView {
 
     private void showCreateFragment() {
         if (getActivity() instanceof MainActivityView) {
-            ((MainActivityView) getActivity()).showCreateFragment();
+            CreateNotificationView createNotificationView = new CreateNotificationView();
+            ((MainActivityView) getActivity()).replaceFragment(createNotificationView, R.anim.transition_up);
         }
     }
 }

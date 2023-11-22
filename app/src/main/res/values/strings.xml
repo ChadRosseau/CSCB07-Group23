@@ -51,7 +51,6 @@
         <item>0.7</item>
     </string-array>
     <string name="get_result">Assess Eligibility</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_a_title">Choose a title:</string>
     <string name="create">Create Announcement</string>

@@ -4,8 +4,8 @@ import com.example.demoapplication.MainActivityModel;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
-import com.example.demoapplication.fragments.NotificationItem;
-import com.example.demoapplication.fragments.NotificationsFragmentView;
+import com.example.demoapplication.fragments.notifications.NotificationItem;
+import com.example.demoapplication.fragments.notifications.NotificationsFragmentView;
 import com.example.demoapplication.helpers.Helper;
 
 import java.util.ArrayList;

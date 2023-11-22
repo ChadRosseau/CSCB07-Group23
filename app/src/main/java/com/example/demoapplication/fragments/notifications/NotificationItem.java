@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.notifications;
 
 public class NotificationItem {
     private String title;
