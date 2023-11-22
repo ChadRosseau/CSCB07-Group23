@@ -2,10 +2,6 @@ package com.example.demoapplication.helpers;
 
 import android.os.Build;
 
-<<<<<<< HEAD
-=======
-import java.text.DateFormat;
->>>>>>> main
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;

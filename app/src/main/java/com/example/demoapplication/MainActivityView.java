@@ -60,12 +60,7 @@ public class MainActivityView extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-<<<<<<< HEAD
     public void replaceFragment(Fragment fragment, int animation){
-=======
-    public void showCreateFragment() {
-        CreateNotificationView createNotificationView = new CreateNotificationView();
->>>>>>> main
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

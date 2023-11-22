@@ -11,15 +11,9 @@ public class MainActivityPresenter {
 
     MainActivityModel model;
     MainActivityView view;
-<<<<<<< HEAD
     public AdminPresenter admin;
     public StudentPresenter student;
-    AuthPresenter auth;
-=======
-    AdminPresenter admin;
-    StudentPresenter student;
     public AuthModel auth;
->>>>>>> main
 
     public MainActivityPresenter(MainActivityView view, MainActivityModel model) {
         this.model = model;
