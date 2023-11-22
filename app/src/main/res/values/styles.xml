@@ -33,4 +33,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+
+    <style name="navbarOffset">
+        <item name="android:layout_marginBottom">70dp</item>
+    </style>
+
 </resources>
