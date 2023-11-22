@@ -1,10 +1,9 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.notifications;
 
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -60,6 +59,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public int getItemCount() {
+        if (notificationList == null) return 0;
         return notificationList.size();
     }
 

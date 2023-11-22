@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
-    <!--    Strings for nav bar-->
+    <!--    Styles for nav bar-->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/palatte_9</item>
     </style>
 
-    <!--    Strings for "post" page-->
+    <!--    Styles for "post" page-->
     <style name="gradeStyle">
         <item name="android:layout_width">@dimen/grade_width</item>
         <item name="android:layout_height">@dimen/course_height</item>
@@ -29,6 +30,12 @@
         <item name="android:layout_height">@dimen/course_height</item>
         <item name="android:layout_marginTop">@dimen/course_marginTop</item>
         <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="navbarOffset">
+        <item name="android:layout_marginBottom">70dp</item>
     </style>
 
 </resources>
