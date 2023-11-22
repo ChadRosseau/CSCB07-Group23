@@ -6,6 +6,7 @@ import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.fragments.NotificationItem;
 import com.example.demoapplication.fragments.NotificationsFragmentView;
+import com.example.demoapplication.helpers.Helper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +35,11 @@ public abstract class AnnouncementsPresenter extends SubPresenter {
 
     public void createNotificationList(NotificationsFragmentView view){
         List<NotificationItem> notificationList = new ArrayList<>();
+        
         for (Announcement announcement : announcements){
-            notificationList.add(new NotificationItem(announcement.getTitle(),
-                    announcement.getType(), "Nov 20, 2023", announcement.getContent()));
+            String timeStamp = Helper.formatTimestamp(announcement.getTimestamp());
+            notificationList.add(0, new NotificationItem(announcement.getTitle(),
+                    announcement.getType(), timeStamp, announcement.getContent()));
         }
         // Dummy data
         notificationList.add(new NotificationItem("Notification 1", "Announcement", "Nov 19, 2023", "You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. You are beautiful. "));
