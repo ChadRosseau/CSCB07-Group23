@@ -50,4 +50,16 @@ public class Event implements BaseClass {
 	public void setDate(long date) {
 		this.date = date;
 	}
+
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(!(obj instanceof Announcement)){
+			return false;
+		}
+		Event other = (Event)obj;
+		return this.eventId.equals(other.getEventId());
+	}
 }
