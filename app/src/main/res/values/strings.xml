@@ -3,12 +3,15 @@
 
     <!--    Strings for home page -->
     <string name="welcome">Welcome to makeshift Quercus!</string>
+    <string name="logout">Logout</string>
 
     <!--    Strings for announcements page-->
     <string name="notification_start">Welcome to notifications page</string>
 
     <!--    Strings for event page-->
     <string name="events_start">Welcome to events page</string>
+    <string name="feedback_button">Feedback</string>
+    <string name="RSVP_button">RSVP</string>
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>
