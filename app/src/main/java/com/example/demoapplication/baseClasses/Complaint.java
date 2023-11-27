@@ -20,4 +20,16 @@ public class Complaint extends Upload {
 	public void setComplaintId(String complaintId) {
 		this.complaintId = complaintId;
 	}
+
+	@Override
+	public boolean equals(Object obj){
+		if(obj == null){
+			return false;
+		}
+		if(!(obj instanceof Announcement)){
+			return false;
+		}
+		Complaint other = (Complaint)obj;
+		return this.complaintId.equals(other.getComplaintId());
+	}
 }

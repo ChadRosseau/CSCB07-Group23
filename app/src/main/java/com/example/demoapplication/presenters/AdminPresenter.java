@@ -8,9 +8,9 @@ import com.example.demoapplication.presenters.subpresenters.admin.AdminComplaint
 import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPresenter;
 
 public class AdminPresenter extends SubPresenter {
-    AdminAnnouncementsPresenter announcements;
-    AdminComplaintsPresenter complaints;
-    AdminEventsPresenter events;
+    public AdminAnnouncementsPresenter announcements;
+    public AdminComplaintsPresenter complaints;
+    public AdminEventsPresenter events;
 
     public AdminPresenter(MainActivityView view, MainActivityModel model) {
         super(view, model);

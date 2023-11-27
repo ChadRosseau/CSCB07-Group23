@@ -13,14 +13,14 @@ public class AdminAnnouncementsPresenter extends AnnouncementsPresenter {
         super(view, model);
     }
 
-    Announcement createAnnouncement(String title, String content, String author) {
+    public Announcement createAnnouncement(String title, String type, String content, String author) {
         // Get reference to push target
         DatabaseReference target = model.createChildRef(Announcement.parentRef);
         // Create additional necessary information
         String announcementId = target.getKey();
         long timestamp = Helper.createTimestamp();
         // Create class instance
-        Announcement newAnnouncement = new Announcement(announcementId, timestamp, title, content, author);
+        Announcement newAnnouncement = new Announcement(announcementId, timestamp, title, type, content, author);
         // Instruct model to update database with instance
         model.setRef(target, newAnnouncement);
         // Return instance

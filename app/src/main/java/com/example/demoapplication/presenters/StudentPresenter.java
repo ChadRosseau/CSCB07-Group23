@@ -7,9 +7,9 @@ import com.example.demoapplication.presenters.subpresenters.student.StudentCompl
 import com.example.demoapplication.presenters.subpresenters.student.StudentEventsPresenter;
 
 public class StudentPresenter extends UserPresenter {
-    StudentAnnouncementsPresenter announcements;
-    StudentComplaintsPresenter complaints;
-    StudentEventsPresenter events;
+    public StudentAnnouncementsPresenter announcements;
+    public StudentComplaintsPresenter complaints;
+    public StudentEventsPresenter events;
     public StudentPresenter(MainActivityView view, MainActivityModel model) {
         super(view, model);
         this.announcements = new StudentAnnouncementsPresenter(view, model);
