@@ -69,5 +69,4 @@ public class MainActivityView extends AppCompatActivity {
 
         fragmentTransaction.commit();
     }
-    
 }
