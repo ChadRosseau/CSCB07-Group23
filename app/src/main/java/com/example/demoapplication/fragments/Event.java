@@ -5,14 +5,19 @@ import java.io.Serializable;
 public class Event implements Serializable {
     private String name; // event name
     private String date;
+
+    private String maxParticipants;
+
+    private String remaining;
     private String description;
 //    private String feedback;
 
-    public Event(String name, String date, String description){
+    public Event(String name, String date, String maxParticipants, String remaining, String description){
         this.name = name;
         this.date = date;
+        this.maxParticipants = maxParticipants;
+        this.remaining = remaining;
         this.description = description;
-//        this.feedback = feedback;
     }
     public String getDate(){
         return date;
@@ -23,7 +28,6 @@ public class Event implements Serializable {
     public String getDescription(){
         return description;
     }
-//    public String getFeedback(){
-//        return feedback;
-//    }
+    public String getMaxParticipants(){return maxParticipants;}
+    public String getRemaining(){return remaining;}
 }
