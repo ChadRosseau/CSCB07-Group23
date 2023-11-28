@@ -9,9 +9,9 @@
         android:title="POSt"
         android:icon="@drawable/post_icon"/>
     <item
-        android:id="@+id/notifications"
-        android:title="Notifications"
-        android:icon="@drawable/notifications_icon"/>
+        android:id="@+id/announcements"
+        android:icon="@drawable/notifications_icon"
+        android:title="Announcements" />
     <item
         android:id="@+id/events"
         android:title="Events"

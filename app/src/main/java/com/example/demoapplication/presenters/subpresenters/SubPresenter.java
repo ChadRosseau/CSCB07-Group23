@@ -13,18 +13,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public abstract class SubPresenter {
-    protected MainActivityView view;
+    protected MainActivityView activity;
     protected MainActivityModel model;
     protected final ListenerTracker listenerTracker;
     protected AuthModel auth;
 
-    public SubPresenter(MainActivityView view, MainActivityModel model) {
-        this.view = view;
-        this.model = model;
+    public SubPresenter(MainActivityView activity) {
+        this.model = MainActivityModel.getInstance();
+        this.activity = activity;
         this.listenerTracker = new ListenerTracker();
         this.auth = AuthModel.getInstance();
     }
 
-    // Generates and manages a listener given a target and a callback function.
-    // 2nd parameter is necessary to prevent type erasure issues.
+    public void endListeners() {
+        this.listenerTracker.killListeners();
+    }
 }

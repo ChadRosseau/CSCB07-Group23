@@ -20,7 +20,7 @@ public class LoginActivityModel extends AuthModel {
         String uid = user.getUid();
         UserData userData = new UserData(uid, userType);
         DatabaseReference target = UserData.parentRef.child(uid);
-        setRef(target, userData);
+        this.model.setRef(target, userData);
     }
 
     public void signIn(String email, String password, OnCompleteListener<AuthResult> listener) {

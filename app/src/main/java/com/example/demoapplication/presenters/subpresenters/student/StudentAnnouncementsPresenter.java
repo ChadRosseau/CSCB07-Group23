@@ -6,7 +6,7 @@ import com.example.demoapplication.presenters.subpresenters.AnnouncementsPresent
 
 public class StudentAnnouncementsPresenter extends AnnouncementsPresenter {
 
-    public StudentAnnouncementsPresenter(MainActivityView view, MainActivityModel model) {
-        super(view, model);
+    public StudentAnnouncementsPresenter(MainActivityView view) {
+        super(view);
     }
 }

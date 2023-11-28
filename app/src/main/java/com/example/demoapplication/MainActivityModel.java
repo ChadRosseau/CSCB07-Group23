@@ -22,11 +22,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityModel {
+    static MainActivityModel instance;
     FirebaseDatabase db;
 
-    public MainActivityModel(){
+    private MainActivityModel(){
         db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
     }
+
+    public static MainActivityModel getInstance() {
+        if (instance == null) instance = new MainActivityModel();
+        return instance;
+    }
+
+    public DatabaseReference getRootRef() {return db.getReference();}
 
     public DatabaseReference createChildRef(DatabaseReference ref) {
         return ref.push();
@@ -44,7 +52,7 @@ public class MainActivityModel {
                     return;
                 }
                 // Handle single item case
-                if (callback instanceof ItemListenerCallback){
+                if (callback instanceof ItemListenerCallback) {
                     // Execute callback with obj of type T
                     T obj = snapshot.getValue(cls);
                     ((ItemListenerCallback<T>)callback).execute(obj);
@@ -52,7 +60,7 @@ public class MainActivityModel {
                 // Handle array case
                 else if (callback instanceof ArrayListenerCallback) {
                     // Create and populate list using snapshot
-                    List<T> objList = new ArrayList<>();
+                    ArrayList<T> objList = new ArrayList<>();
                     for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()){
                         objList.add(objSnapshot.getValue(cls));
                     }

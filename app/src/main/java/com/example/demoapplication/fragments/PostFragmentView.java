@@ -15,7 +15,7 @@ import com.example.demoapplication.R;
 
 import java.util.Objects;
 
-public class PostFragmentView extends Fragment {
+public class PostFragmentView extends BaseFragment {
 
     private Spinner csca08Spinner, mata31Spinner, csca67Spinner,
             csca48Spinner, mata37Spinner, mata22Spinner;

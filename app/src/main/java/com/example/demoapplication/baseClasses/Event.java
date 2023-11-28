@@ -2,21 +2,25 @@ package com.example.demoapplication.baseClasses;
 
 import com.google.firebase.database.DatabaseReference;
 
-public class Event implements BaseClass {
+import java.io.Serializable;
+
+public class Event implements BaseClass, Serializable {
 	public static DatabaseReference parentRef = root.child("events").child("eventList");
 	private String eventId;
 	private String title;
 	private String description;
 	private int attendeeCount;
+	private int maxAttendees;
 	private long date;
 
 	private Event() {}
 
-	public Event(String eventId, String title, String description, int attendeeCount, long date) {
+	public Event(String eventId, String title, String description, int attendeeCount, int maxAttendees, long date) {
 		this.eventId = eventId;
 		this.title = title;
 		this.description = description;
 		this.attendeeCount = attendeeCount;
+		this.maxAttendees = maxAttendees;
 		this.date = date;
 	}
 
@@ -44,6 +48,12 @@ public class Event implements BaseClass {
 	public void setAttendeeCount(int attendeeCount) {
 		this.attendeeCount = attendeeCount;
 	}
+	public int getMaxAttendees() {
+		return maxAttendees;
+	}
+	public void setMaxAttendees(int maxAttendees) {
+		this.maxAttendees = maxAttendees;
+	}
 	public long getDate() {
 		return date;
 	}
@@ -56,7 +66,7 @@ public class Event implements BaseClass {
 		if(obj == null){
 			return false;
 		}
-		if(!(obj instanceof Announcement)){
+		if(!(obj instanceof Event)){
 			return false;
 		}
 		Event other = (Event)obj;

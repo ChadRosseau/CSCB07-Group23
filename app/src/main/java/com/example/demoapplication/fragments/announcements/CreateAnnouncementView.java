@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments.notifications;
+package com.example.demoapplication.fragments.announcements;
 
 import android.os.Bundle;
 
@@ -12,40 +12,33 @@ import android.widget.Spinner;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.MainActivityView;
+import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.presenters.subpresenters.admin.AdminAnnouncementsPresenter;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
  *
  */
-public class CreateNotificationView extends Fragment {
+public class CreateAnnouncementView extends BaseFragment {
+    private AdminAnnouncementsPresenter presenter;
 
     private Spinner typeSpinner;
     private TextInputEditText titleText;
     private TextInputEditText contentText;
-    public CreateNotificationView() {
-        // Required empty public constructor
-    }
-
-    // public static CreateNotificationView newInstance(String param1, String param2) {
-    //     CreateNotificationView fragment = new CreateNotificationView();
-    //     Bundle args = new Bundle();
-    //     args.putString(ARG_PARAM1, param1);
-    //     args.putString(ARG_PARAM2, param2);
-    //     fragment.setArguments(args);
-    //     return fragment;
-    // }
+    public CreateAnnouncementView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.presenter = new AdminAnnouncementsPresenter(activity);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.create_notification, container, false);
+        View view = inflater.inflate(R.layout.create_announcement, container, false);
         typeSpinner = view.findViewById(R.id.type_spinner);
         titleText = view.findViewById(R.id.titleText);
         contentText = view.findViewById(R.id.contentText);
@@ -53,26 +46,22 @@ public class CreateNotificationView extends Fragment {
         Button cancel = view.findViewById(R.id.cancelButton);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                submitNotification(v);
-                ((MainActivityView)requireActivity())
-                            .replaceFragment(new AdminNotificationsFragmentView());
+                submitAnnouncement();
+                activity.replaceFragment(new AdminAnnouncementsFragmentView());
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                ((MainActivityView)requireActivity())
-                            .replaceFragment(new AdminNotificationsFragmentView());
+                activity.replaceFragment(new AdminAnnouncementsFragmentView());
             }
         });
         return view;
     }
 
-    private void submitNotification(View view){
-        String author = "Jean";
+    private void submitAnnouncement() {
         String title = titleText.getText().toString();
         String type = typeSpinner.getSelectedItem().toString();
         String content = contentText.getText().toString();
-        ((MainActivityView)requireActivity()).presenter.admin.announcements
-                .createAnnouncement(title, type, content, author);
+        presenter.createAnnouncement(title, type, content);
     }
 }

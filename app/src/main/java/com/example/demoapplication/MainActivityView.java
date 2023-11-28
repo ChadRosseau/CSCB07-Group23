@@ -1,54 +1,63 @@
 package com.example.demoapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.databinding.ActivityMainBinding;
-import com.example.demoapplication.fragments.ComplaintsFragmentView;
-import com.example.demoapplication.fragments.EventsFragmentView;
+import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.fragments.announcements.StudentAnnouncementsFragmentView;
+import com.example.demoapplication.fragments.complaints.AdminComplaintsFragmentView;
+import com.example.demoapplication.fragments.complaints.StudentComplaintsFragmentView;
+import com.example.demoapplication.fragments.events.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
-import com.example.demoapplication.fragments.notifications.AdminNotificationsFragmentView;
+import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
 
-    public MainActivityPresenter presenter;
     ActivityMainBinding binding;
+    AuthModel auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        replaceFragment(new HomeFragmentView());
-        presenter = new MainActivityPresenter(this, new MainActivityModel());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragmentView());
+        auth = AuthModel.getInstance();
+        auth.fetchCurrentUser();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-//            if (presenter.auth.getCurrentUserData().getUserType() == UserType.Admin) {}
+            BaseFragment target;
+            boolean isAdmin = auth.getCurrentUserData().getUserType() == UserType.Admin;
             switch(item.getItemId()){
                 case R.id.home:
-                    replaceFragment(new HomeFragmentView());
-                    break;
-                case R.id.notifications:
-                    replaceFragment(new AdminNotificationsFragmentView());
+                    target = new HomeFragmentView();
                     break;
                 case R.id.post:
-                    replaceFragment(new PostFragmentView());
+                    target = new PostFragmentView();
+                    break;
+                case R.id.announcements:
+                    target = isAdmin ? new AdminAnnouncementsFragmentView() : new StudentAnnouncementsFragmentView();
                     break;
                 case R.id.events:
-                    replaceFragment(new EventsFragmentView());
+                    target = new EventsFragmentView();
                     break;
                 case R.id.complaints:
-                    replaceFragment(new ComplaintsFragmentView());
+                    target = isAdmin ? new AdminComplaintsFragmentView() : new StudentComplaintsFragmentView();
+                    break;
+                default:
+                    target = new HomeFragmentView();
                     break;
             }
+
+            replaceFragment(target);
 
             return true;
         });
@@ -68,5 +77,9 @@ public class MainActivityView extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
 
         fragmentTransaction.commit();
+    }
+
+    public void logout() {
+        startActivity(new Intent(this, LoginActivityView.class));
     }
 }
