@@ -5,6 +5,7 @@ import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Complaint;
 import com.example.demoapplication.presenters.subpresenters.ComplaintsPresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminComplaintsPresenter extends ComplaintsPresenter {
@@ -14,7 +15,7 @@ public class AdminComplaintsPresenter extends ComplaintsPresenter {
 
     public void getComplaints(){
         ArrayListenerCallback<Complaint> callback = new ArrayListenerCallback<Complaint>() {
-            public void execute(List<Complaint> complaintList) {
+            public void execute(ArrayList<Complaint> complaintList) {
                 for (Complaint complaint : complaintList) {
                     System.out.println(complaint);
                 }

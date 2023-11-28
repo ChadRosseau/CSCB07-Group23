@@ -6,9 +6,8 @@ import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.baseClasses.Feedback;
 import com.example.demoapplication.baseClasses.Metrics;
-import com.example.demoapplication.baseClasses.User;
-import com.example.demoapplication.fragments.NotificationItem;
 import com.example.demoapplication.presenters.subpresenters.EventsPresenter;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,95 +24,64 @@ public class StudentEventsPresenter extends EventsPresenter {
      * Constructor for the StudentEventsPresenter.
      *
      * @param view  The associated MainActivityView.
-     * @param model The associated MainActivityModel.
      */
     public StudentEventsPresenter(MainActivityView view) {
         super(view);
     }
 
     /**
-     * Retrieves events and updates the local list of events.
-     */
-    public void getEvents() {
-        ArrayListenerCallback<Event> callback = new ArrayListenerCallback<Event>() {
-            @Override
-            public void execute(List<Event> eventList) {
-                for (Event event : eventList) {
-                    System.out.println(event);
-                    if (!events.contains(event)) {
-                        events.add(event);
-                    }
-                }
-            }
-        };
-        model.createSubscription(Event.parentRef, this.listenerTracker, Event.class, callback);
-    }
-
-    /**
-     * Retrieves event notifications based on the local list of events.
-     *
-     * @return List of NotificationItem containing event details.
-     */
-    public List<NotificationItem> getEventNotifications() {
-        List<NotificationItem> notificationList = new ArrayList<>();
-        for (Event event : events) {
-            notificationList.add(new NotificationItem(event.getTitle(),
-                    "Event", "Nov 20, 2023", event.getDescription()));
-        }
-        return notificationList;
-    }
-
-    /**
      * Allows a student to RSVP for an event.
      *
-     * @param user  The user who is RSVPing.
-     * @param event The event for which the RSVP is made.
+     * @param eventId The id of the event for which the RSVP is made.
      */
-    public void rsvpForEvent(User user, Event event) {
+    public void rsvpForEvent(String eventId) {
         // Get the user ID
-        String userId = user.getUid();
-        String eventId = event.getEventId();
+        String userId = auth.getCurrentUserData().getUid();
 
         // Add the user ID under the corresponding event ID node in eventAttendees
-        model.createChildRef(Event.parentRef.child(eventId).child("eventAttendees"))
-                .child(userId).setValue(true);
+        DatabaseReference eventAttendeesRef = model.getRootRef().child("events").child("eventAttendees").child(eventId);
+        model.setRef(eventAttendeesRef.child(userId), true);
 
         // Add the event ID under the corresponding user ID node in userSubscriptions
-        model.createChildRef(User.parentRef.child(userId).child("userSubscriptions"))
-                .child(eventId).setValue(true);
+        DatabaseReference userSubscriptionsRef = model.getRootRef().child("events").child("userSubscriptions").child(userId);
+        model.setRef(userSubscriptionsRef.child(eventId), true);
 
         // Update the 'attendeeCount' in the database
-        int newAttendeeCount = event.getAttendeeCount() + 1;
-        model.setRef(Event.parentRef.child(event.getEventId()).child("attendeeCount"), newAttendeeCount);
+        // TODO: Implement transaction.
     }
 
     /**
      * Allows a student to rate an event.
      *
-     * @param user   The user who is rating the event.
-     * @param event  The event to be rated.
+     * @param eventId  The id of the event to be rated.
      * @param rating The rating given by the student.
      */
-    public void rateEvent(User user, Event event, int rating) {
+    public void rateEvent(String eventId, int rating) {
         // Get the user ID
-        String userId = user.getUid();
-        String eventId = event.getEventId();
+        String userId = auth.getCurrentUserData().getUid();
+
+        DatabaseReference target = Feedback.parentRef.child(eventId).child("ratings").child(userId);
+        model.setRef(target, rating);
+
+        // TODO: Implement transaction for ratingSum
+        // TODO: Implement transaction for ratingCount
     }
 
     /**
      * Allows a student to comment on an event.
      *
-     * @param user    The user who is commenting on the event.
-     * @param event   The event to be commented on.
+     * @param eventId   The id of the event to be commented on.
      * @param comment The comment provided by the student.
      */
-    public void commentEvent(User user, Event event, String comment) {
+    public void commentEvent(String eventId, String comment) {
         // Get the user ID
-        String userId = user.getUid();
-        String eventId = event.getEventId();
+        String userId = auth.getCurrentUserData().getUid();
 
-        // Add comment under feedbackList->[eventId]->comments. Key should be uid and the value the comment.
-        model.createChildRef(Feedback.parentRef.child(eventId).child("comments").child(userId)).setValue(comment);
+        DatabaseReference target = Feedback.parentRef.child(eventId).child("comments").child(userId);
+        model.setRef(target, comment);
+
+        // TODO: Implement transaction for ratingSum
+        // TODO: Implement transaction for ratingCount
     }
 }
 

@@ -21,7 +21,6 @@ public class StudentComplaintsPresenter extends ComplaintsPresenter {
      * @param title   The title of the complaint.
      * @param content The content of the complaint.
      * @param author  The author or creator of the complaint.
-     * @return The newly created Complaint instance.
      */
     public Complaint createComplaint(String title, String content, String author) {
         // Get reference to push target

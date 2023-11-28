@@ -13,14 +13,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 public abstract class SubPresenter {
-    protected MainActivityView view;
+    protected MainActivityView activity;
     protected MainActivityModel model;
     protected final ListenerTracker listenerTracker;
     protected AuthModel auth;
 
-    public SubPresenter(MainActivityView view) {
+    public SubPresenter(MainActivityView activity) {
         this.model = MainActivityModel.getInstance();
-        this.view = view;
+        this.activity = activity;
         this.listenerTracker = new ListenerTracker();
         this.auth = AuthModel.getInstance();
     }

@@ -34,6 +34,8 @@ public class MainActivityModel {
         return instance;
     }
 
+    public DatabaseReference getRootRef() {return db.getReference();}
+
     public DatabaseReference createChildRef(DatabaseReference ref) {
         return ref.push();
     }
@@ -58,7 +60,7 @@ public class MainActivityModel {
                 // Handle array case
                 else if (callback instanceof ArrayListenerCallback) {
                     // Create and populate list using snapshot
-                    List<T> objList = new ArrayList<>();
+                    ArrayList<T> objList = new ArrayList<>();
                     for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()){
                         objList.add(objSnapshot.getValue(cls));
                     }

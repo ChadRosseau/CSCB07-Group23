@@ -11,7 +11,7 @@ import com.example.demoapplication.databinding.ActivityMainBinding;
 import com.example.demoapplication.fragments.complaints.StudentComplaintsFragmentView;
 import com.example.demoapplication.fragments.events.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
-import com.example.demoapplication.fragments.notifications.AdminNotificationsFragmentView;
+import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class MainActivityView extends AppCompatActivity {
                     replaceFragment(new HomeFragmentView());
                     break;
                 case R.id.notifications:
-                    replaceFragment(new AdminNotificationsFragmentView());
+                    replaceFragment(new AdminAnnouncementsFragmentView());
                     break;
                 case R.id.post:
                     replaceFragment(new PostFragmentView());

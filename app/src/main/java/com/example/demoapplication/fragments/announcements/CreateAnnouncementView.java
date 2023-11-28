@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments.notifications;
+package com.example.demoapplication.fragments.announcements;
 
 import android.os.Bundle;
 
@@ -20,13 +20,13 @@ import com.google.android.material.textfield.TextInputEditText;
  * A simple {@link Fragment} subclass.
  *
  */
-public class CreateNotificationView extends BaseFragment {
+public class CreateAnnouncementView extends BaseFragment {
     private AdminAnnouncementsPresenter presenter;
 
     private Spinner typeSpinner;
     private TextInputEditText titleText;
     private TextInputEditText contentText;
-    public CreateNotificationView() {}
+    public CreateAnnouncementView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,13 +48,13 @@ public class CreateNotificationView extends BaseFragment {
             public void onClick(View v) {
                 submitNotification(v);
                 ((MainActivityView)requireActivity())
-                            .replaceFragment(new AdminNotificationsFragmentView());
+                            .replaceFragment(new AdminAnnouncementsFragmentView());
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ((MainActivityView)requireActivity())
-                            .replaceFragment(new AdminNotificationsFragmentView());
+                            .replaceFragment(new AdminAnnouncementsFragmentView());
             }
         });
         return view;
