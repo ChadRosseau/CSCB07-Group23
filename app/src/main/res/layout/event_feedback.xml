@@ -7,7 +7,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
-    tools:context=".fragments.EventFeedbackView">
+    tools:context=".fragments.events.EventFeedbackView">
 
     <RatingBar
         android:id="@+id/feedbackRatingBar"

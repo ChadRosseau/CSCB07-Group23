@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.events;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
-import com.example.demoapplication.fragments.notifications.CreateNotificationView;
 
 import java.util.ArrayList;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
-    private ArrayList<Event> emptylist;
+    private ArrayList<EventItem> emptylist;
 
-    public EventAdapter(ArrayList<Event> emptylist) {
+    public EventAdapter(ArrayList<EventItem> emptylist) {
         this.emptylist = emptylist;
     }
 
@@ -41,7 +40,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, int position) {
         String participants = "Max Participants: ";
         String remain = "Remaining Seats: ";
-        Event currentEmp = emptylist.get(position);
+        EventItem currentEmp = emptylist.get(position);
         holder.name.setText(currentEmp.getName());
         holder.date.setText(currentEmp.getDate());
         holder.maxParticipants.setText(participants + currentEmp.getMaxParticipants());

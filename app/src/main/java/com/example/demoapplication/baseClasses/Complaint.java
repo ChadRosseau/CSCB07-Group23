@@ -26,7 +26,7 @@ public class Complaint extends Upload {
 		if(obj == null){
 			return false;
 		}
-		if(!(obj instanceof Announcement)){
+		if(!(obj instanceof Complaint)){
 			return false;
 		}
 		Complaint other = (Complaint)obj;

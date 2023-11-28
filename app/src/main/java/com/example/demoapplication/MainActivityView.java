@@ -1,18 +1,14 @@
 package com.example.demoapplication;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.demoapplication.baseClasses.UserData;
-import com.example.demoapplication.baseClasses.UserType;
-import com.example.demoapplication.databinding.ActivityMainBinding;
-import com.example.demoapplication.fragments.ComplaintsFragmentView;
-import com.example.demoapplication.fragments.EventsFragmentView;
+import com.example.demoapplication.fragments.complaints.ComplaintsFragmentView;
+import com.example.demoapplication.fragments.events.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.notifications.AdminNotificationsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;

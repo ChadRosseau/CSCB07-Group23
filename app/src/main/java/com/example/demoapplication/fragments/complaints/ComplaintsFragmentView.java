@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.complaints;
 
 import android.os.Bundle;
 

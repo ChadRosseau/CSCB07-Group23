@@ -1,6 +1,5 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.events;
 
-import android.media.Rating;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;

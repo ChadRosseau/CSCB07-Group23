@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.events;
 
 import android.os.Bundle;
 
@@ -9,16 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.demoapplication.R;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RatingBar;
-import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -87,7 +78,7 @@ public class EventsFragmentView extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // getting the employeelist
-        ArrayList<Event> eventArrayList
+        ArrayList<EventItem> eventArrayList
                 = EventConstants.getEventData();
 
         // Assign employeelist to ItemAdapter
