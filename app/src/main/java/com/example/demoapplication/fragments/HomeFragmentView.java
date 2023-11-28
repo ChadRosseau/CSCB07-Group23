@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.demoapplication.AuthModel;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.UserData;
@@ -44,6 +45,14 @@ public class HomeFragmentView extends Fragment{
 //                UserData userData = ((MainActivityView)requireActivity()).presenter.auth.getCurrentUserData();
 //                String text = "Signed in as " + userData.getUid();
 //                testText.setText(text);
+            }
+        });
+        Button logoutButton = view.findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthModel.getInstance().logout();
+                ((MainActivityView)getActivity()).logout();
             }
         });
     }

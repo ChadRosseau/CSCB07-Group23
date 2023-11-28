@@ -1,5 +1,6 @@
 package com.example.demoapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,9 +22,9 @@ public class MainActivityView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        replaceFragment(new HomeFragmentView());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragmentView());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 //            if (presenter.auth.getCurrentUserData().getUserType() == UserType.Admin) {}
@@ -63,5 +64,9 @@ public class MainActivityView extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
 
         fragmentTransaction.commit();
+    }
+
+    public void logout() {
+        startActivity(new Intent(this, LoginActivityView.class));
     }
 }

@@ -62,7 +62,6 @@ public class LoginActivityPresenter {
             OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-
                     handleLogin(task.isSuccessful(), LoginType.SignIn);
                 }
             };
@@ -70,10 +69,22 @@ public class LoginActivityPresenter {
         }
     }
 
+    public void skipLogin(boolean isAdmin) {
+        String email;
+        String password;
+        if (isAdmin) {
+            email = "admin_test@gmail.com";
+            password = "admin1234";
+        } else {
+            email = "student_test@gmail.com";
+            password = "student1234";
+        }
+        this.signIn(email, password);
+    }
+
     public void handleLogin(boolean success, LoginType type) {
         if (!success) view.displayLoginFailed(type);
         else {
-
             view.goToMain();
         }
     }

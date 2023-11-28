@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Switch;
 import android.widget.Toast;
 
 public class LoginActivityView extends AppCompatActivity {
@@ -21,6 +20,7 @@ public class LoginActivityView extends AppCompatActivity {
     private SwitchCompat adminSwitch;
     private Button signUpButton;
     private Button signInButton;
+    private Button skipLoginButton;
 
 
     @Override
@@ -36,8 +36,9 @@ public class LoginActivityView extends AppCompatActivity {
         passwordField = (EditText)findViewById(R.id.passwordField);
         adminSwitch = (SwitchCompat)findViewById(R.id.adminSwitch);
 
-        signUpButton = (Button)findViewById(R.id.sign_up);
-        signInButton = (Button)findViewById(R.id.sign_in);
+        signUpButton = (Button)findViewById(R.id.signUpButton);
+        signInButton = (Button)findViewById(R.id.signInButton);
+        skipLoginButton = (Button)findViewById(R.id.skipLoginButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,12 +51,18 @@ public class LoginActivityView extends AppCompatActivity {
                 signIn();
             }
         });
+        skipLoginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                skipLogin();
+            }
+        });
     }
 
     public void signUp() {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
-        boolean isAdmin = adminSwitch.isActivated();
+        boolean isAdmin = adminSwitch.isChecked();
         presenter.signUp(email, password, isAdmin);
     }
 
@@ -63,6 +70,11 @@ public class LoginActivityView extends AppCompatActivity {
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         presenter.signIn(email, password);
+    }
+
+    public void skipLogin() {
+        boolean isAdmin = adminSwitch.isChecked();
+        presenter.skipLogin(isAdmin);
     }
 
     public void goToMain() {
