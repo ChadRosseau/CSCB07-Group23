@@ -17,4 +17,10 @@ public class BaseFragment extends Fragment {
         super.onCreate(savedInstanceState);
         this.activity = (MainActivityView)requireActivity();
     }
+
+    @Override
+    public void onDestroy() {
+        presenter.endListeners();
+        super.onDestroy();
+    }
 }

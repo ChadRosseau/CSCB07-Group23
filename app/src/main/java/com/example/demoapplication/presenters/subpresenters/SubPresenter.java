@@ -25,6 +25,7 @@ public abstract class SubPresenter {
         this.auth = AuthModel.getInstance();
     }
 
-    // Generates and manages a listener given a target and a callback function.
-    // 2nd parameter is necessary to prevent type erasure issues.
+    public void endListeners() {
+        this.listenerTracker.killListeners();
+    }
 }
