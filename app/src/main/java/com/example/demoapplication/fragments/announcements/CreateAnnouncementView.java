@@ -46,7 +46,7 @@ public class CreateAnnouncementView extends BaseFragment {
         Button cancel = view.findViewById(R.id.cancelButton);
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                submitNotification(v);
+                submitAnnouncement(v);
                 ((MainActivityView)requireActivity())
                             .replaceFragment(new AdminAnnouncementsFragmentView());
             }
@@ -60,11 +60,10 @@ public class CreateAnnouncementView extends BaseFragment {
         return view;
     }
 
-    private void submitNotification(View view){
-        String author = "Jean";
+    private void submitAnnouncement(View view){
         String title = titleText.getText().toString();
         String type = typeSpinner.getSelectedItem().toString();
         String content = contentText.getText().toString();
-        presenter.createAnnouncement(title, type, content, author);
+        presenter.createAnnouncement(title, type, content);
     }
 }
