@@ -34,13 +34,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         return new EventViewHolder(activity, eventView);
     }
 
-    // This method returns the total
-    // number of items in the data set
-    @Override
-    public int getItemCount() {
-        return eventList.size();
-    }
-
     // This method binds the data to the ViewHolder object
     // for each item in the RecyclerView
     @Override
@@ -51,5 +44,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
         holder.maxAttendees.setText(String.format("Max Participants: %d", currentEmp.getMaxAttendees()));
         holder.remaining.setText(String.format("Remaining Seats: %d", currentEmp.getMaxAttendees() - currentEmp.getAttendeeCount()));
         holder.description.setText(currentEmp.getDescription());
+    }
+
+    // This method returns the total
+    // number of items in the data set
+    @Override
+    public int getItemCount() {
+        if (eventList == null) return 0;
+        return eventList.size();
     }
 }
