@@ -3,11 +3,14 @@ package com.example.demoapplication.fragments;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
+import com.example.demoapplication.fragments.notifications.CreateNotificationView;
 
 import java.util.ArrayList;
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
@@ -54,6 +57,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         private TextView remaining;
         private TextView description;
 
+        private Button feedbackButton;
+
         public MyViewHolder(View eventView) {
             super(eventView);
             name = eventView.findViewById(R.id.tvName);
@@ -61,6 +66,20 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             maxParticipants = eventView.findViewById(R.id.tvParticipants);
             remaining = eventView.findViewById(R.id.tvRemaining);
             description = eventView.findViewById(R.id.tvDescription);
+            feedbackButton = eventView.findViewById(R.id.feedbackButton);
+            feedbackButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showStudentFeedback();
+                }
+            });
+        }
+        private void showStudentFeedback() {
+            if (getActivity() instanceof MainActivityView) {
+                EventFeedbackView createFeedbackView = new EventFeedbackView();
+                ((MainActivityView) getActivity()).replaceFragment(createFeedbackView, R.anim.transition_up);
+            }
         }
     }
+
 }
