@@ -22,10 +22,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivityModel {
+    static MainActivityModel instance;
     FirebaseDatabase db;
 
-    public MainActivityModel(){
+    private MainActivityModel(){
         db = FirebaseDatabase.getInstance("https://cscb07-group23-default-rtdb.firebaseio.com");
+    }
+
+    public static MainActivityModel getInstance() {
+        if (instance == null) instance = new MainActivityModel();
+        return instance;
     }
 
     public DatabaseReference createChildRef(DatabaseReference ref) {

@@ -12,33 +12,26 @@ import android.widget.Spinner;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.MainActivityView;
+import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.presenters.subpresenters.admin.AdminAnnouncementsPresenter;
 import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * A simple {@link Fragment} subclass.
  *
  */
-public class CreateNotificationView extends Fragment {
+public class CreateNotificationView extends BaseFragment {
+    private AdminAnnouncementsPresenter presenter;
 
     private Spinner typeSpinner;
     private TextInputEditText titleText;
     private TextInputEditText contentText;
-    public CreateNotificationView() {
-        // Required empty public constructor
-    }
-
-    // public static CreateNotificationView newInstance(String param1, String param2) {
-    //     CreateNotificationView fragment = new CreateNotificationView();
-    //     Bundle args = new Bundle();
-    //     args.putString(ARG_PARAM1, param1);
-    //     args.putString(ARG_PARAM2, param2);
-    //     fragment.setArguments(args);
-    //     return fragment;
-    // }
+    public CreateNotificationView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.presenter = new AdminAnnouncementsPresenter(activity);
     }
 
     @Override
@@ -72,7 +65,6 @@ public class CreateNotificationView extends Fragment {
         String title = titleText.getText().toString();
         String type = typeSpinner.getSelectedItem().toString();
         String content = contentText.getText().toString();
-        ((MainActivityView)requireActivity()).presenter.admin.announcements
-                .createAnnouncement(title, type, content, author);
+        presenter.createAnnouncement(title, type, content, author);
     }
 }

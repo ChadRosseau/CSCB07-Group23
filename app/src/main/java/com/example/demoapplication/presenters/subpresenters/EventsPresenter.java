@@ -5,7 +5,7 @@ import com.example.demoapplication.MainActivityView;
 
 public abstract class EventsPresenter extends SubPresenter {
 
-    public EventsPresenter(MainActivityView view, MainActivityModel model) {
-        super(view, model);
+    public EventsPresenter(MainActivityView view) {
+        super(view);
     }
 }

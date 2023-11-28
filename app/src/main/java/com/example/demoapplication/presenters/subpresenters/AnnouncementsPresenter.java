@@ -14,8 +14,8 @@ import java.util.List;
 public abstract class AnnouncementsPresenter extends SubPresenter {
     protected List<Announcement> announcements = new ArrayList<>();
 
-    public AnnouncementsPresenter(MainActivityView view, MainActivityModel model) {
-        super(view, model);
+    public AnnouncementsPresenter(MainActivityView view) {
+        super(view);
     }
 
     public void getAnnouncements(NotificationsFragmentView view){

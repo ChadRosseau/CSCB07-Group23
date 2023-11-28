@@ -18,9 +18,9 @@ public abstract class SubPresenter {
     protected final ListenerTracker listenerTracker;
     protected AuthModel auth;
 
-    public SubPresenter(MainActivityView view, MainActivityModel model) {
+    public SubPresenter(MainActivityView view) {
+        this.model = MainActivityModel.getInstance();
         this.view = view;
-        this.model = model;
         this.listenerTracker = new ListenerTracker();
         this.auth = AuthModel.getInstance();
     }

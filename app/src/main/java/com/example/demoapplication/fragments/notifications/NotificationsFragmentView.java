@@ -10,34 +10,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.demoapplication.MainActivityModel;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
+import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.presenters.subpresenters.student.StudentAnnouncementsPresenter;
+import com.example.demoapplication.presenters.subpresenters.student.StudentComplaintsPresenter;
 
 import java.util.List;
 
-public class NotificationsFragmentView extends Fragment implements NotificationAdapter.OnItemClickListener {
+public class NotificationsFragmentView extends BaseFragment implements NotificationAdapter.OnItemClickListener {
+    private StudentAnnouncementsPresenter presenter;
 
     protected List<NotificationItem> notificationList;
 
-    public NotificationsFragmentView() {
-        // Required empty public constructor
-    }
-
-//    public static NotificationsFragmentView newInstance(String param1, String param2) {
-//        NotificationsFragmentView fragment = new NotificationsFragmentView();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public NotificationsFragmentView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.presenter = new StudentAnnouncementsPresenter(activity);
 
         // Initialize the notification list using database
-        ((MainActivityView)requireActivity()).presenter.student.announcements.getAnnouncements(this);
+        presenter.getAnnouncements(this);
     }
 
     @Override

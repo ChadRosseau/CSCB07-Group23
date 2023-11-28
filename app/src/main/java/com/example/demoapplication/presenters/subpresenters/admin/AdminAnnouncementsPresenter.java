@@ -9,8 +9,8 @@ import com.google.firebase.database.DatabaseReference;
 
 public class AdminAnnouncementsPresenter extends AnnouncementsPresenter {
 
-    public AdminAnnouncementsPresenter(MainActivityView view, MainActivityModel model) {
-        super(view, model);
+    public AdminAnnouncementsPresenter(MainActivityView view) {
+        super(view);
     }
 
     public Announcement createAnnouncement(String title, String type, String content, String author) {

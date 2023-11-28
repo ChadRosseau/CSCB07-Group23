@@ -7,7 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.demoapplication.fragments.complaints.ComplaintsFragmentView;
+import com.example.demoapplication.databinding.ActivityMainBinding;
+import com.example.demoapplication.fragments.complaints.StudentComplaintsFragmentView;
 import com.example.demoapplication.fragments.events.EventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.notifications.AdminNotificationsFragmentView;
@@ -15,14 +16,12 @@ import com.example.demoapplication.fragments.PostFragmentView;
 
 public class MainActivityView extends AppCompatActivity {
 
-    public MainActivityPresenter presenter;
     ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         replaceFragment(new HomeFragmentView());
-        presenter = new MainActivityPresenter(this, new MainActivityModel());
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -42,7 +41,7 @@ public class MainActivityView extends AppCompatActivity {
                     replaceFragment(new EventsFragmentView());
                     break;
                 case R.id.complaints:
-                    replaceFragment(new ComplaintsFragmentView());
+                    replaceFragment(new StudentComplaintsFragmentView());
                     break;
             }
 

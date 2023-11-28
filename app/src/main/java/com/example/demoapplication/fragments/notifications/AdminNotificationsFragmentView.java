@@ -7,29 +7,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
+import com.example.demoapplication.presenters.subpresenters.admin.AdminAnnouncementsPresenter;
+import com.example.demoapplication.presenters.subpresenters.student.StudentAnnouncementsPresenter;
 
 public class AdminNotificationsFragmentView extends NotificationsFragmentView {
+    private AdminAnnouncementsPresenter presenter;
 
-    public AdminNotificationsFragmentView() {
-        // Required empty public constructor
-    }
-//    public static AdminNotificationsFragmentView newInstance(String param1, String param2) {
-//        AdminNotificationsFragmentView fragment = new AdminNotificationsFragmentView();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public AdminNotificationsFragmentView() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = super.onCreateView(inflater, container, savedInstanceState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        this.presenter = new AdminAnnouncementsPresenter(activity);
 
+        // Initialize the notification list using database
+        presenter.getAnnouncements(this);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         Button createButton = view.findViewById(R.id.createNotificationButton);
         createButton.setVisibility(View.VISIBLE);
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -37,8 +39,6 @@ public class AdminNotificationsFragmentView extends NotificationsFragmentView {
                 showCreateFragment();
             }
         });
-
-        return view;
     }
 
     private void showCreateFragment() {

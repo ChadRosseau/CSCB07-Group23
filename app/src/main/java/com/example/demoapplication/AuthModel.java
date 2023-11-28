@@ -13,8 +13,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
-public class AuthModel extends MainActivityModel {
+public class AuthModel {
     private static AuthModel authInstance = null;
+    protected MainActivityModel model;
     protected FirebaseAuth mAuth;
 
     private FirebaseUser currentUser;
@@ -22,6 +23,7 @@ public class AuthModel extends MainActivityModel {
     private final ListenerTracker listenerTracker;
 
     protected AuthModel() {
+        model = MainActivityModel.getInstance();
         mAuth = FirebaseAuth.getInstance();
         listenerTracker = new ListenerTracker();
         fetchCurrentUser();
@@ -45,7 +47,7 @@ public class AuthModel extends MainActivityModel {
                 currentUserData = data;
             }
         };
-        this.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
+        this.model.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
     }
 
     // Used when sure user hasn't changed.
