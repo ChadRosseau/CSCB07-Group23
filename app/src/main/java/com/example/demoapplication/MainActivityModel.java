@@ -52,7 +52,7 @@ public class MainActivityModel {
                     return;
                 }
                 // Handle single item case
-                if (callback instanceof ItemListenerCallback){
+                if (callback instanceof ItemListenerCallback) {
                     // Execute callback with obj of type T
                     T obj = snapshot.getValue(cls);
                     ((ItemListenerCallback<T>)callback).execute(obj);

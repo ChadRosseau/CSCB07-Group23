@@ -25,6 +25,7 @@ public class MainActivityView extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragmentView());
+        AuthModel.getInstance().fetchCurrentUser();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 //            if (presenter.auth.getCurrentUserData().getUserType() == UserType.Admin) {}

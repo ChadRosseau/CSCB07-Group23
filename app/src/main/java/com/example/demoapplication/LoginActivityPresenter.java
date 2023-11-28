@@ -29,6 +29,7 @@ public class LoginActivityPresenter {
     public LoginActivityPresenter(LoginActivityView view, LoginActivityModel model) {
         this.view = view;
         this.model = model;
+        model.logout();
     }
 
     public void signUp(String email, String password, boolean isAdmin) {

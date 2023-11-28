@@ -18,12 +18,14 @@ import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.UserData;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link HomeFragmentView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragmentView extends Fragment{
+public class HomeFragmentView extends BaseFragment {
     Button testButton;
     TextView testText;
 
@@ -39,20 +41,18 @@ public class HomeFragmentView extends Fragment{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         testButton = view.findViewById(R.id.testButton);
         testText = view.findViewById(R.id.testText);
+
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                UserData userData = ((MainActivityView)requireActivity()).presenter.auth.getCurrentUserData();
-//                String text = "Signed in as " + userData.getUid();
-//                testText.setText(text);
+                testText.setText("Signed in as a " + AuthModel.getInstance().getCurrentUserData().getUserType().toString());
             }
         });
         Button logoutButton = view.findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AuthModel.getInstance().logout();
-                ((MainActivityView)getActivity()).logout();
+                activity.logout();
             }
         });
     }

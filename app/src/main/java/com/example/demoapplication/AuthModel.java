@@ -44,6 +44,7 @@ public class AuthModel {
         }
         ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
             public void execute(UserData data) {
+
                 currentUserData = data;
             }
         };
