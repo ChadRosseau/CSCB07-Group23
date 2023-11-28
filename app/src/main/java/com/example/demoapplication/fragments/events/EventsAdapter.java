@@ -3,8 +3,6 @@ package com.example.demoapplication.fragments.events;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,16 +10,14 @@ import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.helpers.Helper;
-import com.example.demoapplication.presenters.subpresenters.EventsPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
+public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
     private ArrayList<Event> eventList;
     private MainActivityView activity;
 
-    public EventAdapter(MainActivityView activity, ArrayList<Event> eventList) {
+    public EventsAdapter(MainActivityView activity, ArrayList<Event> eventList) {
         this.activity = activity;
         this.eventList = eventList;
     }

@@ -3,7 +3,7 @@ package com.example.demoapplication.presenters.subpresenters;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
-import com.example.demoapplication.fragments.announcements.AnnouncementsFragmentView;
+import com.example.demoapplication.fragments.announcements.StudentAnnouncementsFragmentView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +14,7 @@ public class AnnouncementsPresenter extends SubPresenter {
         super(view);
     }
 
-    public void getAnnouncements(AnnouncementsFragmentView view){
+    public void getAnnouncements(StudentAnnouncementsFragmentView view){
         ArrayListenerCallback<Announcement> callback = new ArrayListenerCallback<Announcement>() {
             public void execute(ArrayList<Announcement> announcementList) {
                 Collections.reverse(announcementList);

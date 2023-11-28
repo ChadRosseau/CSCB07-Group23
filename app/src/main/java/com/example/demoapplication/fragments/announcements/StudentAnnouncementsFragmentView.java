@@ -16,13 +16,13 @@ import com.example.demoapplication.presenters.subpresenters.student.StudentAnnou
 
 import java.util.ArrayList;
 
-public class AnnouncementsFragmentView extends BaseFragment {
+public class StudentAnnouncementsFragmentView extends BaseFragment {
     private StudentAnnouncementsPresenter presenter;
 
     protected ArrayList<Announcement> announcementList;
     protected RecyclerView recyclerView;
 
-    public AnnouncementsFragmentView() {}
+    public StudentAnnouncementsFragmentView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

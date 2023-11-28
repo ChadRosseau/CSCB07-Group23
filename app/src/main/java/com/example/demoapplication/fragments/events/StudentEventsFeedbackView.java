@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
@@ -19,16 +18,16 @@ import com.example.demoapplication.presenters.subpresenters.student.StudentEvent
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link StudentEventFeedbackView#newInstance} factory method to
+ * Use the {@link StudentEventsFeedbackView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class StudentEventFeedbackView extends BaseFragment {
+public class StudentEventsFeedbackView extends BaseFragment {
     private StudentEventsPresenter presenter;
 
     RatingBar feedbackRatingBar;
     Button submitFeedbackButton;
 
-    public StudentEventFeedbackView() {}
+    public StudentEventsFeedbackView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

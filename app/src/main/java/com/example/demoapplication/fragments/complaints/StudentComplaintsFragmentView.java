@@ -9,10 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.demoapplication.LoginActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
-import com.example.demoapplication.fragments.announcements.AnnouncementsFragmentView;
 import com.example.demoapplication.presenters.subpresenters.student.StudentComplaintsPresenter;
 
 public class StudentComplaintsFragmentView extends BaseFragment {

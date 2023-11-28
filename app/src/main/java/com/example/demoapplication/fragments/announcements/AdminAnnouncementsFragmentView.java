@@ -12,7 +12,7 @@ import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminAnnouncementsPresenter;
 
-public class AdminAnnouncementsFragmentView extends AnnouncementsFragmentView {
+public class AdminAnnouncementsFragmentView extends StudentAnnouncementsFragmentView {
     private AdminAnnouncementsPresenter presenter;
 
     public AdminAnnouncementsFragmentView() {}
