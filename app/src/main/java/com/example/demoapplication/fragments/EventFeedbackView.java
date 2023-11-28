@@ -9,10 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RatingBar;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.demoapplication.R;
+
+import java.lang.reflect.Array;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +29,10 @@ public class EventFeedbackView extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    Spinner spinnerFeedbackNum = getView().findViewById(R.id.feedbackNumSpinner);
+    ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(getActivity(), R.array.numRatings, android.R.layout.simple_spinner_item);
+//    adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -56,16 +64,14 @@ public class EventFeedbackView extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //initiate rating bar and button
-        final RatingBar feedbackRatingBar = (RatingBar) getView().findViewById(R.id.feedbackRatingBar);
+
         Button submitFeedbackButton = (Button) getView().findViewById(R.id.submitFeedbackButton);
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // get values and then displayed in a toast
-                String totalStars = "Total Stars:: " + feedbackRatingBar.getNumStars();
-                String rating = "Rating :: " + feedbackRatingBar.getRating();
-                Toast.makeText(getActivity().getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
+
             }
         });
     }
