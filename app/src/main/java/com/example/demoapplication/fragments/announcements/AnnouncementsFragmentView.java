@@ -9,22 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.fragments.BaseFragment;
 import com.example.demoapplication.presenters.subpresenters.student.StudentAnnouncementsPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class AnnouncementFragmentView extends BaseFragment {
+public class AnnouncementsFragmentView extends BaseFragment {
     private StudentAnnouncementsPresenter presenter;
 
     protected ArrayList<Announcement> announcementList;
     protected RecyclerView recyclerView;
 
-    public AnnouncementFragmentView() {}
+    public AnnouncementsFragmentView() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class AnnouncementFragmentView extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.notifications, container, false);
+        View view = inflater.inflate(R.layout.announcements, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewNotifications);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -64,7 +62,7 @@ public class AnnouncementFragmentView extends BaseFragment {
         this.announcementList = announcementList;
         // Notify the adapter that the data set has changed
         if (getView() != null) {
-            AnnouncementAdapter adapter = new AnnouncementAdapter(announcementList);
+            AnnouncementsAdapter adapter = new AnnouncementsAdapter(announcementList);
             recyclerView.setAdapter(adapter);
         }
     }

@@ -4,7 +4,6 @@ import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,22 +13,21 @@ import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.helpers.Helper;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class AnnouncementAdapter extends RecyclerView.Adapter<AnnouncementViewHolder> {
+public class AnnouncementsAdapter extends RecyclerView.Adapter<AnnouncementViewHolder> {
 
     private ArrayList<Announcement> announcementList;
 //    private OnItemClickListener onItemClickListener;
     private static final int maxNotificationLines = 2;
 
-    public AnnouncementAdapter(ArrayList<Announcement> announcementList) {
+    public AnnouncementsAdapter(ArrayList<Announcement> announcementList) {
         this.announcementList = announcementList;
     }
 
     @NonNull
     @Override
     public AnnouncementViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.announcement_item, parent, false);
         return new AnnouncementViewHolder(view);
     }
 

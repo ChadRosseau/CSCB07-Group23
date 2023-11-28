@@ -29,7 +29,7 @@
                 app:layout_constraintVertical_bias="0.039" />
 
             <EditText
-                android:id="@+id/editTextText3"
+                android:id="@+id/complaintTitleText"
                 android:layout_width="350dp"
                 android:layout_height="45dp"
                 android:background="@color/text_box_bg"
@@ -48,7 +48,7 @@
                 app:layout_constraintVertical_bias="0.015" />
 
             <EditText
-                android:id="@+id/editTextText4"
+                android:id="@+id/complaintContentText"
                 android:layout_width="350dp"
                 android:layout_height="250dp"
                 android:background="@color/text_box_bg"
@@ -65,11 +65,11 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText3"
+                app:layout_constraintTop_toBottomOf="@+id/complaintTitleText"
                 app:layout_constraintVertical_bias="0.047" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/complaintsSubmitButton"
                 android:layout_width="144dp"
                 android:layout_height="55dp"
                 android:backgroundTint="@color/palatte_3"
@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText4"
+                app:layout_constraintTop_toBottomOf="@+id/complaintContentText"
                 app:layout_constraintVertical_bias="0.03" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

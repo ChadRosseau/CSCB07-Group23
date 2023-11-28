@@ -14,6 +14,6 @@ public class AdminComplaintsFragmentView extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.complaints, container, false);
+        return inflater.inflate(R.layout.student_complaints, container, false);
     }
 }

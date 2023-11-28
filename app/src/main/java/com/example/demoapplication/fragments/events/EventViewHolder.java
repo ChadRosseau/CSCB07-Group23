@@ -30,7 +30,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 // TODO: situational for admin/student
-                activity.replaceFragment(new EventFeedbackView(), R.anim.transition_up);
+                activity.replaceFragment(new StudentEventFeedbackView(), R.anim.transition_up);
             }
         });
     }

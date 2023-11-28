@@ -20,7 +20,7 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        presenter.endListeners();
+        if (presenter != null) presenter.endListeners();
         super.onDestroy();
     }
 }

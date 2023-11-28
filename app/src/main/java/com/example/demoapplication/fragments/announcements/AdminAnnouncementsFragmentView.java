@@ -12,7 +12,7 @@ import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminAnnouncementsPresenter;
 
-public class AdminAnnouncementsFragmentView extends AnnouncementFragmentView {
+public class AdminAnnouncementsFragmentView extends AnnouncementsFragmentView {
     private AdminAnnouncementsPresenter presenter;
 
     public AdminAnnouncementsFragmentView() {}
@@ -41,7 +41,7 @@ public class AdminAnnouncementsFragmentView extends AnnouncementFragmentView {
     private void showCreateFragment() {
         if (getActivity() instanceof MainActivityView) {
             CreateAnnouncementView createAnnouncementView = new CreateAnnouncementView();
-            ((MainActivityView) getActivity()).replaceFragment(createAnnouncementView, R.anim.transition_up);
+            activity.replaceFragment(createAnnouncementView, R.anim.transition_up);
         }
     }
 }
