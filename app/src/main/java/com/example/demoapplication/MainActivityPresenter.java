@@ -1,45 +1,26 @@
 package com.example.demoapplication;
 
+import android.util.Log;
+
+import com.example.demoapplication.baseClasses.ItemListenerCallback;
+import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.presenters.AdminPresenter;
 import com.example.demoapplication.presenters.StudentPresenter;
-import com.example.demoapplication.presenters.subpresenters.AuthPresenter;
 
 public class MainActivityPresenter {
 
     MainActivityModel model;
     MainActivityView view;
-    AdminPresenter admin;
-    StudentPresenter student;
-    AuthPresenter auth;
+    public AdminPresenter admin;
+    public StudentPresenter student;
+    public AuthModel auth;
 
     public MainActivityPresenter(MainActivityView view, MainActivityModel model) {
         this.model = model;
         this.view = view;
-        this.auth = new AuthPresenter(view, model);
         this.student = new StudentPresenter(view, model);
         this.admin = new AdminPresenter(view, model);
+        this.auth = AuthModel.getInstance();
+        auth.fetchCurrentUser();
     }
-
-
-//    public void checkDB(String username) {
-//        if (username.equals(""))
-//        {
-////            view.setOutputText("String cannot be empty!");
-//        }
-//        else
-//        {
-//            model.queryDB(this, username);
-//        }
-//    }
-
-//    public void setViewText(boolean exists) {
-//        if (exists)
-//        {
-//            view.setOutputText("Found it!");
-//        }
-//        else
-//        {
-//            view.setOutputText("Couldn't find it!");
-//        }
-//    }
 }

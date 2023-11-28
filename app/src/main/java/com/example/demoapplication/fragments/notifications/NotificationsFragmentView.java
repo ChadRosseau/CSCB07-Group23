@@ -1,4 +1,4 @@
-package com.example.demoapplication.fragments;
+package com.example.demoapplication.fragments.notifications;
 
 import android.os.Bundle;
 
@@ -10,14 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 
 import java.util.List;
-import java.util.ArrayList;
 
-public class NotificationsFragmentView extends Fragment {
+public class NotificationsFragmentView extends Fragment implements NotificationAdapter.OnItemClickListener {
 
-    private List<NotificationItem> notificationList;
+    protected List<NotificationItem> notificationList;
 
     public NotificationsFragmentView() {
         // Required empty public constructor
@@ -37,9 +37,7 @@ public class NotificationsFragmentView extends Fragment {
         super.onCreate(savedInstanceState);
 
         // Initialize the notification list using database
-        notificationList = new ArrayList<>();
-        notificationList.add(new NotificationItem("Notification 1", "announcement", "2023/11/11", "You are beautiful."));
-        notificationList.add(new NotificationItem("Notification 2",  "event", "2022/1/1", "Free pizza today."));
+        ((MainActivityView)requireActivity()).presenter.student.announcements.getAnnouncements(this);
     }
 
     @Override
@@ -51,10 +49,22 @@ public class NotificationsFragmentView extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
-        NotificationAdapter adapter = new NotificationAdapter(notificationList);
+        NotificationAdapter adapter = new NotificationAdapter(notificationList, this);
         recyclerView.setAdapter(adapter);
 
         return view;
+    }
+
+    @Override
+    public void onItemClick(NotificationItem notificationItem) {
+        // Handle the click event for the specific notification item
+        // You can open a new activity, show a dialog, etc.
+        // For example, show an extended text using a DialogFragment
+
+//        ((MainActivityView) getActivity()).showCreateFragment();
+
+        notificationItem.setContent("A");
+        setNotificationList(notificationList);
     }
 
     // Setter method to update the notification list
@@ -63,7 +73,7 @@ public class NotificationsFragmentView extends Fragment {
         // Notify the adapter that the data set has changed
         if (getView() != null) {
             RecyclerView recyclerView = getView().findViewById(R.id.recyclerViewNotifications);
-            NotificationAdapter adapter = new NotificationAdapter(notificationList);
+            NotificationAdapter adapter = new NotificationAdapter(notificationList, this);
             recyclerView.setAdapter(adapter);
         }
     }

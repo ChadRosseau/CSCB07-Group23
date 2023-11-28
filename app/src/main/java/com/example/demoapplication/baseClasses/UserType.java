@@ -1,6 +1,8 @@
 package com.example.demoapplication.baseClasses;
 
-public enum UserType {
+import com.google.firebase.database.DatabaseReference;
+
+public enum UserType implements BaseClass {
     Admin,
-    Student,
+    Student;
 }

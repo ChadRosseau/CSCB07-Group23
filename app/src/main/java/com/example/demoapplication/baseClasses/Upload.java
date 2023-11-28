@@ -2,7 +2,7 @@ package com.example.demoapplication.baseClasses;
 
 import com.google.firebase.database.DatabaseReference;
 
-public abstract class Upload extends BaseClass {
+public abstract class Upload implements BaseClass {
 	private long timestamp;
 	private String title;
 	private String content;

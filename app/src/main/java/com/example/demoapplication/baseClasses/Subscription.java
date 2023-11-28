@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
-public class Subscription extends BaseClass {
+public class Subscription implements BaseClass {
 	public static DatabaseReference parentRef = root.child("events").child("userSubscriptions");
 	private List<String> events;
 	
