@@ -23,6 +23,16 @@
             android:textStyle="bold"
             android:paddingTop="20dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Event Name"
+            android:textColor="@color/palatte_2"
+            android:textSize="20sp"
+            android:paddingTop="20dp"
+            android:paddingLeft="15dp"/>
+
         <!--RecyclerView-->
 
         <androidx.recyclerview.widget.RecyclerView
