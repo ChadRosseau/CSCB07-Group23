@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.demoapplication.R;
-import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.fragments.BaseFragment;
 import com.example.demoapplication.baseClasses.Complaint;
-import com.example.demoapplication.fragments.announcements.AnnouncementsAdapter;
+import com.example.demoapplication.fragments.complaints.ComplaintsAdapter;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminComplaintsPresenter;
-import com.example.demoapplication.presenters.subpresenters.student.StudentAnnouncementsPresenter;
 
 import java.util.ArrayList;
 
@@ -51,9 +49,9 @@ public class AdminComplaintsFragmentView extends BaseFragment {
     public void setComplaintList(ArrayList<Complaint> complaintList) {
         this.complaintList = complaintList;
         // Notify the adapter that the data set has changed
-        //if (getView() != null) {
-            //AnnouncementsAdapter adapter = new AnnouncementsAdapter(complaintList);
-            //recyclerView.setAdapter(adapter);
-        //}
+        if (getView() != null) {
+            ComplaintsAdapter adapter = new ComplaintsAdapter(complaintList);
+            recyclerView.setAdapter(adapter);
+        }
     }
 }
