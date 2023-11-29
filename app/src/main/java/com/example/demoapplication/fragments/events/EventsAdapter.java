@@ -34,12 +34,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
     // for each item in the RecyclerView
     @Override
     public void onBindViewHolder(EventViewHolder holder, int position) {
-        Event currentEmp = eventList.get(position);
-        holder.name.setText(currentEmp.getTitle());
-        holder.date.setText(Helper.formatTimestamp(currentEmp.getDate()));
-        holder.maxAttendees.setText(String.format("Max Participants: %d", currentEmp.getMaxAttendees()));
-        holder.remaining.setText(String.format("Remaining Seats: %d", currentEmp.getMaxAttendees() - currentEmp.getAttendeeCount()));
-        holder.description.setText(currentEmp.getDescription());
+        Event currentEvent = eventList.get(position);
+        holder.setEventId(currentEvent.getEventId());
+        holder.name.setText(currentEvent.getTitle());
+        holder.date.setText(Helper.formatTimestamp(currentEvent.getDate()));
+        holder.maxAttendees.setText(String.format("Max Participants: %d", currentEvent.getMaxAttendees()));
+        holder.remaining.setText(String.format("Remaining Seats: %d", currentEvent.getMaxAttendees() - currentEvent.getAttendeeCount()));
+        holder.description.setText(currentEvent.getDescription());
     }
 
     // This method returns the total

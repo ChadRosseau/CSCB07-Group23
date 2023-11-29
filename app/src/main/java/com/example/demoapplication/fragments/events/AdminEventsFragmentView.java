@@ -1,29 +1,25 @@
 package com.example.demoapplication.fragments.events;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.annotation.Nullable;
 
 import com.example.demoapplication.R;
 
-public class AdminEventsFragmentView extends EventsFragmentView{
-
-    public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate the layout for each item and return a new ViewHolder object
-        View eventView = LayoutInflater.from(parent.getContext()).inflate(R.layout.events_admin_list, parent, false);
-        return new EventViewHolder(activity, eventView);
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState)
-    {
+public class AdminEventsFragmentView extends StudentEventsFragmentView {
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView = view.findViewById(R.id.eventsAdminRecycleView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        setEventList(eventItemList);
+        Button createButton = view.findViewById(R.id.createEventButton);
+        createButton.setVisibility(View.VISIBLE);
+        createButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
 
