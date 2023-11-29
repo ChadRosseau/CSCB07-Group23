@@ -3,9 +3,11 @@ package com.example.demoapplication.presenters.subpresenters.admin;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Complaint;
+import com.example.demoapplication.fragments.complaints.AdminComplaintsFragmentView;
 import com.example.demoapplication.presenters.subpresenters.ComplaintsPresenter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdminComplaintsPresenter extends ComplaintsPresenter {
@@ -13,12 +15,11 @@ public class AdminComplaintsPresenter extends ComplaintsPresenter {
         super(view);
     }
 
-    public void getComplaints(){
+    public void getComplaints(AdminComplaintsFragmentView view){
         ArrayListenerCallback<Complaint> callback = new ArrayListenerCallback<Complaint>() {
             public void execute(ArrayList<Complaint> complaintList) {
-                for (Complaint complaint : complaintList) {
-                    System.out.println(complaint);
-                }
+                Collections.reverse(complaintList);
+                view.setComplaintList(complaintList);
             }
         };
         model.createSubscription(Complaint.parentRef, this.listenerTracker, Complaint.class, callback);
