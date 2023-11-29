@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class EventsFragmentView extends BaseFragment {
     private EventsPresenter presenter;
-    private RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
     protected ArrayList<Event> eventItemList;
 
     public EventsFragmentView() {

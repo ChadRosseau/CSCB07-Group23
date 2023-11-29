@@ -18,6 +18,21 @@
     <string name="remaining">Seats Remaining: </string>
     <string name="eventsDescription">Description: </string>
 
+    <!--    Strings for student feedback fragment-->
+    <string name="feedback">Feedback</string>
+    <string name="feedbackDescription">Thank you for choosing to provide feedback.
+        You may enter a numeric feedback and/or provide a comment!</string>
+    <string name="chooseRating">Number Rating (1-5): </string>
+    <string-array name="numRatings">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="enterFeedBack">Enter your comment below: </string>
+    <string name="type">Type Here</string>
+    <string name="back">Back</string>
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>

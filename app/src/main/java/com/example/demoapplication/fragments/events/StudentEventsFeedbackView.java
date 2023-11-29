@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
@@ -23,10 +25,15 @@ import com.example.demoapplication.presenters.subpresenters.student.StudentEvent
  */
 public class StudentEventsFeedbackView extends BaseFragment {
     private StudentEventsPresenter presenter;
+//    Spinner feedbackSpinner = getView().findViewById(R.id.feedbackNumSpinner);
+//    ArrayAdapter<CharSequence> feedbackAdapter= ArrayAdapter.createFromResource(getActivity(), R.array.numRatings, android.R.layout.simple_spinner_item);
 
-    RatingBar feedbackRatingBar;
     Button submitFeedbackButton;
 
+    // Specify the layout to use when the list of choices appears.
+//    feedbackAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+// Apply the adapter to the spinner.
+//    spinnerFeedbackNum.setAdapter(spinnerAdapter);
     public StudentEventsFeedbackView() {}
 
     @Override
@@ -45,7 +52,6 @@ public class StudentEventsFeedbackView extends BaseFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        feedbackRatingBar = view.findViewById(R.id.feedbackRatingBar);
         submitFeedbackButton = view.findViewById(R.id.submitFeedbackButton);
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
