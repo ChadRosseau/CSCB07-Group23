@@ -35,11 +35,7 @@ public class FeedbackAdapter extends RecyclerView.Adapter<FeedbackViewHolder> {
     @Override
     public void onBindViewHolder(FeedbackViewHolder holder, int position) {
         Event currentEvent = eventList.get(position);
-        holder.feedback.setText(currentEvent.getFeedback());
-        holder.date.setText(Helper.formatTimestamp(currentEmp.getDate()));
-        holder.maxAttendees.setText(String.format("Max Participants: %d", currentEmp.getMaxAttendees()));
-        holder.remaining.setText(String.format("Remaining Seats: %d", currentEmp.getMaxAttendees() - currentEmp.getAttendeeCount()));
-        holder.description.setText(currentEmp.getDescription());
+//        holder.feedback.setText(currentEvent.getFeedback());
     }
 
     // This method returns the total
