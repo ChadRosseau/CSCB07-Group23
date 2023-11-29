@@ -33,6 +33,8 @@
     <string name="enterFeedBack">Enter your comment below: </string>
     <string name="type">Type Here</string>
     <string name="back">Back</string>
+    <string name="rating">The actual rating from student</string>
+    <string name="actualFeedback">Actual Feedback: </string>
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>
