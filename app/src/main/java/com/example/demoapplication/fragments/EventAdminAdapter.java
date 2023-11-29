@@ -12,10 +12,10 @@ import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 
 import java.util.ArrayList;
-public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder> {
+public class EventAdminAdapter extends RecyclerView.Adapter<EventAdminAdapter.MyViewHolder> {
     private ArrayList<Event> emptylist;
 
-    public EventAdapter(ArrayList<Event> emptylist) {
+    public EventAdminAdapter(ArrayList<Event> emptylist) {
         this.emptylist = emptylist;
     }
 
@@ -23,12 +23,11 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflate the layout for each item and return a new ViewHolder object
-        View eventView = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_student_list, parent, false);
+        View eventView = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_admin_list, parent, false);
         return new MyViewHolder(eventView);
     }
 
-    // This method returns the total
-    // number of items in the data set
+    // do i really need new adapter when the info's basically the same but one button is different?
     @Override
     public int getItemCount() {
         return emptylist.size();
@@ -56,7 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         private TextView remaining;
         private TextView description;
 
-//        private Button feedbackButton;
+        private Button feedbackButton;
 
         public MyViewHolder(View eventView) {
             super(eventView);
@@ -65,7 +64,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
             maxParticipants = eventView.findViewById(R.id.tvParticipants);
             remaining = eventView.findViewById(R.id.tvRemaining);
             description = eventView.findViewById(R.id.tvDescription);
-//            feedbackButton = eventView.findViewById(R.id.feedbackButton);
+            feedbackButton = eventView.findViewById(R.id.feedbackButton);
 //            feedbackButton.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View v) {
