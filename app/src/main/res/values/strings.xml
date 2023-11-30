@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Demo Application</string>
+    <string name="app_name">CMS Application</string>
 
     <!--    Strings for home page -->
     <string name="welcome">Welcome to makeshift Quercus!</string>
