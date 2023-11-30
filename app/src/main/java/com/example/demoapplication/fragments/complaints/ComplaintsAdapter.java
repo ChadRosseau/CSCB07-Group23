@@ -38,7 +38,6 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintViewHolder>
 
         // Set text for each view
         holder.titleTextView.setText(complaint.getTitle());
-        holder.authorTextView.setText(complaint.getAuthor());
         holder.timestampTextView.setText(Helper.formatTimestamp(complaint.getTimestamp()));
         holder.contentTextView.setText(complaint.getContent());
         holder.contentTextView.setMaxLines(holder.isExpanded() ? Integer.MAX_VALUE : maxComplaintLines);

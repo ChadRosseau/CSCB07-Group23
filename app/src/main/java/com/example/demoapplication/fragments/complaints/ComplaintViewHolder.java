@@ -5,13 +5,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
-import com.example.demoapplication.fragments.events.StudentEventsFeedbackView;
 
 public class ComplaintViewHolder extends RecyclerView.ViewHolder {
     public TextView titleTextView;
-    public TextView authorTextView;
     public TextView timestampTextView;
     public TextView contentTextView;
     private boolean isExpanded;
@@ -19,10 +16,9 @@ public class ComplaintViewHolder extends RecyclerView.ViewHolder {
 
     public ComplaintViewHolder(View complaintView) {
         super(complaintView);
-        titleTextView = itemView.findViewById(R.id.titleTextView2);
-        authorTextView = itemView.findViewById(R.id.typeTextView2);
-        timestampTextView = itemView.findViewById(R.id.timestampTextView2);
-        contentTextView = itemView.findViewById(R.id.contentTextView2);
+        titleTextView = itemView.findViewById(R.id.titleTextViewComplaints);
+        timestampTextView = itemView.findViewById(R.id.timestampTextViewComplaints);
+        contentTextView = itemView.findViewById(R.id.contentTextViewComplaints);
         isExpanded = false;
         isRead = false;
     }

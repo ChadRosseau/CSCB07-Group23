@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
 import com.example.demoapplication.baseClasses.Complaint;
-import com.example.demoapplication.fragments.complaints.ComplaintsAdapter;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminComplaintsPresenter;
 
 import java.util.ArrayList;
@@ -38,7 +37,7 @@ public class AdminComplaintsFragmentView extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.admin_complaints, container, false);
-        recyclerView = view.findViewById(R.id.recyclerViewNotifications2);
+        recyclerView = view.findViewById(R.id.recyclerViewComplaints);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         setComplaintList(complaintList);
         return view;
