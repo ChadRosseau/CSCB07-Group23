@@ -122,12 +122,15 @@ public class CreateEventFragmentView extends BaseFragment {
 
     // Handle event submission
     private void submitEvent() {
+         // <- here add title of event, "event" as type, description as content
+
         // Get input values
         String title = titleEditText.getText().toString().trim();
         String description = descriptionEditText.getText().toString().trim();
         int capacity = Integer.parseInt(capacityEditText.getText().toString().trim());
         String location = locationEditText.getText().toString().trim();
 
+        announcementsPresenter.createAnnouncement(title, "Event", description);
         // *4th parameter is a long type.
         presenter.createEvent(title, description, capacity, timestamp);//createEvent(String title, String description, int maxAttendees, Date date)
     }
