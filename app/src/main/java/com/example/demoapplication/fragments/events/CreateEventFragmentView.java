@@ -31,6 +31,8 @@ public class CreateEventFragmentView extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.create_event, container, false);
+
+
     }
 
 
