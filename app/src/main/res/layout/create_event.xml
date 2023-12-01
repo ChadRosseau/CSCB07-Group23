@@ -107,14 +107,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/editTextText5"
                 app:layout_constraintVertical_bias="0.015" />
 
-            <!-- Add Autofill and adjust text color contrast -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dateInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText6">
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/dateEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +124,6 @@
                     android:textSize="18sp"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Adjust button text size -->
             <Button
                 android:id="@+id/selectDateTimeButton"
                 android:layout_width="wrap_content"
