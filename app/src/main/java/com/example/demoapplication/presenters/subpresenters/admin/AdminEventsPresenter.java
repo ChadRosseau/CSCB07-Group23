@@ -15,7 +15,7 @@ public class AdminEventsPresenter extends EventsPresenter {
         super(view);
     }
 
-    public Event createEvent(String title, String description, int maxAttendees, Date date) {
+    public Event createEvent(String title, String description, int maxAttendees, Date date, String location) {
         // Generate a unique DB reference for new object.
         DatabaseReference target = model.createChildRef(Event.parentRef);
         // Retrieve key from new reference.
@@ -24,7 +24,7 @@ public class AdminEventsPresenter extends EventsPresenter {
         // long date = Helper.createTimestamp();
         long unixDate = date.getTime() / 1000;
         // Create new event object using combination of parameters and generated data.
-        Event newEvent = new Event(eventId, title, description, 0, maxAttendees, unixDate);
+        Event newEvent = new Event(eventId, title, description, 0, maxAttendees, unixDate, location);
         // Set target DB ref to new object.
         model.setRef(target, newEvent);
 
