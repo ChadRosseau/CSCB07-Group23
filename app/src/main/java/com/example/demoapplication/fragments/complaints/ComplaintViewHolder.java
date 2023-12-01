@@ -5,20 +5,37 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
-import com.example.demoapplication.fragments.events.StudentEventsFeedbackView;
 
 public class ComplaintViewHolder extends RecyclerView.ViewHolder {
-    TextView name;
-    TextView date;
-    TextView maxAttendees;
-    TextView remaining;
-    TextView description;
+    public TextView titleTextView;
+    public TextView timestampTextView;
+    public TextView contentTextView;
+    private boolean isExpanded;
+    private boolean isRead;
 
     public ComplaintViewHolder(View complaintView) {
         super(complaintView);
-//        title = complaintView.findViewById(R.id.complaintTitle);
-//        content = complaintView.findViewById(R.id.complaintContent);
+        titleTextView = itemView.findViewById(R.id.titleTextViewComplaints);
+        timestampTextView = itemView.findViewById(R.id.timestampTextViewComplaints);
+        contentTextView = itemView.findViewById(R.id.contentTextViewComplaints);
+        isExpanded = false;
+        isRead = false;
+    }
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
+    }
+
+    public boolean isRead() {
+        return isRead;
+    }
+
+    public void setRead(boolean read) {
+        isRead = read;
     }
 }
