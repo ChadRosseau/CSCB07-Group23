@@ -17,7 +17,7 @@ public class AdminEventsFragmentView extends StudentEventsFragmentView {
         createButton.setVisibility(View.VISIBLE);
         createButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                activity.replaceFragment(new CreateEventFragmentView());
             }
         });
     }
