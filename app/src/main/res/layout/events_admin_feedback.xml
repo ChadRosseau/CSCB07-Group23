@@ -143,14 +143,15 @@
         <Button
             android:id="@+id/adminEventsFeedbackBackButton"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="50dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/palatte_3"
             android:paddingTop="0dp"
             android:paddingBottom="0dp"
             android:text="@string/back_to_events"
-            android:textSize="11sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

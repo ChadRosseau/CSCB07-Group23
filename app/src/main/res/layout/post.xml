@@ -207,6 +207,7 @@
                 android:id="@+id/postGetResult"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/palatte_3"
                 android:text="@string/get_result"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
