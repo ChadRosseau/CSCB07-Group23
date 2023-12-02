@@ -20,6 +20,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/palatte_3"
             android:text="@string/create"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
