@@ -119,5 +119,9 @@ public class MainActivityModel {
         target.setValue(obj);
     }
 
+    public void deleteRef(DatabaseReference target) {
+        target.removeValue();
+    }
+
 
 }
