@@ -11,7 +11,7 @@
     <item
         android:id="@+id/announcements"
         android:icon="@drawable/notifications_icon"
-        android:title="Announcements" />
+        android:title="Notifications" />
     <item
         android:id="@+id/events"
         android:title="Events"

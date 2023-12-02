@@ -13,15 +13,18 @@ public class Event implements BaseClass, Serializable {
 	private int maxAttendees;
 	private long date;
 
+	private String location;
+
 	private Event() {}
 
-	public Event(String eventId, String title, String description, int attendeeCount, int maxAttendees, long date) {
+	public Event(String eventId, String title, String description, int attendeeCount, int maxAttendees, long date, String location) {
 		this.eventId = eventId;
 		this.title = title;
 		this.description = description;
 		this.attendeeCount = attendeeCount;
 		this.maxAttendees = maxAttendees;
 		this.date = date;
+		this.location = location;
 	}
 
 	public String getEventId() {
@@ -59,6 +62,13 @@ public class Event implements BaseClass, Serializable {
 	}
 	public void setDate(long date) {
 		this.date = date;
+	}
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	@Override

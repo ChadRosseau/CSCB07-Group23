@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Demo Application</string>
+    <string name="app_name">CMS Application</string>
 
     <!--    Strings for home page -->
     <string name="welcome">Welcome to makeshift Quercus!</string>
@@ -14,10 +14,25 @@
     <string name="RSVP_button">RSVP</string>
     <string name="eventsDate">Date:</string>
     <string name="eventsName">Name: (to be changed)</string>
-    <string name="maxParticipants">Max Participants: </string>
+    <string name="attendees">Attendees: </string>
     <string name="remaining">Seats Remaining: </string>
     <string name="eventsDescription">Description: </string>
 
+    <!--    Strings for student feedback fragment-->
+    <string name="feedback">Feedback</string>
+    <string name="feedbackDescription">Thank you for choosing to provide feedback.
+        You may enter a numeric feedback and/or provide a comment!</string>
+    <string name="chooseRating">Number Rating (1-5): </string>
+    <string-array name="numRatings">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+    <string name="enterFeedBack">Enter your comment below: </string>
+    <string name="type">Type Here</string>
+    <string name="back">Back</string>
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>
@@ -62,12 +77,15 @@
     <string name="get_result">Assess Eligibility</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="choose_a_title">Choose a title:</string>
-    <string name="create">Create Announcement</string>
+    <string name="createAnnouncement">Create Announcement</string>
+    <string name="createEvent">Create Event</string>
     <string name="title">Title...</string>
     <string name="choose_a_type">Choose a type:</string>
     <string name="add_a_description">Add a description:</string>
     <string name="description">Description...</string>
     <string name="submit">Submit</string>
+    <string name="back_to_events">BACK TO EVENTS</string>
+    <string name="feedbackAttendeesCount">Attendees: %d/%d</string>
     <string-array name="notification_type_dropdown">
         <item>Announcement</item>
         <item>Event</item>

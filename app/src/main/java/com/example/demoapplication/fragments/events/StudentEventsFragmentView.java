@@ -19,12 +19,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class EventsFragmentView extends BaseFragment {
+public class StudentEventsFragmentView extends BaseFragment {
     private EventsPresenter presenter;
-    private RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
     protected ArrayList<Event> eventItemList;
 
-    public EventsFragmentView() {
+    public StudentEventsFragmentView() {
         // Required empty public constructor
     }
 

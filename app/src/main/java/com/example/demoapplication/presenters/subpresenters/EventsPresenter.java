@@ -3,7 +3,7 @@ package com.example.demoapplication.presenters.subpresenters;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Event;
-import com.example.demoapplication.fragments.events.EventsFragmentView;
+import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 
 import java.util.ArrayList;
 
@@ -13,7 +13,7 @@ public class EventsPresenter extends SubPresenter {
         super(activity);
     }
 
-    public void getEvents(EventsFragmentView view) {
+    public void getEvents(StudentEventsFragmentView view) {
         ArrayListenerCallback<Event> callback = new ArrayListenerCallback<Event>() {
             @Override
             public void execute(ArrayList<Event> eventList) {

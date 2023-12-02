@@ -14,7 +14,8 @@ import com.example.demoapplication.fragments.BaseFragment;
 import com.example.demoapplication.fragments.announcements.StudentAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.complaints.AdminComplaintsFragmentView;
 import com.example.demoapplication.fragments.complaints.StudentComplaintsFragmentView;
-import com.example.demoapplication.fragments.events.EventsFragmentView;
+import com.example.demoapplication.fragments.events.AdminEventsFragmentView;
+import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
@@ -47,7 +48,7 @@ public class MainActivityView extends AppCompatActivity {
                     target = isAdmin ? new AdminAnnouncementsFragmentView() : new StudentAnnouncementsFragmentView();
                     break;
                 case R.id.events:
-                    target = new EventsFragmentView();
+                    target = isAdmin ? new AdminEventsFragmentView() : new StudentEventsFragmentView();
                     break;
                 case R.id.complaints:
                     target = isAdmin ? new AdminComplaintsFragmentView() : new StudentComplaintsFragmentView();
