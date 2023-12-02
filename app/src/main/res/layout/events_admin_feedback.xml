@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,40 +9,144 @@
 
 
     <!--Linear layout orientation vertical-->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Feedback"
-            android:textColor="@color/palatte_2"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingTop="20dp"/>
-
-        <TextView
-            android:id="@+id/feedbackTest"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:text="Event Name"
-            android:textColor="@color/palatte_2"
-            android:textSize="20sp" />
-
-        <!--RecyclerView-->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/eventsAdminFeedbackRecycleView"
+            android:id="@+id/adminEventsFeedbackTitle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/events_admin_feedback_list" />
 
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="STAB52 Review Seminar"
+            android:textColor="@color/palatte_2"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="122dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Average Rating"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackAttendees" />
+
+        <TextView
+            android:id="@+id/adminEventsFeedbackDate"
+            android:layout_width="97dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Date"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackTitle" />
+
+        <TextView
+            android:id="@+id/adminEventsFeedbackLocation"
+            android:layout_width="97dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Location"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackDate" />
+
+        <TextView
+            android:id="@+id/adminEventsFeedbackAttendees"
+            android:layout_width="145dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="Attendees: 9999/9999"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackLocation" />
+
+        <TextView
+            android:id="@+id/adminEventsFeedbackDescription"
+            android:layout_width="225dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:text="Event Description"
+            app:layout_constraintEnd_toStartOf="@+id/adminEventsFeedbackAttendees"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackTitle" />
+
+        <RatingBar
+            android:id="@+id/adminEventsFeedbackAverageRatingStars"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:isIndicator="true"
+            app:layout_constraintTop_toBottomOf="@+id/textView15"
+            tools:layout_editor_absoluteX="315dp" />
+
+        <TextView
+            android:id="@+id/eventFeedbackAverageRatingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:text="4.52/5"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/adminEventsFeedbackAverageRatingStars"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="478dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/adminEventsFeedbackBackButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminEventsFeedbackDescription">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/adminEventsFeedbackRecycleView"
+                    android:layout_width="match_parent"
+                    android:layout_height="479dp"
+                    tools:listitem="@layout/events_admin_feedback_list" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/adminEventsFeedbackBackButton"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="4dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/back_to_events"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

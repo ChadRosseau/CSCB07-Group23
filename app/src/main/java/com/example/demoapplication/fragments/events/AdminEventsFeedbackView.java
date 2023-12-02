@@ -5,15 +5,21 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.demoapplication.R;
+import com.example.demoapplication.baseClasses.Event;
+import com.example.demoapplication.baseClasses.Feedback;
 import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.helpers.Helper;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPresenter;
 
 /**
@@ -24,6 +30,18 @@ import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPre
 public class AdminEventsFeedbackView extends BaseFragment {
 
     AdminEventsPresenter presenter;
+    Event event;
+    Feedback feedback;
+    TextView title;
+    TextView description;
+    TextView date;
+    TextView location;
+    TextView attendees;
+    TextView ratingText;
+    RatingBar ratingStars;
+    RecyclerView recyclerView;
+    Button backButton;
+
 
     private static final String ARG_EVENT_ID = "eventId";
     // TODO: Rename and change types of parameters
@@ -68,8 +86,24 @@ public class AdminEventsFeedbackView extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView test = view.findViewById(R.id.feedbackTest);
-        test.setText(eventId);
+        title = view.findViewById(R.id.adminEventsFeedbackTitle);
+        description = view.findViewById(R.id.adminEventsFeedbackDescription);
+        date = view.findViewById(R.id.adminEventsFeedbackDate);
+        location = view.findViewById(R.id.adminEventsFeedbackLocation);
+        attendees = view.findViewById(R.id.adminEventsFeedbackAttendees);
+        ratingText = view.findViewById(R.id.eventFeedbackAverageRatingText);
+        ratingStars = view.findViewById(R.id.adminEventsFeedbackAverageRatingStars);
+        backButton = view.findViewById(R.id.adminEventsFeedbackBackButton);
+        recyclerView = view.findViewById(R.id.adminEventsFeedbackRecycleView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+    }
+
+    public void setEventInfo(Event event) {
+        this.event = event;
+        title.setText(event.getTitle());
+        description.setText(event.getDescription());
+        date.setText(Helper.formatTimestamp(event.getDate()));
+        location.setText(event.getLocation());
     }
 
 }

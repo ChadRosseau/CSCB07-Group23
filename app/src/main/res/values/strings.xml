@@ -33,8 +33,6 @@
     <string name="enterFeedBack">Enter your comment below: </string>
     <string name="type">Type Here</string>
     <string name="back">Back</string>
-    <string name="rating">The actual rating from student</string>
-    <string name="actualFeedback">Actual Feedback: </string>
 
     <!--    Strings for complaints page-->
     <string name="complaints_start">Welcome to complaints page</string>
@@ -86,6 +84,7 @@
     <string name="add_a_description">Add a description:</string>
     <string name="description">Description...</string>
     <string name="submit">Submit</string>
+    <string name="back_to_events">BACK TO EVENTS</string>
     <string-array name="notification_type_dropdown">
         <item>Announcement</item>
         <item>Event</item>

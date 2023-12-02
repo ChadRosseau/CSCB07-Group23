@@ -39,7 +39,7 @@ public class StudentAnnouncementsFragmentView extends BaseFragment {
         View view = inflater.inflate(R.layout.announcements, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerViewNotifications);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity));
         setAnnouncementList(announcementList);
 
         return view;

@@ -17,7 +17,7 @@ public class FeedbackViewHolder extends RecyclerView.ViewHolder {
 
     public FeedbackViewHolder(MainActivityView activity, View eventView) {
         super(eventView);
-        feedback = eventView.findViewById(R.id.eventsFeedbackA);
-        rating = eventView.findViewById(R.id.eventsAdminFeedbackRating);
+        feedback = eventView.findViewById(R.id.eventsFeedbackComment);
+        rating = eventView.findViewById(R.id.eventsFeedbackRating);
     }
 }
