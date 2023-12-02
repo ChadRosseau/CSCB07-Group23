@@ -19,8 +19,13 @@ import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.baseClasses.Feedback;
 import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.fragments.announcements.AnnouncementsAdapter;
 import com.example.demoapplication.helpers.Helper;
 import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPresenter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,8 +35,6 @@ import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPre
 public class AdminEventsFeedbackView extends BaseFragment {
 
     AdminEventsPresenter presenter;
-    Event event;
-    Feedback feedback;
     TextView title;
     TextView description;
     TextView date;
@@ -41,6 +44,8 @@ public class AdminEventsFeedbackView extends BaseFragment {
     RatingBar ratingStars;
     RecyclerView recyclerView;
     Button backButton;
+
+    List<FeedbackItem> feedbackItemList;
 
 
     private static final String ARG_EVENT_ID = "eventId";
@@ -96,14 +101,33 @@ public class AdminEventsFeedbackView extends BaseFragment {
         backButton = view.findViewById(R.id.adminEventsFeedbackBackButton);
         recyclerView = view.findViewById(R.id.adminEventsFeedbackRecycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(activity));
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.replaceFragment(new AdminEventsFragmentView());
+            }
+        });
     }
 
     public void setEventInfo(Event event) {
-        this.event = event;
         title.setText(event.getTitle());
         description.setText(event.getDescription());
         date.setText(Helper.formatTimestamp(event.getDate()));
         location.setText(event.getLocation());
+        attendees.setText(String.format(getString(R.string.feedbackAttendeesCount), event.getAttendeeCount(), event.getMaxAttendees()));
+    }
+
+    public void setEventFeedbackInfo(float feedbackAverage) {
+        ratingText.setText(String.format("%.2f/5", feedbackAverage));
+        ratingStars.setRating(feedbackAverage);
+    }
+
+    public void setEventFeedbackItemsInfo(ArrayList<FeedbackItem> feedbackItemList) {
+        if (getView() != null) {
+            FeedbackAdapter adapter = new FeedbackAdapter(feedbackItemList);
+            recyclerView.setAdapter(adapter);
+        }
     }
 
 }

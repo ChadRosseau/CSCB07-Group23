@@ -85,6 +85,7 @@
     <string name="description">Description...</string>
     <string name="submit">Submit</string>
     <string name="back_to_events">BACK TO EVENTS</string>
+    <string name="feedbackAttendeesCount">Attendees: %d/%d</string>
     <string-array name="notification_type_dropdown">
         <item>Announcement</item>
         <item>Event</item>

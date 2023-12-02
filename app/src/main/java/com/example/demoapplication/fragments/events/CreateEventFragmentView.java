@@ -132,6 +132,6 @@ public class CreateEventFragmentView extends BaseFragment {
 
         announcementsPresenter.createAnnouncement(title, "Event", description);
         // *4th parameter is a long type.
-        presenter.createEvent(title, description, capacity, timestamp);//createEvent(String title, String description, int maxAttendees, Date date)
+        presenter.createEvent(title, description, capacity, timestamp, location);//createEvent(String title, String description, int maxAttendees, Date date)
     }
 }

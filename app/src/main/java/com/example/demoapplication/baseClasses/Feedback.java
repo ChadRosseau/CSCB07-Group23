@@ -59,4 +59,9 @@ public class Feedback implements BaseClass {
 	public void setRatingCount(int ratingCount) {
 		this.ratingCount = ratingCount;
 	}
+
+	public float calcRatingAverage() {
+		return (float)(ratingSum / ratingCount);
+	}
+
 }
