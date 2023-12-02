@@ -16,8 +16,8 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
     String eventId;
     TextView name;
     TextView date;
-    TextView maxAttendees;
-    TextView remaining;
+    TextView location;
+    TextView attendees;
     TextView description;
 
     private Button feedbackButton;
@@ -26,11 +26,11 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
 
     public EventViewHolder(MainActivityView activity, View eventView) {
         super(eventView);
-        name = eventView.findViewById(R.id.tvName);
-        date = eventView.findViewById(R.id.tvDate);
-        maxAttendees = eventView.findViewById(R.id.tvParticipants);
-        remaining = eventView.findViewById(R.id.tvRemaining);
-        description = eventView.findViewById(R.id.tvDescription);
+        name = eventView.findViewById(R.id.eventName);
+        date = eventView.findViewById(R.id.eventDate);
+        location = eventView.findViewById(R.id.eventLocation);
+        attendees = eventView.findViewById(R.id.eventAttendees);
+        description = eventView.findViewById(R.id.eventDescription);
         feedbackButton = eventView.findViewById(R.id.feedbackButton);
         rsvpButton = eventView.findViewById(R.id.rsvpButton);
 

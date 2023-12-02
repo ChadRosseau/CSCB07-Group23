@@ -22,71 +22,102 @@
 <!--        app:cardElevation="3dp"-->
 <!--        app:cardUseCompatPadding="true">-->
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="15dp">
+            android:padding="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvRemaining"
+            app:layout_constraintTop_toBottomOf="@+id/tvRemaining">
 
             <TextView
-                android:id="@+id/tvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/eventName"
+                android:layout_width="227dp"
+                android:layout_height="0dp"
+                android:text="@string/eventsName"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:text="@string/eventsName"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="27dp"
+                tools:layout_conversion_absoluteWidth="205dp" />
 
             <TextView
-                android:id="@+id/tvDate"
-                android:layout_width="match_parent"
+                android:id="@+id/eventDate"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/eventsDate"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="@string/eventsDate"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_conversion_absoluteHeight="22dp"
+                tools:layout_conversion_absoluteWidth="346dp" />
+
             <TextView
-                android:id="@+id/tvParticipants"
-                android:layout_width="match_parent"
+                android:id="@+id/eventLocation"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="@string/maxParticipants" />
-            <TextView
-                android:id="@+id/tvRemaining"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="@string/remaining" />
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Location"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:text="@string/eventsDescription"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventDate"
+                tools:layout_conversion_absoluteHeight="22dp"
+                tools:layout_conversion_absoluteWidth="346dp" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/eventAttendees"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/attendees"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventName"
+                tools:layout_conversion_absoluteHeight="22dp"
+                tools:layout_conversion_absoluteWidth="346dp" />
 
-                <Button
-                    android:id="@+id/feedbackButton"
-                    android:layout_width="165dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/feedback_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:backgroundTint="@color/palatte_3"/>
+            <TextView
+                android:id="@+id/eventDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/eventsDescription"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventAttendees"
+                tools:layout_conversion_absoluteHeight="22dp"
+                tools:layout_conversion_absoluteWidth="346dp" />
 
-                <Button
-                    android:id="@+id/rsvpButton"
-                    android:layout_width="165dp"
-                    android:layout_height="wrap_content"
-                    android:text="@string/RSVP_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:backgroundTint="@color/palatte_3"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/feedbackButton"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/feedback_button"
+                app:backgroundTint="@color/palatte_3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventDescription"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="165dp" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/rsvpButton"
+                android:layout_width="160dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/RSVP_button"
+                app:backgroundTint="@color/palatte_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/eventDescription"
+                tools:layout_conversion_absoluteHeight="48dp"
+                tools:layout_conversion_absoluteWidth="165dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

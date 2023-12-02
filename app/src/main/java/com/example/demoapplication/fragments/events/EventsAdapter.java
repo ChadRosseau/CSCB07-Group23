@@ -38,8 +38,8 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
         holder.setEventId(currentEvent.getEventId());
         holder.name.setText(currentEvent.getTitle());
         holder.date.setText(Helper.formatTimestamp(currentEvent.getDate()));
-        holder.maxAttendees.setText(String.format("Max Participants: %d", currentEvent.getMaxAttendees()));
-        holder.remaining.setText(String.format("Remaining Seats: %d", currentEvent.getMaxAttendees() - currentEvent.getAttendeeCount()));
+        holder.location.setText(currentEvent.getLocation());
+        holder.attendees.setText(String.format("Attendees: %d/%d", currentEvent.getAttendeeCount(), currentEvent.getMaxAttendees()));
         holder.description.setText(currentEvent.getDescription());
     }
 
