@@ -1,32 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="20dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="20dp"
     tools:context=".fragments.events.StudentEventsFeedbackView">
 
-    <RatingBar
-        android:id="@+id/feedbackRatingBar"
+    <TextView
+        android:id="@+id/feedbackScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" />
+        android:layout_marginTop="24dp"
+        android:text="@string/feedback"
+        android:textColor="@color/palatte_2"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/feedbackDescription"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="@string/feedbackDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/enterFeedBackNum"
+        style="@style/courseStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/chooseRating"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedbackDescription"
+        tools:ignore="MissingConstraints" />
+
+    <!--    <Spinner-->
+    <!--        android:id="@+id/feedbackNumSpinner"-->
+    <!--        style="@style/gradeStyle"-->
+    <!--        android:entries="@array/gpa_dropdown"-->
+    <!--        android:spinnerMode="dropdown"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <TextView
+        android:id="@+id/enterFeedBack"
+        style="@style/courseStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="75dp"
+        android:text="@string/enterFeedBack"
+        app:layout_constraintStart_toStartOf="@+id/inputFeedback"
+        app:layout_constraintTop_toBottomOf="@+id/enterFeedBackNum"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/inputFeedback"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterFeedBack"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/submitFeedbackButton"
-        android:layout_width="200dp"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="#f00"
-        android:padding="10dp"
-        android:text="Submit"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+        android:text="@string/submit"
+        app:backgroundTint="@color/palatte_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputFeedback"
+        app:layout_constraintVertical_bias="0.118" />
+
+    <Button
+        android:id="@+id/backFeedbackButton"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:backgroundTint="@color/palatte_3"
+        tools:layout_editor_absoluteX="315dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

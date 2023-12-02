@@ -19,7 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivityModel {
     static MainActivityModel instance;
@@ -82,6 +84,34 @@ public class MainActivityModel {
     // Used to add and manage listener on a child node of a database node.
     public <T extends BaseClass> void createSubscriptionOnChild(DatabaseReference parentRef, String childKey, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
         this.createSubscription(parentRef.child(childKey), tracker, cls, callback);
+    }
+
+    public <V> void createSubscriptionOnMap(DatabaseReference target, ListenerTracker tracker, Class<V> valCls, ItemListenerCallback<Map<String,V>> callback) {
+        // Create callback function
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // Handle null case
+                if (!snapshot.exists()) {
+                    // Logic for non-existent event / error handling.
+                    return;
+                }
+
+                Map<String, V> map = new HashMap<>();
+                for (DataSnapshot valSnapshot: snapshot.getChildren()) {
+                    V val = valSnapshot.getValue(valCls);
+                    map.put(valSnapshot.getKey(), val);
+                }
+                callback.execute(map);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+            }
+        };
+        // Track listener to remove when finished.
+        tracker.addListener(target, listener);
     }
 
     // Used to set the data at a given reference in the database.

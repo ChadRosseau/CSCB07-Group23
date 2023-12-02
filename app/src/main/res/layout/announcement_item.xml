@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="19sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/timestampTextView"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="6dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Timestamp"
+        android:textColor="@color/palatte_4"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/typeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
-        <TextView
-            android:id="@+id/timestampTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:textColor="@color/palatte_4" />
 
-        <TextView
-            android:id="@+id/typeTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="textEnd"
-            android:textColor="@color/palatte_10"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/typeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Type"
+        android:textAlignment="textEnd"
+        android:textColor="@color/palatte_10"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/timestampTextView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/contentTextView"
-        android:maxLines="2"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:maxLines="2"
+        android:text="Content"
+        android:textColor="@color/item_text_color"
         android:textSize="17sp"
-        android:textColor="@color/item_text_color" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/timestampTextView"
+        app:layout_constraintTop_toBottomOf="@+id/timestampTextView" />
 
-</LinearLayout>
+    <!-- Add other views as needed -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
