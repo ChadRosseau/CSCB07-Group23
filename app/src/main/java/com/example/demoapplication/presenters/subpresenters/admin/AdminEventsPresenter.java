@@ -52,31 +52,37 @@ public class AdminEventsPresenter extends EventsPresenter {
                 view.setEventInfo(event);
             }
         };
-        model.createSubscriptionOnChild(Event.parentRef, eventId, this.listenerTracker, Event.class, callback);
+        model.createSubscription(Event.parentRef.child(eventId), this.listenerTracker, Event.class, callback);
     }
 
     private void getFeedback(AdminEventsFeedbackView view, String eventId) {
         ItemListenerCallback<Feedback> feedbackCallback = new ItemListenerCallback<Feedback>() {
             public void execute(Feedback feedback) {
                 currentEventFeedback = feedback;
-                view.setEventFeedbackInfo(feedback.calcRatingAverage());
             }
         };
         ItemListenerCallback<Map<String, String>> commentCallback = new ItemListenerCallback<Map<String, String>>() {
             public void execute(Map<String, String> commentMap) {
                 currentCommentMap = commentMap;
-                view.setEventFeedbackItemsInfo(makeFeedbackList());
+                view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
             }
         };
         ItemListenerCallback<Map<String, Integer>> ratingCallback = new ItemListenerCallback<Map<String, Integer>>() {
             public void execute(Map<String, Integer> ratingMap) {
                 currentRatingMap = ratingMap;
-                view.setEventFeedbackItemsInfo(makeFeedbackList());
+                view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
             }
         };
-        model.createSubscriptionOnChild(Feedback.parentRef, eventId, this.listenerTracker, Feedback.class, feedbackCallback);
+        model.createSubscription(Feedback.parentRef.child(eventId), this.listenerTracker, Feedback.class, feedbackCallback);
         model.createSubscriptionOnMap(Feedback.parentRef.child(eventId).child("comments"), this.listenerTracker, String.class, commentCallback);
         model.createSubscriptionOnMap(Feedback.parentRef.child(eventId).child("ratings"), this.listenerTracker, Integer.class, ratingCallback);
+    }
+
+    private float calculateRatingAverage() {
+        if (currentRatingMap == null) return 0;
+        int ratingSum = currentRatingMap.values().stream().reduce(0, Integer::sum);
+        int ratingCount = currentRatingMap.size();
+        return (float)ratingSum / ratingCount;
     }
 
     private ArrayList<FeedbackItem> makeFeedbackList() {
