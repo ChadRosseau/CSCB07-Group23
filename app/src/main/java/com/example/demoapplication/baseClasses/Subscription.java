@@ -3,20 +3,21 @@ package com.example.demoapplication.baseClasses;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
+import java.util.Map;
 
 public class Subscription implements BaseClass {
-	public static DatabaseReference parentRef = root.child("events").child("userSubscriptions");
-	private List<String> events;
+	public static DatabaseReference parentRef = root.child("events").child("rsvps");
+	private Map<String, Boolean> events;
 	
 	private Subscription() {}
 	
-	public Subscription(List<String> events) {
+	public Subscription(Map<String, Boolean> events) {
 		this.events = events;
 	}
-	public List<String> getEvents() {
+	public Map<String, Boolean> getEvents() {
 		return events;
 	}
-	public void setEvents(List<String> events) {
+	public void setEvents(Map<String, Boolean> events) {
 		this.events = events;
 	}
 }

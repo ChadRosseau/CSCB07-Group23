@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;

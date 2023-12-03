@@ -49,14 +49,12 @@ public class StudentComplaintsFragmentView extends BaseFragment {
     }
 
     public void handleCreateComplaintSuccess() {
-        Toast.makeText(activity, "Complaint submitted!",
-                Toast.LENGTH_SHORT).show();
+        activity.toast("Complaint submitted!");
         titleText.setText("");
         contentText.setText("");
     }
 
     public void handleCreateComplaintFailure(String text) {
-        Toast.makeText(activity, text,
-                Toast.LENGTH_LONG).show();
+        activity.toast(text);
     }
 }

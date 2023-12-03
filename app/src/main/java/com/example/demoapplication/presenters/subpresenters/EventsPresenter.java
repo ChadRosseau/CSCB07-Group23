@@ -1,7 +1,7 @@
 package com.example.demoapplication.presenters.subpresenters;
 
 import com.example.demoapplication.MainActivityView;
-import com.example.demoapplication.baseClasses.ArrayListenerCallback;
+import com.example.demoapplication.presenters.listeners.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 

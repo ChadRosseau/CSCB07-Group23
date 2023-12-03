@@ -1,6 +1,5 @@
-package com.example.demoapplication.presenters.contracts;
+package com.example.demoapplication.presenters.listeners;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
@@ -19,15 +18,10 @@ public class ListenerTracker {
         listenerContracts.add(new ValueListenerContract(target, listener));
     }
 
-    public void addListener(DatabaseReference target, ChildEventListener listener) {
-        target.addChildEventListener(listener);
-        listenerContracts.add(new ChildListenerContract(target, listener));
-    }
-
     public void killListeners() {
         for (ListenerContract contract : listenerContracts) {
-            if (contract.listener instanceof ValueEventListener) contract.target.removeEventListener((ValueEventListener)contract.listener);
-            if (contract.listener instanceof ChildEventListener) contract.target.removeEventListener((ChildEventListener)contract.listener);
+            if (contract.target == null || contract.listener == null) continue;
+            contract.target.removeEventListener(contract.listener);
         }
     }
 
