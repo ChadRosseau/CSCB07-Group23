@@ -49,13 +49,6 @@ public class LoginUnitTest {
     @Mock
     Editable edit;
 
-    @Mock
-    OnCompleteListener<AuthResult> listener;
-
-
-    @Mock
-    View baseView;
-
     @Before
     public void createPresenter() {
         presenter = new LoginActivityPresenter(view, model);
