@@ -2,6 +2,7 @@ package com.example.demoapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
+import com.example.demoapplication.login.LoginActivityView;
 
 public class MainActivityView extends AppCompatActivity {
 
@@ -80,7 +82,12 @@ public class MainActivityView extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
+    public void toast(String text) {
+        Toast.makeText(MainActivityView.this, text, Toast.LENGTH_SHORT).show();
+    }
+
     public void logout() {
         startActivity(new Intent(this, LoginActivityView.class));
+        finish();
     }
 }

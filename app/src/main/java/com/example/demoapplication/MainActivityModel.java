@@ -1,17 +1,14 @@
 package com.example.demoapplication;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 
-import com.example.demoapplication.baseClasses.ArrayListenerCallback;
+import com.example.demoapplication.presenters.listeners.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.BaseClass;
-import com.example.demoapplication.baseClasses.Complaint;
-import com.example.demoapplication.baseClasses.ItemListenerCallback;
-import com.example.demoapplication.baseClasses.ListenerCallback;
-import com.example.demoapplication.presenters.contracts.ListenerTracker;
+import com.example.demoapplication.presenters.listeners.ItemListenerCallback;
+import com.example.demoapplication.presenters.listeners.ListenerCallback;
+import com.example.demoapplication.presenters.listeners.ListenerTracker;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,7 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivityModel {
@@ -48,13 +44,14 @@ public class MainActivityModel {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Handle null case
-                if (!snapshot.exists()) {
-                    // Logic for non-existent event / error handling.
-                    return;
-                }
                 // Handle single item case
                 if (callback instanceof ItemListenerCallback) {
+                    // Handle null case
+                    if (!snapshot.exists()) {
+                        // Logic for non-existent event / error handling.
+                        Log.d("MODEL", "snapshot not found");
+                        return;
+                    }
                     // Execute callback with obj of type T
                     T obj = snapshot.getValue(cls);
                     ((ItemListenerCallback<T>)callback).execute(obj);
@@ -63,8 +60,10 @@ public class MainActivityModel {
                 else if (callback instanceof ArrayListenerCallback) {
                     // Create and populate list using snapshot
                     ArrayList<T> objList = new ArrayList<>();
-                    for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()){
-                        objList.add(objSnapshot.getValue(cls));
+                    if (snapshot.exists()) {
+                        for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()) {
+                            objList.add(objSnapshot.getValue(cls));
+                        }
                     }
                     // Execute callback with list of obj of type T
                     ((ArrayListenerCallback<T>)callback).execute(objList);
@@ -91,16 +90,12 @@ public class MainActivityModel {
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Handle null case
-                if (!snapshot.exists()) {
-                    // Logic for non-existent event / error handling.
-                    return;
-                }
-
                 Map<String, V> map = new HashMap<>();
-                for (DataSnapshot valSnapshot: snapshot.getChildren()) {
-                    V val = valSnapshot.getValue(valCls);
-                    map.put(valSnapshot.getKey(), val);
+                if (snapshot.exists()) {
+                    for (DataSnapshot valSnapshot: snapshot.getChildren()) {
+                        V val = valSnapshot.getValue(valCls);
+                        map.put(valSnapshot.getKey(), val);
+                    }
                 }
                 callback.execute(map);
             }

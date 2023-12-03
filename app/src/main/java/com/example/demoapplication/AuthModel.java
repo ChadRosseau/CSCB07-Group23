@@ -1,17 +1,10 @@
 package com.example.demoapplication;
 
-import android.util.Log;
-
-import com.example.demoapplication.baseClasses.ArrayListenerCallback;
-import com.example.demoapplication.baseClasses.Complaint;
-import com.example.demoapplication.baseClasses.ItemListenerCallback;
+import com.example.demoapplication.presenters.listeners.ItemListenerCallback;
 import com.example.demoapplication.baseClasses.UserData;
-import com.example.demoapplication.baseClasses.UserType;
-import com.example.demoapplication.presenters.contracts.ListenerTracker;
+import com.example.demoapplication.presenters.listeners.ListenerTracker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.List;
 
 public class AuthModel {
     private static AuthModel authInstance = null;
@@ -44,7 +37,6 @@ public class AuthModel {
         }
         ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
             public void execute(UserData data) {
-
                 currentUserData = data;
             }
         };

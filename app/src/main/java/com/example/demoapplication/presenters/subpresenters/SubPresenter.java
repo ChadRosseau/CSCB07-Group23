@@ -1,16 +1,9 @@
 package com.example.demoapplication.presenters.subpresenters;
 
-import androidx.annotation.NonNull;
-
 import com.example.demoapplication.AuthModel;
 import com.example.demoapplication.MainActivityModel;
 import com.example.demoapplication.MainActivityView;
-import com.example.demoapplication.baseClasses.ListenerCallback;
-import com.example.demoapplication.presenters.contracts.ListenerTracker;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
+import com.example.demoapplication.presenters.listeners.ListenerTracker;
 
 public abstract class SubPresenter {
     protected MainActivityView activity;

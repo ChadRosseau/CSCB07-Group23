@@ -13,15 +13,15 @@ import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.UserType;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
-    String eventId;
+    private String eventId;
     TextView name;
     TextView date;
     TextView location;
     TextView attendees;
     TextView description;
 
-    private Button feedbackButton;
-    private Button rsvpButton;
+    public Button feedbackButton;
+    public Button rsvpButton;
 
 
     public EventViewHolder(MainActivityView activity, View eventView) {
