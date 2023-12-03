@@ -148,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
             android:text="@string/cancel"
-            app:backgroundTint="@color/palatte_3"
+            app:backgroundTint="@color/palatte_10"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
