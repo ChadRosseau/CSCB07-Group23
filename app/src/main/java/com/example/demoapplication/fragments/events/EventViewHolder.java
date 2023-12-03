@@ -24,7 +24,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
     public Button rsvpButton;
 
 
-    public EventViewHolder(MainActivityView activity, View eventView) {
+    public EventViewHolder(View eventView) {
         super(eventView);
         name = eventView.findViewById(R.id.eventName);
         date = eventView.findViewById(R.id.eventDate);
@@ -33,21 +33,6 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         description = eventView.findViewById(R.id.eventDescription);
         feedbackButton = eventView.findViewById(R.id.feedbackButton);
         rsvpButton = eventView.findViewById(R.id.rsvpButton);
-
-        boolean isAdmin = AuthModel.getInstance().getCurrentUserData().getUserType() == UserType.Admin;
-
-        if (isAdmin) {
-            feedbackButton.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
-            feedbackButton.setText("VIEW FEEDBACK");
-            rsvpButton.setVisibility(View.GONE);
-        }
-
-        feedbackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(eventId) : StudentEventsFeedbackView.newInstance(eventId), R.anim.transition_up);
-            }
-        });
     }
 
     public String getEventId() {
