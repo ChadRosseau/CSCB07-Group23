@@ -81,36 +81,7 @@ public class LoginActivityView extends AppCompatActivity {
         startActivity(new Intent(LoginActivityView.this, MainActivityView.class));
     }
 
-    public void displayInvalidInputMessage(InvalidInputType type) {
-        String text;
-        switch (type) {
-            case Blank:
-                text = "Email and Password must be non-empty";
-                break;
-            case ShortPassword:
-                text = "Password must be at least 6 characters long";
-                break;
-            default:
-                text = "Invalid input";
-                break;
-        }
-        Toast.makeText(LoginActivityView.this, text, Toast.LENGTH_LONG).show();
-    }
-
-    public void displayLoginFailed(LoginType type) {
-        String text;
-        switch (type) {
-            case SignUp:
-                text = "Failed to create account";
-                break;
-            case SignIn:
-                text = "No matching email/password found";
-                break;
-            default:
-                text = "Authentication failed";
-                break;
-        }
-        Toast.makeText(LoginActivityView.this, text,
-                Toast.LENGTH_SHORT).show();
+    public void displayMessage(String text) {
+        Toast.makeText(LoginActivityView.this, text, Toast.LENGTH_SHORT).show();
     }
 }

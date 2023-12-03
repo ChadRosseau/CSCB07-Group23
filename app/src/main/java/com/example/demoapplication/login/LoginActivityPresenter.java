@@ -33,8 +33,8 @@ public class LoginActivityPresenter {
     }
 
     public void signUp(String email, String password, boolean isAdmin) {
-        if (email.isEmpty() || password.isEmpty()) view.displayInvalidInputMessage(InvalidInputType.Blank);
-        else if (password.length() < 6) view.displayInvalidInputMessage(InvalidInputType.ShortPassword);
+        if (email.isEmpty() || password.isEmpty()) generateInvalidInputMessage(InvalidInputType.Blank);
+        else if (password.length() < 6) generateInvalidInputMessage(InvalidInputType.ShortPassword);
         else {
             OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
                 @Override
@@ -58,7 +58,7 @@ public class LoginActivityPresenter {
 
     public void signIn(String email, String password) {
         if (email.isEmpty() || password.isEmpty())
-            view.displayInvalidInputMessage(InvalidInputType.Blank);
+            generateInvalidInputMessage(InvalidInputType.Blank);
         else {
             OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
                 @Override
@@ -84,9 +84,41 @@ public class LoginActivityPresenter {
     }
 
     public void handleLogin(boolean success, LoginType type) {
-        if (!success) view.displayLoginFailed(type);
+        if (!success) generateLoginFailedMessage(type);
         else {
             view.goToMain();
         }
+    }
+
+    private void generateInvalidInputMessage(InvalidInputType type) {
+        String text;
+        switch (type) {
+            case Blank:
+                text = "Email and Password must be non-empty";
+                break;
+            case ShortPassword:
+                text = "Password must be at least 6 characters long";
+                break;
+            default:
+                text = "Invalid input";
+                break;
+        }
+        view.displayMessage(text);
+    }
+
+    private void generateLoginFailedMessage(LoginType type) {
+        String text;
+        switch (type) {
+            case SignUp:
+                text = "Failed to create account";
+                break;
+            case SignIn:
+                text = "No matching email/password found";
+                break;
+            default:
+                text = "Authentication failed";
+                break;
+        }
+        view.displayMessage(text);
     }
 }

@@ -22,10 +22,10 @@ import android.widget.EditText;
 public class ExampleUnitTest {
 
     @Mock
-    MainActivityModel model;
+    LoginActivityModel model;
 
     @Mock
-    MainActivityView view;
+    LoginActivityView view;
 
     @Mock
     EditText editText;
@@ -36,16 +36,16 @@ public class ExampleUnitTest {
     @Mock
     View baseView;
 
-//    @Test
-//    public void checkEmptyUsername(){
-//        MainActivityPresenter presenter = new MainActivityPresenter(view, model);
-//        presenter.checkDB("");
-//        verify(view).setOutputText("String cannot be empty!");
-//    }
-//
-//    @Test
-//    public void checkDBClick(){
-//        when(editText.getText()).thenReturn(edit);
-//        when(edit.toString()).thenReturn("Test");
-//    }
+    @Test
+    public void checkEmptyUsername(){
+        LoginActivityPresenter presenter = new LoginActivityPresenter(view, model);
+
+        verify(view).displayInvalidInputMessage("String cannot be empty!");
+    }
+
+    @Test
+    public void checkDBClick(){
+        when(editText.getText()).thenReturn(edit);
+        when(edit.toString()).thenReturn("Test");
+    }
 }
