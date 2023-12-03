@@ -3,13 +3,10 @@ package com.example.demoapplication.presenters.subpresenters.student;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.demoapplication.MainActivityModel;
 import com.example.demoapplication.MainActivityView;
-import com.example.demoapplication.baseClasses.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.baseClasses.Feedback;
-import com.example.demoapplication.baseClasses.ItemListenerCallback;
-import com.example.demoapplication.baseClasses.Metrics;
+import com.example.demoapplication.presenters.listeners.ItemListenerCallback;
 import com.example.demoapplication.baseClasses.Subscription;
 import com.example.demoapplication.presenters.subpresenters.EventsPresenter;
 import com.google.firebase.database.DataSnapshot;
@@ -79,13 +76,11 @@ public class StudentEventsPresenter extends EventsPresenter {
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
                 if (committed) {
-                    //dunno what to do if we successfully rsvped
-                    System.out.println("Successful RSVP");
+                    activity.toast("Successfully RSVPed!");
                 }
-                else{
-                    System.out.println("Failed RSVP");
+                else {
+                    activity.toast("RSVP Failed");
                 }
-
             }
         });
     }
@@ -115,7 +110,7 @@ public class StudentEventsPresenter extends EventsPresenter {
                     currentData.setValue(0);
                 }
                 else {
-                    currentData.setValue(currentAttendeeCount - 1);
+                    currentData.setValue(Math.max(currentAttendeeCount - 1, 0));
                 }
 
                 return Transaction.success(currentData);
@@ -124,13 +119,11 @@ public class StudentEventsPresenter extends EventsPresenter {
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
                 if (committed) {
-                    //dunno what to do if we successfully rsvped
-                    System.out.println("Successful unRSVP");
+                    activity.toast("Successfully unRSVPed!");
                 }
-                else{
-                    System.out.println("Failed unRSVP");
+                else {
+                    activity.toast("unRSVP Failed");
                 }
-
             }
         });
     }
@@ -164,22 +157,20 @@ public class StudentEventsPresenter extends EventsPresenter {
 
         DatabaseReference target = Feedback.parentRef.child(eventId).child("comments").child(userId);
         model.setRef(target, comment);
-
-        // TODO: Implement transaction for ratingSum
-        // TODO: Implement transaction for ratingCount
     }
     public void getRSVP(){
         String userId = auth.getCurrentUserData().getUid();
         ItemListenerCallback<Map<String, Boolean>> rsvpCallback = new ItemListenerCallback<Map<String, Boolean>>() {
             @Override
             public void execute(Map<String, Boolean> rsvpMap) {
+
                 rsvps = rsvpMap;
             }
         };
         model.createSubscriptionOnMap(Subscription.parentRef.child(userId), this.listenerTracker, Boolean.class, rsvpCallback);
     }
     public boolean isRSVPd (String eventId){
-        if (rsvps == null) return false;
+        if (rsvps == null || !rsvps.containsKey(eventId)) return false;
         return Boolean.TRUE.equals(rsvps.get(eventId));
     }
 }

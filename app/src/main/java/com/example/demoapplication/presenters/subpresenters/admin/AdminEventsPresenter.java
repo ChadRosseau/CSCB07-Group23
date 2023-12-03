@@ -1,11 +1,9 @@
 package com.example.demoapplication.presenters.subpresenters.admin;
 
-import android.util.Log;
-
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.baseClasses.Feedback;
-import com.example.demoapplication.baseClasses.ItemListenerCallback;
+import com.example.demoapplication.presenters.listeners.ItemListenerCallback;
 import com.example.demoapplication.fragments.events.AdminEventsFeedbackView;
 import com.example.demoapplication.fragments.events.FeedbackItem;
 import com.example.demoapplication.presenters.subpresenters.EventsPresenter;
@@ -13,7 +11,6 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 public class AdminEventsPresenter extends EventsPresenter {

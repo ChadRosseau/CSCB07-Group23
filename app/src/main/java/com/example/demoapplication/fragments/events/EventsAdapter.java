@@ -24,7 +24,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
     boolean isAdmin;
     private EventsPresenter presenter;
 
-    public EventsAdapter(MainActivityView activity, ArrayList<Event> eventList, EventsPresenter presenter) {
+    public EventsAdapter(MainActivityView activity, EventsPresenter presenter, ArrayList<Event> eventList) {
         this.activity = activity;
         this.eventList = eventList;
         this.presenter = presenter;
@@ -57,33 +57,28 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
             holder.feedbackButton.getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
             holder.feedbackButton.setText("VIEW FEEDBACK");
             holder.rsvpButton.setVisibility(View.GONE);
+        } else {
+            StudentEventsPresenter studentEventsPresenter = (StudentEventsPresenter)presenter;
+            if (studentEventsPresenter.isRSVPd(holder.getEventId())) {
+                holder.rsvpButton.setText("UNDO RSVP");
+                holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        studentEventsPresenter.undoRSVP(holder.getEventId());
+                    }
+                });
+            } else {
+                holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        studentEventsPresenter.rsvpForEvent(holder.getEventId());
+                    }
+                });
+            }
         }
-        else {
-            StudentEventsPresenter studentPresenter = ((StudentEventsPresenter)presenter);
-            //DRIVING ME INSANE IT ALMOST WORKS (try it out)
-//            if(studentPresenter.isRSVPd(holder.getEventId())){
-//                holder.rsvpButton.setText("UNDO RSVP");
-//                holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        studentPresenter.undoRSVP(holder.getEventId());
-//                    }
-//                });
-//            }
-            //else{
-            holder.rsvpButton.setOnClickListener(new View.OnClickListener() {
-//              holder.rsvpButton.setText("RSVP");
-                @Override
-                public void onClick(View v) {
-                    studentPresenter.rsvpForEvent(holder.getEventId());
-                }
-            });
-        }
-        //}
         holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: situational for admin/student
                 activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(holder.getEventId()) : new StudentEventsFeedbackView(), R.anim.transition_up);
             }
         });

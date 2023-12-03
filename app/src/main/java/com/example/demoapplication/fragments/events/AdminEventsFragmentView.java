@@ -12,6 +12,8 @@ import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPre
 import com.example.demoapplication.presenters.subpresenters.student.StudentEventsPresenter;
 
 public class AdminEventsFragmentView extends StudentEventsFragmentView {
+    AdminEventsPresenter presenter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

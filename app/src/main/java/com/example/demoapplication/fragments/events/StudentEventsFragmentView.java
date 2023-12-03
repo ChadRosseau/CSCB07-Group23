@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class StudentEventsFragmentView extends BaseFragment {
-    protected EventsPresenter presenter;
+    protected StudentEventsPresenter presenter;
     protected RecyclerView recyclerView;
     protected ArrayList<Event> eventItemList;
 
@@ -59,7 +59,7 @@ public class StudentEventsFragmentView extends BaseFragment {
         this.eventItemList = eventItemList;
         // Notify the adapter that the data set has changed
         if (getView() != null) {
-            EventsAdapter eventsAdapter = new EventsAdapter(activity, eventItemList, presenter);
+            EventsAdapter eventsAdapter = new EventsAdapter(activity, presenter, eventItemList);
             recyclerView.setAdapter(eventsAdapter);
         }
     }

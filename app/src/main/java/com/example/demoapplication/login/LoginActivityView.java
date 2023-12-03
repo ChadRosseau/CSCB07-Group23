@@ -34,13 +34,13 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
 
         setContentView(R.layout.login);
 
-        emailField = (EditText)findViewById(R.id.emailField);
-        passwordField = (EditText)findViewById(R.id.passwordField);
-        adminSwitch = (SwitchCompat)findViewById(R.id.adminSwitch);
+        emailField = findViewById(R.id.emailField);
+        passwordField = findViewById(R.id.passwordField);
+        adminSwitch = findViewById(R.id.adminSwitch);
 
-        signUpButton = (Button)findViewById(R.id.signUpButton);
-        signInButton = (Button)findViewById(R.id.signInButton);
-        skipLoginButton = (Button)findViewById(R.id.skipLoginButton);
+        signUpButton = findViewById(R.id.signUpButton);
+        signInButton = findViewById(R.id.signInButton);
+        skipLoginButton = findViewById(R.id.skipLoginButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
