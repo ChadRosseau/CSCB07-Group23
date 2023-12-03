@@ -118,12 +118,9 @@ public class AdminEventsFeedbackView extends BaseFragment {
         attendees.setText(String.format(getString(R.string.feedbackAttendeesCount), event.getAttendeeCount(), event.getMaxAttendees()));
     }
 
-    public void setEventFeedbackInfo(float feedbackAverage) {
-        ratingText.setText(String.format("%.2f/5", feedbackAverage));
-        ratingStars.setRating(feedbackAverage);
-    }
-
-    public void setEventFeedbackItemsInfo(ArrayList<FeedbackItem> feedbackItemList) {
+    public void setEventFeedbackInfo(float ratingAverage, ArrayList<FeedbackItem> feedbackItemList) {
+        ratingText.setText(String.format("%.2f/5", ratingAverage));
+        ratingStars.setRating(ratingAverage);
         if (getView() != null) {
             FeedbackAdapter adapter = new FeedbackAdapter(feedbackItemList);
             recyclerView.setAdapter(adapter);
