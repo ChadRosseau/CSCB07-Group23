@@ -36,7 +36,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
     public EventViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Inflate the layout for each item and return a new ViewHolder object
         View eventView = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_list, parent, false);
-        return new EventViewHolder(activity, eventView);
+        return new EventViewHolder(eventView);
     }
 
     // This method binds the data to the ViewHolder object
@@ -79,7 +79,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventViewHolder> {
         holder.feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(holder.getEventId()) : new StudentEventsFeedbackView(), R.anim.transition_up);
+                activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(holder.getEventId()) : StudentEventsFeedbackView.newInstance(holder.getEventId()), R.anim.transition_up);
             }
         });
     }

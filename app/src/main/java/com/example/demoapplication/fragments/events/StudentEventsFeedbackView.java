@@ -11,35 +11,54 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
+import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
+import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPresenter;
 import com.example.demoapplication.presenters.subpresenters.student.StudentEventsPresenter;
+import com.google.android.material.textfield.TextInputEditText;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudentEventsFeedbackView#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class StudentEventsFeedbackView extends BaseFragment {
+
     private StudentEventsPresenter presenter;
-//    Spinner feedbackSpinner = getView().findViewById(R.id.feedbackNumSpinner);
-//    ArrayAdapter<CharSequence> feedbackAdapter= ArrayAdapter.createFromResource(getActivity(), R.array.numRatings, android.R.layout.simple_spinner_item);
+    private static final String ARG_EVENT_ID = "eventId";
 
-    Button submitFeedbackButton;
+    private String eventId;
+    private int rating;
+    private RatingBar ratingBar;
+    private EditText contentEditText;
+    private String comment;
+    private Button submitFeedbackButton;
+    private Button cancelButton;
 
-    // Specify the layout to use when the list of choices appears.
-//    feedbackAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner.
-//    spinnerFeedbackNum.setAdapter(spinnerAdapter);
-    public StudentEventsFeedbackView() {}
+
+    public StudentEventsFeedbackView() {};
+
+    public static StudentEventsFeedbackView newInstance(String eventId) {
+        StudentEventsFeedbackView fragment = new StudentEventsFeedbackView();
+        Bundle args = new Bundle();
+        args.putString(ARG_EVENT_ID, eventId);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        //initiate rating bar and button
+
+        if (getArguments() == null) {
+            activity.replaceFragment(new StudentEventsFeedbackView());
+            return;
+        }
+
+        this.eventId = getArguments().getString(ARG_EVENT_ID);
         this.presenter = new StudentEventsPresenter(activity);
     }
 
@@ -47,24 +66,48 @@ public class StudentEventsFeedbackView extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.event_feedback, container, false);
+        View view = inflater.inflate(R.layout.event_feedback, container, false);
+        contentEditText = view.findViewById(R.id.inputFeedback);
+        ratingBar = view.findViewById(R.id.studentEventFeedbackRatingBar);
+        submitFeedbackButton = view.findViewById(R.id.submitFeedbackButton);
+        cancelButton = view.findViewById(R.id.cancelButton);
+
+        return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        submitFeedbackButton = view.findViewById(R.id.submitFeedbackButton);
+
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                getFeedback();
                 submitFeedback();
+                showSuccessMessage("Feedback submitted successfully!");
+                activity.replaceFragment(new StudentEventsFragmentView());
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.replaceFragment(new StudentEventsFragmentView());
             }
         });
 
     }
 
+    private void getFeedback() {
+        comment = contentEditText.getText().toString();
+        rating = (int) ratingBar.getRating();
+    }
+
     private void submitFeedback() {
-//        String totalStars = "Total Stars:: " + feedbackRatingBar.getNumStars();
-//        String rating = "Rating :: " + feedbackRatingBar.getRating();
-//        Toast.makeText(getActivity().getApplicationContext(), totalStars + "\n" + rating, Toast.LENGTH_LONG).show();
+        presenter.rateEvent(eventId, rating);
+        presenter.commentEvent(eventId, comment);
+    }
+
+    private void showSuccessMessage(String message) {
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
     }
 }

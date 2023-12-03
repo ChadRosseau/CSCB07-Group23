@@ -24,7 +24,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
     public Button rsvpButton;
 
 
-    public EventViewHolder(MainActivityView activity, View eventView) {
+    public EventViewHolder(View eventView) {
         super(eventView);
         name = eventView.findViewById(R.id.eventName);
         date = eventView.findViewById(R.id.eventDate);

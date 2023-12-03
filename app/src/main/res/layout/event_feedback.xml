@@ -6,100 +6,153 @@
     android:layout_height="match_parent"
     tools:context=".fragments.events.StudentEventsFeedbackView">
 
-    <TextView
-        android:id="@+id/feedbackScreenName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/descriptionEventFeedbackPage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/feedback"
-        android:textColor="@color/palatte_2"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/feedbackDescription"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:text="@string/feedbackDescription"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/enterFeedBackNum"
-        style="@style/courseStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:text="@string/chooseRating"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feedbackDescription"
-        tools:ignore="MissingConstraints" />
-
-    <!--    <Spinner-->
-    <!--        android:id="@+id/feedbackNumSpinner"-->
-    <!--        style="@style/gradeStyle"-->
-    <!--        android:entries="@array/gpa_dropdown"-->
-    <!--        android:spinnerMode="dropdown"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintStart_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.0" />-->
-
-    <TextView
-        android:id="@+id/enterFeedBack"
-        style="@style/courseStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="75dp"
-        android:text="@string/enterFeedBack"
-        app:layout_constraintStart_toStartOf="@+id/inputFeedback"
-        app:layout_constraintTop_toBottomOf="@+id/enterFeedBackNum"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/inputFeedback"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="@string/type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/enterFeedBack"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/submitFeedbackButton"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        app:backgroundTint="@color/palatte_3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputFeedback"
-        app:layout_constraintVertical_bias="0.118" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/backFeedbackButton"
-        android:layout_width="80dp"
+        <TextView
+            android:id="@+id/feedbackScreenName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/feedback"
+            android:textColor="@color/palatte_2"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/feedbackDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/feedbackDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/feedbackDescription"
+            android:textAlignment="textStart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ratingEventFeedbackPage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/back"
-        app:backgroundTint="@color/palatte_3"
-        tools:layout_editor_absoluteX="315dp"
-        tools:layout_editor_absoluteY="1dp" />
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEventFeedbackPage">
+
+        <TextView
+            android:id="@+id/enterFeedBackNum"
+            style="@style/courseStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:text="@string/chooseRating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <RatingBar
+            android:id="@+id/studentEventFeedbackRatingBar"
+            style="@style/Widget.AppCompat.RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minHeight="50dp"
+            android:maxHeight="50dp"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1"
+            android:isIndicator="false"
+            android:progressDrawable="@drawable/rating_bar"
+            app:layout_constraintBottom_toBottomOf="@id/ratingEventFeedbackPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enterFeedBackNum" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/commentEventFeedbackPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingEventFeedbackPage">
+
+        <TextView
+            android:id="@+id/enterFeedBack"
+            style="@style/courseStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/enterFeedBack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/commentEventFeedbackPage" />
+
+        <EditText
+            android:id="@+id/inputFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:hint="@string/type"
+            app:layout_constraintBottom_toBottomOf="@+id/commentEventFeedbackPage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/enterFeedBack" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentEventFeedbackPage">
+
+        <Button
+            android:id="@+id/submitFeedbackButton"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="65dp"
+            android:text="@string/submit"
+            app:backgroundTint="@color/palatte_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:text="@string/cancel"
+            app:backgroundTint="@color/palatte_3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
