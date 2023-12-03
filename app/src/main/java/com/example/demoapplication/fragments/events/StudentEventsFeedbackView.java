@@ -19,12 +19,15 @@ import android.widget.Toast;
 import com.example.demoapplication.R;
 import com.example.demoapplication.fragments.BaseFragment;
 import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
+import com.example.demoapplication.presenters.subpresenters.admin.AdminEventsPresenter;
 import com.example.demoapplication.presenters.subpresenters.student.StudentEventsPresenter;
 import com.google.android.material.textfield.TextInputEditText;
 
 
 public class StudentEventsFeedbackView extends BaseFragment {
+
     private StudentEventsPresenter presenter;
+    private static final String ARG_EVENT_ID = "eventId";
 
     private String eventId;
     private int rating;
@@ -35,11 +38,27 @@ public class StudentEventsFeedbackView extends BaseFragment {
     private Button cancelButton;
 
 
-    public StudentEventsFeedbackView(String eventId) {this.eventId = eventId;}
+    public StudentEventsFeedbackView() {};
+
+    public static StudentEventsFeedbackView newInstance(String eventId) {
+        StudentEventsFeedbackView fragment = new StudentEventsFeedbackView();
+        Bundle args = new Bundle();
+        args.putString(ARG_EVENT_ID, eventId);
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+        if (getArguments() == null) {
+            activity.replaceFragment(new StudentEventsFeedbackView());
+            return;
+        }
+
+        this.eventId = getArguments().getString(ARG_EVENT_ID);
         this.presenter = new StudentEventsPresenter(activity);
     }
 
@@ -80,7 +99,7 @@ public class StudentEventsFeedbackView extends BaseFragment {
 
     private void getFeedback() {
         comment = contentEditText.getText().toString();
-        rating = ratingBar.getNumStars();
+        rating = (int) ratingBar.getRating();
     }
 
     private void submitFeedback() {
