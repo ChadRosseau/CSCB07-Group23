@@ -8,11 +8,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 
-enum InvalidInputType {
-    Blank,
-    ShortPassword,
-}
-
 public class LoginActivityPresenter implements LoginContract.LoginPresenter {
     LoginActivityView view;
     LoginActivityModel model;
@@ -82,7 +77,7 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
     }
 
     private void generateInvalidInputMessage(InvalidInputType type) {
-        String text;
+        String text = "Invalid Input";
         switch (type) {
             case Blank:
                 text = "Email and Password must be non-empty";
@@ -91,14 +86,13 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
                 text = "Password must be at least 6 characters long";
                 break;
             default:
-                text = "Invalid input";
                 break;
         }
         view.displayMessage(text);
     }
 
     private void generateLoginFailedMessage(LoginType type) {
-        String text;
+        String text = "Login Failed";
         switch (type) {
             case SignUp:
                 text = "Failed to create account";
@@ -107,7 +101,6 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
                 text = "No matching email/password found";
                 break;
             default:
-                text = "Authentication failed";
                 break;
         }
         view.displayMessage(text);
