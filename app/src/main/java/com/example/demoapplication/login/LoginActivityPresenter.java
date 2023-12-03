@@ -1,28 +1,19 @@
-package com.example.demoapplication;
-
-import android.util.Log;
+package com.example.demoapplication.login;
 
 import androidx.annotation.NonNull;
 
-import com.example.demoapplication.baseClasses.UserData;
 import com.example.demoapplication.baseClasses.UserType;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
 enum InvalidInputType {
     Blank,
     ShortPassword,
 }
 
-enum LoginType {
-    SignUp,
-    SignIn,
-}
-
-public class LoginActivityPresenter {
+public class LoginActivityPresenter implements LoginContract.LoginPresenter {
     LoginActivityView view;
     LoginActivityModel model;
 

@@ -19,6 +19,7 @@ import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 import com.example.demoapplication.fragments.HomeFragmentView;
 import com.example.demoapplication.fragments.announcements.AdminAnnouncementsFragmentView;
 import com.example.demoapplication.fragments.PostFragmentView;
+import com.example.demoapplication.login.LoginActivityView;
 
 public class MainActivityView extends AppCompatActivity {
 
@@ -82,5 +83,6 @@ public class MainActivityView extends AppCompatActivity {
 
     public void logout() {
         startActivity(new Intent(this, LoginActivityView.class));
+        finish();
     }
 }
