@@ -86,7 +86,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText4"
-                app:layout_constraintVertical_bias="0.015" />
+                app:layout_constraintVertical_bias="0.047" />
 
             <EditText
                 android:id="@+id/editTextText6"
@@ -105,7 +105,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText5"
-                app:layout_constraintVertical_bias="0.015" />
+                app:layout_constraintVertical_bias="0.047" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/dateInputLayout"
