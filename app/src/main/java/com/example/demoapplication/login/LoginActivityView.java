@@ -76,7 +76,7 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
 
     public void skipLogin() {
         boolean isAdmin = adminSwitch.isChecked();
-//        presenter.skipLogin(isAdmin);
+        presenter.skipLogin(isAdmin);
     }
 
     public void goToMain() {
