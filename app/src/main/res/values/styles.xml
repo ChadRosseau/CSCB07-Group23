@@ -35,7 +35,7 @@
 
 
     <style name="navbarOffset">
-        <item name="android:layout_marginBottom">50dp</item>
+        <item name="android:layout_marginBottom">60dp</item>
     </style>
 
 <!--    for feedback star-->
