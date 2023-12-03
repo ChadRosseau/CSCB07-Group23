@@ -45,8 +45,7 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         feedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: situational for admin/student
-                activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(eventId) : new StudentEventsFeedbackView(), R.anim.transition_up);
+                activity.replaceFragment(isAdmin ? AdminEventsFeedbackView.newInstance(eventId) : new StudentEventsFeedbackView(eventId), R.anim.transition_up);
             }
         });
     }
