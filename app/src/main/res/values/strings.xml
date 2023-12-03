@@ -49,7 +49,9 @@
     <string name="cancel">Cancel</string>
 
     <!--    Strings for complaints page-->
-    <string name="complaints_start">Welcome to complaints page</string>
+    <string name="complaintForm">Complaint Form</string>
+    <string name="enterTitle">Enter Title</string>
+    <string name="enterDescription">Enter Description</string>
 
     <!--    Strings for "post" page-->
     <string name="enrolled_program_select">Select your program of enrollment:</string>
