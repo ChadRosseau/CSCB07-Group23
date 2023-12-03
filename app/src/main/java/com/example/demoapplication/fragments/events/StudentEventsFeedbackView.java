@@ -30,10 +30,8 @@ public class StudentEventsFeedbackView extends BaseFragment {
     private static final String ARG_EVENT_ID = "eventId";
 
     private String eventId;
-    private int rating;
     private RatingBar ratingBar;
     private EditText contentEditText;
-    private String comment;
     private Button submitFeedbackButton;
     private Button cancelButton;
 
@@ -77,11 +75,12 @@ public class StudentEventsFeedbackView extends BaseFragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        // Get data for user's current feedback from database.
+        presenter.getCurrentFeedback(this, eventId);
 
         submitFeedbackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFeedback();
                 submitFeedback();
                 showSuccessMessage("Feedback submitted successfully!");
                 activity.replaceFragment(new StudentEventsFragmentView());
@@ -97,14 +96,25 @@ public class StudentEventsFeedbackView extends BaseFragment {
 
     }
 
-    private void getFeedback() {
-        comment = contentEditText.getText().toString();
-        rating = (int) ratingBar.getRating();
+    public String getComment() {
+        return contentEditText.getText().toString();
+    }
+
+    public int getRating() {
+        return (int) ratingBar.getRating();
+    }
+
+    public void setComment(String text) {
+        contentEditText.setText(text);
+    }
+
+    public void setRating(int rating) {
+        ratingBar.setRating(rating);
     }
 
     private void submitFeedback() {
-        presenter.rateEvent(eventId, rating);
-        presenter.commentEvent(eventId, comment);
+        presenter.commentEvent(eventId, getComment());
+        presenter.rateEvent(eventId, getRating());
     }
 
     private void showSuccessMessage(String message) {

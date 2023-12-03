@@ -39,7 +39,7 @@ public class MainActivityModel {
     }
 
     // Used to add and manage listener on a database node.
-    public <T extends BaseClass> void createSubscription(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
+    public <T> void createSubscription(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
         // Create callback function
         ValueEventListener listener = new ValueEventListener() {
             @Override
@@ -78,11 +78,6 @@ public class MainActivityModel {
 
         // Track listener to remove when finished.
         tracker.addListener(target, listener);
-    }
-
-    // Used to add and manage listener on a child node of a database node.
-    public <T extends BaseClass> void createSubscriptionOnChild(DatabaseReference parentRef, String childKey, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
-        this.createSubscription(parentRef.child(childKey), tracker, cls, callback);
     }
 
     public <V> void createSubscriptionOnMap(DatabaseReference target, ListenerTracker tracker, Class<V> valCls, ItemListenerCallback<Map<String,V>> callback) {
