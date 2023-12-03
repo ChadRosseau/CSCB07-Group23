@@ -13,7 +13,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".LoginActivityView"
+            android:name=".login.LoginActivityView"
             android:exported="true"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
