@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="palatte_0">#152848</color>
     <color name="palatte_1">#BFDBE3</color>
     <color name="palatte_2">#172F5E</color>
-    <color name="palatte_3">#107BA1</color>
+    <color name="palatte_3">#0F7295</color>
     <color name="palatte_4">#71AEA8</color>
     <color name="palatte_5">#1675C6</color>
     <color name="palatte_6">#732D4E</color>

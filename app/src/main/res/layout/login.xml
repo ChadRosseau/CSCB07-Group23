@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/palatte_2"
+    android:background="@color/palatte_0"
     tools:context=".Login"
     android:id="@+id/login">
 
@@ -21,41 +21,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12" />
 
+    <ImageView
+        android:id="@+id/loginImage"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12"/>
+
     <EditText
         android:id="@+id/emailField"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Email"
+        android:background="@drawable/input_text_background"
+        android:ems="12"
+        android:hint=" Email"
         android:inputType="text"
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHint="@color/text_box_hint"
-        android:textSize="26sp"
+        android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.051" />
+        app:layout_constraintTop_toBottomOf="@+id/loginImage"
+        app:layout_constraintVertical_bias="0.09" />
 
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Password"
+        android:background="@drawable/input_text_background"
+        android:ems="12"
+        android:hint=" Password"
         android:inputType="textVisiblePassword"
         android:padding="8dp"
         android:textColor="@color/black"
         android:textColorHint="@color/text_box_hint"
-        android:textSize="26sp"
+        android:textSize="23sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailField"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.05" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/adminSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.6"
+        android:scaleY="1.6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/signInButton"
+        app:layout_constraintTop_toBottomOf="@+id/passwordField"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I'm an administrator"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:flow_horizontalBias="0.23"
+        app:layout_constraintBottom_toTopOf="@+id/signInButton"
+        app:layout_constraintEnd_toEndOf="@+id/passwordField"
+        app:layout_constraintStart_toEndOf="@+id/adminSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/passwordField" />
 
     <Button
         android:id="@+id/signUpButton"
@@ -68,7 +105,7 @@
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordField"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="0.351" />
 
     <Button
         android:id="@+id/signInButton"
@@ -81,34 +118,7 @@
         app:layout_constraintHorizontal_bias="0.81"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordField"
-        app:layout_constraintVertical_bias="0.251" />
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/adminSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.6"
-        android:scaleY="1.6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordField"
-        app:layout_constraintVertical_bias="0.087" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="I'm an administrator"
-        android:textColor="@color/white"
-        android:textSize="26sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordField"
-        app:layout_constraintVertical_bias="0.075" />
+        app:layout_constraintVertical_bias="0.351" />
 
     <Button
         android:id="@+id/skipLoginButton"
