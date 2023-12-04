@@ -15,12 +15,10 @@ public class AnnouncementsPresenter extends SubPresenter {
     }
 
     public void getAnnouncements(StudentAnnouncementsFragmentView view){
-        ArrayListenerCallback<Announcement> callback = new ArrayListenerCallback<Announcement>() {
-            public void execute(ArrayList<Announcement> announcementList) {
-                Collections.reverse(announcementList);
-                view.setAnnouncementList(announcementList);
-            }
+        ArrayListenerCallback<Announcement> callback = (announcementList) -> {
+            Collections.reverse(announcementList);
+            view.setAnnouncementList(announcementList);
         };
-        model.createSubscription(Announcement.parentRef, this.listenerTracker, Announcement.class, callback);
+        model.createSubscriptionOnArray(Announcement.parentRef, this.listenerTracker, Announcement.class, callback);
     }
 }

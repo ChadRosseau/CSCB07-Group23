@@ -139,13 +139,7 @@ public class StudentEventsPresenter extends EventsPresenter {
      */
     public void getRSVP(){
         String userId = auth.getCurrentUserData().getUid();
-        ItemListenerCallback<Map<String, Boolean>> rsvpCallback = new ItemListenerCallback<Map<String, Boolean>>() {
-            @Override
-            public void execute(Map<String, Boolean> rsvpMap) {
-
-                rsvps = rsvpMap;
-            }
-        };
+        ItemListenerCallback<Map<String, Boolean>> rsvpCallback = (rsvpMap) -> rsvps = rsvpMap;
         model.createSubscriptionOnMap(Subscription.parentRef.child(userId), this.listenerTracker, Boolean.class, rsvpCallback);
     }
 
@@ -239,19 +233,13 @@ public class StudentEventsPresenter extends EventsPresenter {
 
     public void getCurrentFeedback(StudentEventsFeedbackView view, String eventId) {
         String userId = auth.getCurrentUserData().getUid();
-        ItemListenerCallback<String> commentCallback = new ItemListenerCallback<String>() {
-            @Override
-            public void execute(String comment) {
-                // If comment box is empty, set it to value from database.
-                if (view.getComment().isEmpty()) view.setComment(comment);
-            }
+        ItemListenerCallback<String> commentCallback = (comment) -> {
+            // If comment box is empty, set it to value from database.
+            if (view.getComment().isEmpty()) view.setComment(comment);
         };
-        ItemListenerCallback<Integer> ratingCallback = new ItemListenerCallback<Integer>() {
-            @Override
-            public void execute(Integer rating) {
-                // If rating is empty, set it to value from database.
-                if (view.getRating() == 0) view.setRating(rating);
-            }
+        ItemListenerCallback<Integer> ratingCallback = (rating) -> {
+            // If rating is empty, set it to value from database.
+            if (view.getRating() == 0) view.setRating(rating);
         };
         model.createSubscription(Feedback.parentRef.child(eventId).child("comments").child(userId), this.listenerTracker, String.class, commentCallback);
         model.createSubscription(Feedback.parentRef.child(eventId).child("ratings").child(userId), this.listenerTracker, Integer.class, ratingCallback);

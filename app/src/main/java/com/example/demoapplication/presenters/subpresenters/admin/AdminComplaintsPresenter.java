@@ -15,12 +15,10 @@ public class AdminComplaintsPresenter extends ComplaintsPresenter {
     }
 
     public void getComplaints(AdminComplaintsFragmentView view){
-        ArrayListenerCallback<Complaint> callback = new ArrayListenerCallback<Complaint>() {
-            public void execute(ArrayList<Complaint> complaintList) {
-                Collections.reverse(complaintList);
-                view.setComplaintList(complaintList);
-            }
+        ArrayListenerCallback<Complaint> callback = (complaintList) -> {
+            Collections.reverse(complaintList);
+            view.setComplaintList(complaintList);
         };
-        model.createSubscription(Complaint.parentRef, this.listenerTracker, Complaint.class, callback);
+        model.createSubscriptionOnArray(Complaint.parentRef, this.listenerTracker, Complaint.class, callback);
     }
 }

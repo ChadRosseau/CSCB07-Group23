@@ -38,14 +38,12 @@ public class MainActivityModel {
         return ref.push();
     }
 
-    // Used to add and manage listener on a database node.
-    public <T> void createSubscription(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ListenerCallback<T> callback) {
+    // Used to add and manage listener on a single item.
+    public <T> void createSubscription(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ItemListenerCallback<T> callback) {
         // Create callback function
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                // Handle single item case
-                if (callback instanceof ItemListenerCallback) {
                     // Handle null case
                     if (!snapshot.exists()) {
                         // Logic for non-existent event / error handling.
@@ -55,24 +53,12 @@ public class MainActivityModel {
                     // Execute callback with obj of type T
                     T obj = snapshot.getValue(cls);
                     ((ItemListenerCallback<T>)callback).execute(obj);
-                }
-                // Handle array case
-                else if (callback instanceof ArrayListenerCallback) {
-                    // Create and populate list using snapshot
-                    ArrayList<T> objList = new ArrayList<>();
-                    if (snapshot.exists()) {
-                        for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()) {
-                            objList.add(objSnapshot.getValue(cls));
-                        }
-                    }
-                    // Execute callback with list of obj of type T
-                    ((ArrayListenerCallback<T>)callback).execute(objList);
-                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle error
+                Log.d("MODEL", "createSubscription cancelled");
             }
         };
 
@@ -80,15 +66,45 @@ public class MainActivityModel {
         tracker.addListener(target, listener);
     }
 
-    public <V> void createSubscriptionOnMap(DatabaseReference target, ListenerTracker tracker, Class<V> valCls, ItemListenerCallback<Map<String,V>> callback) {
+    // Used to add and manage listener on a single item.
+    public <T> void createSubscriptionOnArray(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ArrayListenerCallback<T> callback) {
         // Create callback function
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Map<String, V> map = new HashMap<>();
+                // Create and populate list using snapshot
+                ArrayList<T> objList = new ArrayList<>();
+                if (snapshot.exists()) {
+                    for (@NonNull DataSnapshot objSnapshot : snapshot.getChildren()) {
+                        objList.add(objSnapshot.getValue(cls));
+                    }
+                }
+                // Execute callback with list of obj of type T
+                ((ArrayListenerCallback<T>)callback).execute(objList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle error
+                Log.d("MODEL", "createSubscriptionOnArray cancelled");
+            }
+        };
+
+        // Track listener to remove when finished.
+        tracker.addListener(target, listener);
+    }
+
+
+
+    public <T> void createSubscriptionOnMap(DatabaseReference target, ListenerTracker tracker, Class<T> valCls, ItemListenerCallback<Map<String,T>> callback) {
+        // Create callback function
+        ValueEventListener listener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Map<String, T> map = new HashMap<>();
                 if (snapshot.exists()) {
                     for (DataSnapshot valSnapshot: snapshot.getChildren()) {
-                        V val = valSnapshot.getValue(valCls);
+                        T val = valSnapshot.getValue(valCls);
                         map.put(valSnapshot.getKey(), val);
                     }
                 }
@@ -98,6 +114,7 @@ public class MainActivityModel {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle error
+                Log.d("MODEL", "createSubscriptionOnMap cancelled");
             }
         };
         // Track listener to remove when finished.

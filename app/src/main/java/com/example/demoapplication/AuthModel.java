@@ -35,11 +35,7 @@ public class AuthModel {
         if (currentUser == null) {
             return;
         }
-        ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
-            public void execute(UserData data) {
-                currentUserData = data;
-            }
-        };
+        ItemListenerCallback<UserData> callback = (data) -> currentUserData = data;
         this.model.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
     }
 

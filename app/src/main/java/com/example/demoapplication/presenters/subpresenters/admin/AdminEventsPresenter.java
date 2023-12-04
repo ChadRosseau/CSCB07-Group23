@@ -46,32 +46,22 @@ public class AdminEventsPresenter extends EventsPresenter {
     }
 
     private void getEvent(AdminEventsFeedbackView view, String eventId) {
-        ItemListenerCallback<Event> callback = new ItemListenerCallback<Event>() {
-            public void execute(Event event) {
-                currentEvent = event;
-                view.setEventInfo(event);
-            }
+        ItemListenerCallback<Event> callback = (event) -> {
+            currentEvent = event;
+            view.setEventInfo(event);
         };
         model.createSubscription(Event.parentRef.child(eventId), this.listenerTracker, Event.class, callback);
     }
 
     private void getFeedback(AdminEventsFeedbackView view, String eventId) {
-        ItemListenerCallback<Feedback> feedbackCallback = new ItemListenerCallback<Feedback>() {
-            public void execute(Feedback feedback) {
-                currentEventFeedback = feedback;
-            }
+        ItemListenerCallback<Feedback> feedbackCallback = (feedback) -> currentEventFeedback = feedback;
+        ItemListenerCallback<Map<String, String>> commentCallback = (commentMap) -> {
+            currentCommentMap = commentMap;
+            view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
         };
-        ItemListenerCallback<Map<String, String>> commentCallback = new ItemListenerCallback<Map<String, String>>() {
-            public void execute(Map<String, String> commentMap) {
-                currentCommentMap = commentMap;
-                view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
-            }
-        };
-        ItemListenerCallback<Map<String, Integer>> ratingCallback = new ItemListenerCallback<Map<String, Integer>>() {
-            public void execute(Map<String, Integer> ratingMap) {
-                currentRatingMap = ratingMap;
-                view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
-            }
+        ItemListenerCallback<Map<String, Integer>> ratingCallback = (ratingMap) -> {
+            currentRatingMap = ratingMap;
+            view.setEventFeedbackInfo(calculateRatingAverage(), makeFeedbackList());
         };
         model.createSubscription(Feedback.parentRef.child(eventId), this.listenerTracker, Feedback.class, feedbackCallback);
         model.createSubscriptionOnMap(Feedback.parentRef.child(eventId).child("comments"), this.listenerTracker, String.class, commentCallback);
