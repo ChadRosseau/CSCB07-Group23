@@ -4,8 +4,8 @@
     <!--    Strings for home page -->
     <string name="welcome">Welcome to CosMoS!</string>
     <string name="logout">Logout</string>
-    <string name="latestAnnouncement">Latest Notifications ____________________</string>
-    <string name="latestEvents">Latest Event ___________________________</string>
+    <string name="latestAnnouncement">Latest Notifications</string>
+    <string name="latestEvents">Latest Event</string>
 
     <!--    Strings for announcements page-->
     <string name="notification_start">Welcome to notifications page</string>
