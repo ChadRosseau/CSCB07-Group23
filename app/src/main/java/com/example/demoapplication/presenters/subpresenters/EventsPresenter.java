@@ -18,7 +18,7 @@ public class EventsPresenter extends SubPresenter {
         ArrayListenerCallback<Event> callback = new ArrayListenerCallback<Event>() {
             @Override
             public void execute(ArrayList<Event> eventList) {
-                Collections.reverse(eventList);
+                Collections.sort(eventList, (event1, event2) -> event1.getDate() < event2.getDate() ? -1 : 1);
                 view.setEventList(eventList);
             }
         };
