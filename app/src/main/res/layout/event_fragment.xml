@@ -33,7 +33,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="5dp"
-            android:backgroundTint="@color/palatte_3"
+            android:backgroundTint="@color/palatte_10"
             android:text="@string/createEvent"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"

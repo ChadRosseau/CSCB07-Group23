@@ -4,18 +4,22 @@
         android:id="@+id/home"
         android:title="Home"
         android:icon="@drawable/home_icon"/>
-    <item
-        android:id="@+id/post"
-        android:title="POSt"
-        android:icon="@drawable/post_icon"/>
-    <item
-        android:id="@+id/announcements"
-        android:icon="@drawable/notifications_icon"
-        android:title="Notifications" />
+
     <item
         android:id="@+id/events"
         android:title="Events"
         android:icon="@drawable/events_icon"/>
+
+    <item
+        android:id="@+id/announcements"
+        android:icon="@drawable/notifications_icon"
+        android:title="Notifications" />
+
+    <item
+        android:id="@+id/post"
+        android:title="POSt"
+        android:icon="@drawable/post_icon"/>
+
     <item
         android:id="@+id/complaints"
         android:title="Complaints"
