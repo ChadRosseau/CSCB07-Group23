@@ -6,6 +6,7 @@ import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class EventsPresenter extends SubPresenter {
 
@@ -17,6 +18,7 @@ public class EventsPresenter extends SubPresenter {
         ArrayListenerCallback<Event> callback = new ArrayListenerCallback<Event>() {
             @Override
             public void execute(ArrayList<Event> eventList) {
+                Collections.reverse(eventList);
                 view.setEventList(eventList);
             }
         };
