@@ -1,21 +1,26 @@
 package com.example.demoapplication.presenters.subpresenters;
 
 import com.example.demoapplication.AuthModel;
-import com.example.demoapplication.MainActivityModel;
+import com.example.demoapplication.DatabaseModel;
 import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.presenters.listeners.ListenerTracker;
 
 public abstract class SubPresenter {
     protected MainActivityView activity;
-    protected MainActivityModel model;
+    protected DatabaseModel model;
     protected final ListenerTracker listenerTracker;
     protected AuthModel auth;
 
+    /**
+     * Constructor for SubPresenter.
+     *
+     * @param activity  The associated MainActivityView.
+     */
     public SubPresenter(MainActivityView activity) {
-        this.model = MainActivityModel.getInstance();
         this.activity = activity;
-        this.listenerTracker = new ListenerTracker();
+        this.model = DatabaseModel.getInstance();
         this.auth = AuthModel.getInstance();
+        this.listenerTracker = new ListenerTracker();
     }
 
     public void endListeners() {

@@ -29,12 +29,12 @@ public class StudentEventsPresenter extends EventsPresenter {
     public Map<String, Boolean> rsvps = new HashMap<>();
 
     /**
-     * Constructor for the StudentEventsPresenter.
+     * Constructor for StudentEventsPresenter.
      *
-     * @param view  The associated MainActivityView.
+     * @param activity  The associated MainActivityView.
      */
-    public StudentEventsPresenter(MainActivityView view) {
-        super(view);
+    public StudentEventsPresenter(MainActivityView activity) {
+        super(activity);
     }
 
     /**
@@ -233,6 +233,12 @@ public class StudentEventsPresenter extends EventsPresenter {
         model.runTransaction(ratingCountTarget, ratingCountHandler);
     }
 
+    /**
+     * Retrieves the feedback currently given by a student for a given event.
+     *
+     * @param view The StudentComplaintsFragmentView currently initialised by activity.
+     * @param eventId  The id of the event to retrieve the student's current feedback for.
+     */
     public void getCurrentFeedback(StudentEventsFeedbackView view, String eventId) {
         String userId = auth.getCurrentUserData().getUid();
         ItemListenerCallback<String> commentCallback = (comment) -> {

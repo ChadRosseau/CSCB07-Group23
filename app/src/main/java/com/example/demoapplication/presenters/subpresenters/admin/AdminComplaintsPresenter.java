@@ -10,10 +10,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class AdminComplaintsPresenter extends ComplaintsPresenter {
-    public AdminComplaintsPresenter(MainActivityView view) {
-        super(view);
+    /**
+     * Constructor for AdminComplaintsPresenter.
+     *
+     * @param activity  The associated MainActivityView.
+     */
+    public AdminComplaintsPresenter(MainActivityView activity) {
+        super(activity);
     }
 
+    /**
+     * Retrieves current list of complaints and updates AdminComplaintsFragmentView.
+     *
+     * @param view The AdminComplaintsFragmentView currently initialised by activity.
+     */
     public void getComplaints(AdminComplaintsFragmentView view){
         ArrayListenerCallback<Complaint> callback = (complaintList) -> {
             Collections.reverse(complaintList);

@@ -20,11 +20,24 @@ public class AdminEventsPresenter extends EventsPresenter {
     Map<String, String> currentCommentMap;
     Map<String, Integer> currentRatingMap;
 
-
-    public AdminEventsPresenter(MainActivityView view) {
-        super(view);
+    /**
+     * Constructor for AdminEventsPresenter.
+     *
+     * @param activity  The associated MainActivityView.
+     */
+    public AdminEventsPresenter(MainActivityView activity) {
+        super(activity);
     }
 
+    /**
+     * Creates a new event and adds it to the database.
+     *
+     * @param title   The title of the event.
+     * @param description The description of the event.
+     * @param maxAttendees The maximum attendees allowed for the event.
+     * @param date The date of the event
+     * @param location The location of the event
+     */
     public void createEvent(String title, String description, int maxAttendees, Date date, String location) {
         // Generate a unique DB reference for new object.
         DatabaseReference target = model.createChildRef(Event.parentRef);
@@ -41,12 +54,24 @@ public class AdminEventsPresenter extends EventsPresenter {
         activity.toast("Event created!");
     }
 
+    /**
+     * Retrieves an event and its associated feedback data. Used in AdminEventsFeedbackView.
+     *
+     * @param view The AdminEventsFeedbackView currently initialised by activity.
+     * @param eventId The id of the event to retrieve information for.
+     */
     public void getEventFeedback(AdminEventsFeedbackView view, String eventId) {
         // Define custom callback
         getEvent(view, eventId);
         getFeedback(view, eventId);
     }
 
+    /**
+     * Retrieves an event's data and updates the view.
+     *
+     * @param view The AdminEventsFeedbackView currently initialised by activity.
+     * @param eventId The id of the event to retrieve information for.
+     */
     private void getEvent(AdminEventsFeedbackView view, String eventId) {
         ItemListenerCallback<Event> callback = (event) -> {
             currentEvent = event;
@@ -55,6 +80,12 @@ public class AdminEventsPresenter extends EventsPresenter {
         model.createSubscription(Event.parentRef.child(eventId), this.listenerTracker, Event.class, callback);
     }
 
+    /**
+     * Retrieves an event's feedback data and updates the view.
+     *
+     * @param view The AdminEventsFeedbackView currently initialised by activity.
+     * @param eventId The id of the event to retrieve information for.
+     */
     private void getFeedback(AdminEventsFeedbackView view, String eventId) {
         ItemListenerCallback<Feedback> feedbackCallback = (feedback) -> currentEventFeedback = feedback;
         ItemListenerCallback<Map<String, String>> commentCallback = (commentMap) -> {
@@ -70,6 +101,7 @@ public class AdminEventsPresenter extends EventsPresenter {
         model.createSubscriptionOnMap(Feedback.parentRef.child(eventId).child("ratings"), this.listenerTracker, Integer.class, ratingCallback);
     }
 
+    // Calculates the event rating average using currentRatingMap.
     private float calculateRatingAverage() {
         if (currentRatingMap == null) return 0;
         int ratingSum = currentRatingMap.values().stream().reduce(0, Integer::sum);
@@ -77,6 +109,7 @@ public class AdminEventsPresenter extends EventsPresenter {
         return (float)ratingSum / ratingCount;
     }
 
+    // Formats the separate comment and rating maps into a single class which can be fed into a RecyclerView.
     private ArrayList<FeedbackItem> makeFeedbackList() {
         ArrayList<FeedbackItem> feedbackItemList = new ArrayList<>();
         if (currentCommentMap == null) return feedbackItemList;
