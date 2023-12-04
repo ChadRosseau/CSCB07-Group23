@@ -63,6 +63,7 @@ Please also note that different tasks may have wildly differed in the quantity o
 
 -   View events screen - Backend
 -   Create complaint screen - Backend (Student)
+-   View Announcements screen - Backend (Student)
 -   View complaints screen - Backend (Admin)
 -   Create event screen - Design (Admin)
 -   Create event screen - Frontend (Admin)
