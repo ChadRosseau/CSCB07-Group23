@@ -1,33 +1,27 @@
 package com.example.demoapplication.fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.demoapplication.AuthModel;
-import com.example.demoapplication.MainActivityView;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.Announcement;
-import com.example.demoapplication.baseClasses.UserData;
+import com.example.demoapplication.baseClasses.Event;
 import com.example.demoapplication.fragments.announcements.AnnouncementsAdapter;
+import com.example.demoapplication.fragments.events.EventViewHolder;
+import com.example.demoapplication.helpers.Helper;
 import com.example.demoapplication.presenters.subpresenters.HomePagePresenterAnnouncements;
-import com.example.demoapplication.presenters.subpresenters.student.StudentAnnouncementsPresenter;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class HomeFragmentView extends BaseFragment {
@@ -40,6 +34,9 @@ public class HomeFragmentView extends BaseFragment {
     protected ArrayList<Announcement> announcementList;
     protected RecyclerView recyclerViewAnnouncements;
     protected ArrayList<Announcement> mostRecentAnnouncements;
+
+    protected EventViewHolder eventItemViewHolder;
+    protected Event event;
 
 
     public HomeFragmentView() {}
@@ -63,6 +60,10 @@ public class HomeFragmentView extends BaseFragment {
         recyclerViewAnnouncements = view.findViewById(R.id.recyclerViewNotificationsHome);
         recyclerViewAnnouncements.setLayoutManager(new LinearLayoutManager(activity));
         setAnnouncementList(announcementList);
+
+        eventItemViewHolder = new EventViewHolder(view);
+        getEventContentFromDatabase();
+        setEventContent(eventItemViewHolder);
 
         return view;
     }
@@ -89,5 +90,25 @@ public class HomeFragmentView extends BaseFragment {
             AnnouncementsAdapter adapter = new AnnouncementsAdapter(mostRecentAnnouncements);
             recyclerViewAnnouncements.setAdapter(adapter);
         }
+    }
+
+    public void getEventContentFromDatabase() {
+        event = new Event("A", "A", "A", 1, 1, 1, "A");
+    }
+
+    public void setEventContent(EventViewHolder holder) {
+        holder.setEventId(event.getEventId());
+        holder.name.setText(event.getTitle());
+        holder.date.setText(Helper.formatTimestamp(event.getDate()));
+        holder.location.setText(event.getLocation());
+        holder.attendees.setText(String.format("Attendees: %d/%d", event.getAttendeeCount(), event.getMaxAttendees()));
+        holder.description.setText(event.getDescription());
+        holder.rsvpButton.setVisibility(View.GONE);
+        holder.feedbackButton.setText("Please visit the events page for further information.");
+
+        ViewGroup.LayoutParams layoutParams = holder.feedbackButton.getLayoutParams();
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        holder.feedbackButton.setLayoutParams(layoutParams);
     }
 }

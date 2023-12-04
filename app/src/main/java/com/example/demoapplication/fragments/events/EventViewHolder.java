@@ -14,11 +14,11 @@ import com.example.demoapplication.baseClasses.UserType;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
     private String eventId;
-    TextView name;
-    TextView date;
-    TextView location;
-    TextView attendees;
-    TextView description;
+    public TextView name;
+    public TextView date;
+    public TextView location;
+    public TextView attendees;
+    public TextView description;
 
     public Button feedbackButton;
     public Button rsvpButton;
