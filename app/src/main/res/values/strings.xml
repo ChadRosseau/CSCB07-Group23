@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">CMS Application</string>
+    <string name="app_name">CosMoS</string>
 
     <!--    Strings for home page -->
-    <string name="welcome">Welcome to makeshift Quercus!</string>
+    <string name="welcome">Welcome to CosMoS!</string>
     <string name="logout">Logout</string>
+    <string name="latestAnnouncement">Latest Notifications ____________________</string>
+    <string name="latestEvents">Latest Event __________________________</string>
 
     <!--    Strings for announcements page-->
     <string name="notification_start">Welcome to notifications page</string>
