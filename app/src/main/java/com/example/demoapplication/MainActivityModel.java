@@ -3,6 +3,7 @@ package com.example.demoapplication;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.demoapplication.presenters.listeners.ArrayListenerCallback;
 import com.example.demoapplication.baseClasses.BaseClass;
@@ -13,6 +14,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -121,11 +124,14 @@ public class MainActivityModel {
         tracker.addListener(target, listener);
     }
 
-    // Used to set the data at a given reference in the database.
-    public <T> void setRef(DatabaseReference target, T obj) {
-        target.setValue(obj);
+    public void runTransaction(DatabaseReference target, Transaction.Handler handler) {
+        target.runTransaction(handler);
     }
 
+    // Used to set the data at a given reference in the database.
+    public <T> void setRef(DatabaseReference target, T obj) { target.setValue(obj); }
+
+    // Used to remove the data at a given reference in the database.
     public void deleteRef(DatabaseReference target) {
         target.removeValue();
     }

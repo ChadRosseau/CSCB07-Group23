@@ -40,6 +40,8 @@ public class StudentComplaintsPresenter extends ComplaintsPresenter {
         Complaint newComplaint = new Complaint(complaintId, timestamp, title, content, authorId);
         // Instruct model to update database with instance
         model.setRef(target, newComplaint);
+        // Alert user
+        activity.toast("Announcement created!");
         view.handleCreateComplaintSuccess();
     }
 }

@@ -37,6 +37,8 @@ public class AdminEventsPresenter extends EventsPresenter {
         Event newEvent = new Event(eventId, title, description, 0, maxAttendees, unixDate, location);
         // Set target DB ref to new object.
         model.setRef(target, newEvent);
+        // Alert user
+        activity.toast("Event created!");
     }
 
     public void getEventFeedback(AdminEventsFeedbackView view, String eventId) {

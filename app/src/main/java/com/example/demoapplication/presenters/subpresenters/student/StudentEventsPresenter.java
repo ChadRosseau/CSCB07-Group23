@@ -46,17 +46,13 @@ public class StudentEventsPresenter extends EventsPresenter {
         // Get the user ID
         String userId = auth.getCurrentUserData().getUid();
 
-//        // Add the user ID under the corresponding event ID node in eventAttendees
-//        DatabaseReference eventAttendeesRef = model.getRootRef().child("events").child("eventAttendees").child(eventId);
-//        model.setRef(eventAttendeesRef.child(userId), true);
-
         // Add the event ID under the corresponding user ID node in rsvps
         DatabaseReference rsvpsRef = Subscription.parentRef.child(userId);
         model.setRef(rsvpsRef.child(eventId), true);
 
         // Update the 'attendeeCount' in the database via a transaction.
         DatabaseReference attendeeCountRef = model.getRootRef().child("events").child("eventList").child(eventId).child("attendeeCount");
-        attendeeCountRef.runTransaction(new Transaction.Handler() {
+        Transaction.Handler attendeeCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -82,8 +78,10 @@ public class StudentEventsPresenter extends EventsPresenter {
                     activity.toast("RSVP Failed");
                 }
             }
-        });
+        };
+        model.runTransaction(attendeeCountRef, attendeeCountHandler);
     }
+
     /**
      * Allows a student to undo a RSVP for an event.
      *
@@ -102,9 +100,8 @@ public class StudentEventsPresenter extends EventsPresenter {
         model.deleteRef(rsvpsRef.child(eventId));
 
         // Update the 'attendeeCount' in the database
-        // TODO: Implement transaction.
         DatabaseReference attendeeCountRef = model.getRootRef().child("events").child("eventList").child(eventId).child("attendeeCount");
-        attendeeCountRef.runTransaction(new Transaction.Handler() {
+        Transaction.Handler attendeeCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -130,7 +127,8 @@ public class StudentEventsPresenter extends EventsPresenter {
                     activity.toast("unRSVP Failed");
                 }
             }
-        });
+        };
+        model.runTransaction(attendeeCountRef, attendeeCountHandler);
     }
 
     /**
@@ -187,7 +185,7 @@ public class StudentEventsPresenter extends EventsPresenter {
         DatabaseReference ratingCountTarget = Feedback.parentRef.child(eventId).child("ratingCount");
 
         // Transaction for ratingSum
-        ratingSumTarget.runTransaction(new Transaction.Handler() {
+        Transaction.Handler ratingSumHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -206,10 +204,10 @@ public class StudentEventsPresenter extends EventsPresenter {
 
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {}
-        });
+        };
 
         // Transaction for ratingCount
-        ratingCountTarget.runTransaction(new Transaction.Handler() {
+        Transaction.Handler ratingCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -228,7 +226,11 @@ public class StudentEventsPresenter extends EventsPresenter {
 
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {}
-        });
+        };
+
+        // Run transactions
+        model.runTransaction(ratingSumTarget, ratingSumHandler);
+        model.runTransaction(ratingCountTarget, ratingCountHandler);
     }
 
     public void getCurrentFeedback(StudentEventsFeedbackView view, String eventId) {
