@@ -22,8 +22,6 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
     private SwitchCompat adminSwitch;
     private Button signUpButton;
     private Button signInButton;
-    private Button skipLoginButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +38,6 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
 
         signUpButton = findViewById(R.id.signUpButton);
         signInButton = findViewById(R.id.signInButton);
-        skipLoginButton = findViewById(R.id.skipLoginButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,12 +48,6 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
             @Override
             public void onClick(View v) {
                 signIn();
-            }
-        });
-        skipLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                skipLogin();
             }
         });
     }
@@ -72,11 +63,6 @@ public class LoginActivityView extends AppCompatActivity implements LoginContrac
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         presenter.signIn(email, password);
-    }
-
-    public void skipLogin() {
-        boolean isAdmin = adminSwitch.isChecked();
-        presenter.skipLogin(isAdmin);
     }
 
     public void goToMain() {
