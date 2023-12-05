@@ -10,12 +10,12 @@ public class ListenerTracker {
     List<ListenerContract> listenerContracts;
 
     public ListenerTracker() {
-        this.listenerContracts = new ArrayList<ListenerContract>();
+        this.listenerContracts = new ArrayList<>();
     }
 
     public void addListener(DatabaseReference target, ValueEventListener listener) {
         target.addValueEventListener(listener);
-        listenerContracts.add(new ValueListenerContract(target, listener));
+        listenerContracts.add(new ListenerContract(target, listener));
     }
 
     public void killListeners() {

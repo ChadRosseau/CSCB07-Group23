@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/averageRatingText"
             android:layout_width="122dp"
             android:layout_height="20dp"
             android:layout_marginTop="12dp"
@@ -105,14 +105,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginEnd="16dp"
             android:isIndicator="true"
             android:numStars="5"
             android:progressDrawable="@drawable/rating_bar"
             app:layout_constraintBottom_toTopOf="@+id/adminEventsNestedScrollView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/adminEventsFeedbackDescription"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            app:layout_constraintTop_toBottomOf="@+id/averageRatingText" />
 
         <TextView
             android:id="@+id/eventFeedbackAverageRatingText"

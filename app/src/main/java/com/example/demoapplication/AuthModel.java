@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class AuthModel {
     private static AuthModel authInstance = null;
-    protected MainActivityModel model;
+    protected DatabaseModel model;
     protected FirebaseAuth mAuth;
 
     private FirebaseUser currentUser;
@@ -16,7 +16,7 @@ public class AuthModel {
     private final ListenerTracker listenerTracker;
 
     protected AuthModel() {
-        model = MainActivityModel.getInstance();
+        model = DatabaseModel.getInstance();
         mAuth = FirebaseAuth.getInstance();
         listenerTracker = new ListenerTracker();
         fetchCurrentUser();
@@ -35,11 +35,7 @@ public class AuthModel {
         if (currentUser == null) {
             return;
         }
-        ItemListenerCallback<UserData> callback = new ItemListenerCallback<UserData>() {
-            public void execute(UserData data) {
-                currentUserData = data;
-            }
-        };
+        ItemListenerCallback<UserData> callback = (data) -> currentUserData = data;
         this.model.createSubscription(UserData.parentRef.child(currentUser.getUid()), this.listenerTracker, UserData.class, callback);
     }
 
@@ -48,6 +44,7 @@ public class AuthModel {
         return this.currentUserData;
     }
 
+    // Perform necessary logout functions.
     public void logout() {
         this.listenerTracker.killListeners();
         this.mAuth.signOut();
