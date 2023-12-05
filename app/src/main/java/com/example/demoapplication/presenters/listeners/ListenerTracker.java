@@ -1,6 +1,7 @@
 package com.example.demoapplication.presenters.listeners;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ListenerTracker {
         this.listenerContracts = new ArrayList<>();
     }
 
-    public void addListener(DatabaseReference target, ValueEventListener listener) {
+    public void addListener(Query target, ValueEventListener listener) {
         target.addValueEventListener(listener);
         listenerContracts.add(new ListenerContract(target, listener));
     }

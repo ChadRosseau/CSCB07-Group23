@@ -13,13 +13,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.demoapplication.AuthModel;
 import com.example.demoapplication.R;
 import com.example.demoapplication.baseClasses.Announcement;
 import com.example.demoapplication.baseClasses.Event;
+import com.example.demoapplication.baseClasses.UserType;
 import com.example.demoapplication.fragments.announcements.AnnouncementsAdapter;
+import com.example.demoapplication.fragments.events.AdminEventsFragmentView;
 import com.example.demoapplication.fragments.events.EventViewHolder;
+import com.example.demoapplication.fragments.events.StudentEventsFragmentView;
 import com.example.demoapplication.helpers.Helper;
-import com.example.demoapplication.presenters.subpresenters.HomePagePresenterAnnouncements;
+import com.example.demoapplication.presenters.subpresenters.HomePresenter;
 
 import java.util.ArrayList;
 
@@ -27,7 +31,7 @@ import java.util.ArrayList;
 public class HomeFragmentView extends BaseFragment {
     TextView testText;
 
-    private HomePagePresenterAnnouncements presenterAnnouncements;
+    private HomePresenter presenter;
 
     protected static final int NUM_ANNOUNCEMENTS = 2;
 
@@ -44,10 +48,11 @@ public class HomeFragmentView extends BaseFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.presenterAnnouncements = new HomePagePresenterAnnouncements(activity);
+        this.presenter = new HomePresenter(activity);
 
         // Initialize the announcement list using database
-        presenterAnnouncements.getAnnouncements(this);
+        presenter.getAnnouncements(this);
+        presenter.getUpcomingEvent(this);
     }
 
     @Override
@@ -62,8 +67,6 @@ public class HomeFragmentView extends BaseFragment {
         setAnnouncementList(announcementList);
 
         eventItemViewHolder = new EventViewHolder(view);
-        getEventContentFromDatabase();
-        setEventContent(eventItemViewHolder);
 
         return view;
     }
@@ -86,29 +89,27 @@ public class HomeFragmentView extends BaseFragment {
 
         // Notify the adapter that the data set has changed
         if (getView() != null) {
-            mostRecentAnnouncements = new ArrayList<Announcement> (announcementList.subList(0, NUM_ANNOUNCEMENTS));
+            mostRecentAnnouncements = new ArrayList<> (announcementList.subList(0, NUM_ANNOUNCEMENTS));
             AnnouncementsAdapter adapter = new AnnouncementsAdapter(mostRecentAnnouncements);
             recyclerViewAnnouncements.setAdapter(adapter);
         }
     }
 
-    public void getEventContentFromDatabase() {
-        event = new Event("A", "A", "A", 1, 1, 1, "A");
-    }
+    public void setEventContent(Event event) {
+        eventItemViewHolder.setEventId(event.getEventId());
+        eventItemViewHolder.name.setText(event.getTitle());
+        eventItemViewHolder.date.setText(Helper.formatTimestamp(event.getDate()));
+        eventItemViewHolder.location.setText(event.getLocation());
+        eventItemViewHolder.attendees.setText(String.format("Attendees: %d/%d", event.getAttendeeCount(), event.getMaxAttendees()));
+        eventItemViewHolder.description.setText(event.getDescription());
+        eventItemViewHolder.rsvpButton.setVisibility(View.GONE);
+        eventItemViewHolder.feedbackButton.setText("SEE MORE");
 
-    public void setEventContent(EventViewHolder holder) {
-        holder.setEventId(event.getEventId());
-        holder.name.setText(event.getTitle());
-        holder.date.setText(Helper.formatTimestamp(event.getDate()));
-        holder.location.setText(event.getLocation());
-        holder.attendees.setText(String.format("Attendees: %d/%d", event.getAttendeeCount(), event.getMaxAttendees()));
-        holder.description.setText(event.getDescription());
-        holder.rsvpButton.setVisibility(View.GONE);
-        holder.feedbackButton.setText("Please visit the events page for further information.");
+        eventItemViewHolder.feedbackButton.setOnClickListener((l) -> {activity.replaceFragment(AuthModel.getInstance().getCurrentUserData().getUserType() == UserType.Admin ? new AdminEventsFragmentView() : new StudentEventsFragmentView());});
 
-        ViewGroup.LayoutParams layoutParams = holder.feedbackButton.getLayoutParams();
+        ViewGroup.LayoutParams layoutParams = eventItemViewHolder.feedbackButton.getLayoutParams();
         layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
         layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        holder.feedbackButton.setLayoutParams(layoutParams);
+        eventItemViewHolder.feedbackButton.setLayoutParams(layoutParams);
     }
 }
