@@ -43,27 +43,9 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
         if (email.isEmpty() || password.isEmpty())
             generateInvalidInputMessage(InvalidInputType.Blank);
         else {
-            OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    handleLogin(task.isSuccessful(), LoginType.SignIn);
-                }
-            };
+            OnCompleteListener<AuthResult> listener = task -> handleLogin(task.isSuccessful(), LoginType.SignIn);
             this.model.signIn(email, password, listener);
         }
-    }
-
-    public void skipLogin(boolean isAdmin) {
-        String email;
-        String password;
-        if (isAdmin) {
-            email = "admin_test@gmail.com";
-            password = "admin1234";
-        } else {
-            email = "student_test@gmail.com";
-            password = "student1234";
-        }
-        this.signIn(email, password);
     }
 
     public void handleLogin(boolean success, LoginType type) {

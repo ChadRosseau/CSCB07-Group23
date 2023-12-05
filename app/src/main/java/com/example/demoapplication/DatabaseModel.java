@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
@@ -66,7 +67,7 @@ public class DatabaseModel {
     }
 
     // Used to add and manage listener on a single item.
-    public <T> void createSubscriptionOnArray(DatabaseReference target, ListenerTracker tracker, Class<T> cls, ArrayListenerCallback<T> callback) {
+    public <T> void createSubscriptionOnArray(Query target, ListenerTracker tracker, Class<T> cls, ArrayListenerCallback<T> callback) {
         // Create callback function
         ValueEventListener listener = new ValueEventListener() {
             @Override
