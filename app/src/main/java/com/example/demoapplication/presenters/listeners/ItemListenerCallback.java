@@ -1,5 +1,5 @@
 package com.example.demoapplication.presenters.listeners;
 
-public interface ItemListenerCallback<T> extends ListenerCallback<T> {
+public interface ItemListenerCallback<T> {
     void execute(T obj);
 }

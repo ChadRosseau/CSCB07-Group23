@@ -22,21 +22,18 @@ public class LoginActivityPresenter implements LoginContract.LoginPresenter {
         if (email.isEmpty() || password.isEmpty()) generateInvalidInputMessage(InvalidInputType.Blank);
         else if (password.length() < 6) generateInvalidInputMessage(InvalidInputType.ShortPassword);
         else {
-            OnCompleteListener<AuthResult> listener = new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (!task.isSuccessful()) {
-                        handleLogin(false, LoginType.SignUp);
-                        return;
-                    }
-                    FirebaseUser user = task.getResult().getUser();
-                    if (user == null) {
-                        handleLogin(false, LoginType.SignUp);
-                        return;
-                    }
-                    model.createNewUserData(user, isAdmin ? UserType.Admin : UserType.Student);
-                    handleLogin(task.isSuccessful(), LoginType.SignUp);
+            OnCompleteListener<AuthResult> listener = (task) -> {
+                if (!task.isSuccessful()) {
+                    handleLogin(false, LoginType.SignUp);
+                    return;
                 }
+                FirebaseUser user = task.getResult().getUser();
+                if (user == null) {
+                    handleLogin(false, LoginType.SignUp);
+                    return;
+                }
+                model.createNewUserData(user, isAdmin ? UserType.Admin : UserType.Student);
+                handleLogin(task.isSuccessful(), LoginType.SignUp);
             };
             this.model.createNewUser(email, password, listener);
         }

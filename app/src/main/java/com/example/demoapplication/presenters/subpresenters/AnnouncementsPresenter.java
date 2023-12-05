@@ -10,17 +10,25 @@ import java.util.Collections;
 
 public class AnnouncementsPresenter extends SubPresenter {
 
-    public AnnouncementsPresenter(MainActivityView view) {
-        super(view);
+    /**
+     * Constructor for AnnouncementsPresenter.
+     *
+     * @param activity  The associated MainActivityView.
+     */
+    public AnnouncementsPresenter(MainActivityView activity) {
+        super(activity);
     }
 
+    /**
+     * Retrieves current list of announcements and updates StudentAnnouncementsFragmentView.
+     *
+     * @param view The StudentAnnouncementsFragmentView currently initialised by activity.
+     */
     public void getAnnouncements(StudentAnnouncementsFragmentView view){
-        ArrayListenerCallback<Announcement> callback = new ArrayListenerCallback<Announcement>() {
-            public void execute(ArrayList<Announcement> announcementList) {
-                Collections.reverse(announcementList);
-                view.setAnnouncementList(announcementList);
-            }
+        ArrayListenerCallback<Announcement> callback = (announcementList) -> {
+            Collections.reverse(announcementList);
+            view.setAnnouncementList(announcementList);
         };
-        model.createSubscription(Announcement.parentRef, this.listenerTracker, Announcement.class, callback);
+        model.createSubscriptionOnArray(Announcement.parentRef, this.listenerTracker, Announcement.class, callback);
     }
 }

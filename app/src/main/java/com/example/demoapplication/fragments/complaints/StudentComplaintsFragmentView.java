@@ -49,7 +49,6 @@ public class StudentComplaintsFragmentView extends BaseFragment {
     }
 
     public void handleCreateComplaintSuccess() {
-        activity.toast("Complaint submitted!");
         titleText.setText("");
         contentText.setText("");
     }

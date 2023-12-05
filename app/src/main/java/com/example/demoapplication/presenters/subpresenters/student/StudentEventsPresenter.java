@@ -29,12 +29,12 @@ public class StudentEventsPresenter extends EventsPresenter {
     public Map<String, Boolean> rsvps = new HashMap<>();
 
     /**
-     * Constructor for the StudentEventsPresenter.
+     * Constructor for StudentEventsPresenter.
      *
-     * @param view  The associated MainActivityView.
+     * @param activity  The associated MainActivityView.
      */
-    public StudentEventsPresenter(MainActivityView view) {
-        super(view);
+    public StudentEventsPresenter(MainActivityView activity) {
+        super(activity);
     }
 
     /**
@@ -46,17 +46,13 @@ public class StudentEventsPresenter extends EventsPresenter {
         // Get the user ID
         String userId = auth.getCurrentUserData().getUid();
 
-//        // Add the user ID under the corresponding event ID node in eventAttendees
-//        DatabaseReference eventAttendeesRef = model.getRootRef().child("events").child("eventAttendees").child(eventId);
-//        model.setRef(eventAttendeesRef.child(userId), true);
-
         // Add the event ID under the corresponding user ID node in rsvps
         DatabaseReference rsvpsRef = Subscription.parentRef.child(userId);
         model.setRef(rsvpsRef.child(eventId), true);
 
         // Update the 'attendeeCount' in the database via a transaction.
         DatabaseReference attendeeCountRef = model.getRootRef().child("events").child("eventList").child(eventId).child("attendeeCount");
-        attendeeCountRef.runTransaction(new Transaction.Handler() {
+        Transaction.Handler attendeeCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -82,8 +78,10 @@ public class StudentEventsPresenter extends EventsPresenter {
                     activity.toast("RSVP Failed");
                 }
             }
-        });
+        };
+        model.runTransaction(attendeeCountRef, attendeeCountHandler);
     }
+
     /**
      * Allows a student to undo a RSVP for an event.
      *
@@ -102,9 +100,8 @@ public class StudentEventsPresenter extends EventsPresenter {
         model.deleteRef(rsvpsRef.child(eventId));
 
         // Update the 'attendeeCount' in the database
-        // TODO: Implement transaction.
         DatabaseReference attendeeCountRef = model.getRootRef().child("events").child("eventList").child(eventId).child("attendeeCount");
-        attendeeCountRef.runTransaction(new Transaction.Handler() {
+        Transaction.Handler attendeeCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -130,7 +127,8 @@ public class StudentEventsPresenter extends EventsPresenter {
                     activity.toast("unRSVP Failed");
                 }
             }
-        });
+        };
+        model.runTransaction(attendeeCountRef, attendeeCountHandler);
     }
 
     /**
@@ -139,13 +137,7 @@ public class StudentEventsPresenter extends EventsPresenter {
      */
     public void getRSVP(){
         String userId = auth.getCurrentUserData().getUid();
-        ItemListenerCallback<Map<String, Boolean>> rsvpCallback = new ItemListenerCallback<Map<String, Boolean>>() {
-            @Override
-            public void execute(Map<String, Boolean> rsvpMap) {
-
-                rsvps = rsvpMap;
-            }
-        };
+        ItemListenerCallback<Map<String, Boolean>> rsvpCallback = (rsvpMap) -> rsvps = rsvpMap;
         model.createSubscriptionOnMap(Subscription.parentRef.child(userId), this.listenerTracker, Boolean.class, rsvpCallback);
     }
 
@@ -193,7 +185,7 @@ public class StudentEventsPresenter extends EventsPresenter {
         DatabaseReference ratingCountTarget = Feedback.parentRef.child(eventId).child("ratingCount");
 
         // Transaction for ratingSum
-        ratingSumTarget.runTransaction(new Transaction.Handler() {
+        Transaction.Handler ratingSumHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -212,10 +204,10 @@ public class StudentEventsPresenter extends EventsPresenter {
 
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {}
-        });
+        };
 
         // Transaction for ratingCount
-        ratingCountTarget.runTransaction(new Transaction.Handler() {
+        Transaction.Handler ratingCountHandler = new Transaction.Handler() {
             @NonNull
             @Override
             public Transaction.Result doTransaction(@NonNull MutableData currentData) {
@@ -234,24 +226,28 @@ public class StudentEventsPresenter extends EventsPresenter {
 
             @Override
             public void onComplete(@Nullable DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {}
-        });
+        };
+
+        // Run transactions
+        model.runTransaction(ratingSumTarget, ratingSumHandler);
+        model.runTransaction(ratingCountTarget, ratingCountHandler);
     }
 
+    /**
+     * Retrieves the feedback currently given by a student for a given event.
+     *
+     * @param view The StudentComplaintsFragmentView currently initialised by activity.
+     * @param eventId  The id of the event to retrieve the student's current feedback for.
+     */
     public void getCurrentFeedback(StudentEventsFeedbackView view, String eventId) {
         String userId = auth.getCurrentUserData().getUid();
-        ItemListenerCallback<String> commentCallback = new ItemListenerCallback<String>() {
-            @Override
-            public void execute(String comment) {
-                // If comment box is empty, set it to value from database.
-                if (view.getComment().isEmpty()) view.setComment(comment);
-            }
+        ItemListenerCallback<String> commentCallback = (comment) -> {
+            // If comment box is empty, set it to value from database.
+            if (view.getComment().isEmpty()) view.setComment(comment);
         };
-        ItemListenerCallback<Integer> ratingCallback = new ItemListenerCallback<Integer>() {
-            @Override
-            public void execute(Integer rating) {
-                // If rating is empty, set it to value from database.
-                if (view.getRating() == 0) view.setRating(rating);
-            }
+        ItemListenerCallback<Integer> ratingCallback = (rating) -> {
+            // If rating is empty, set it to value from database.
+            if (view.getRating() == 0) view.setRating(rating);
         };
         model.createSubscription(Feedback.parentRef.child(eventId).child("comments").child(userId), this.listenerTracker, String.class, commentCallback);
         model.createSubscription(Feedback.parentRef.child(eventId).child("ratings").child(userId), this.listenerTracker, Integer.class, ratingCallback);
