@@ -42,18 +42,65 @@ Each presenter possesses a `ListenerTracker`. When fragments receive the built-i
 
 #### The ListenerCallbacks
 
-T
+The ListenerCallbacks are a generic interfaces that define structured behaviour for the presenter to pass to the model, and the model to subsequently execute upon listener triggers. They act as a system of lambda functions defined by the presenters.
 
 #### The DatabaseModel
 
 The `DatabaseModel` is the workhorse of our application, possessing a variety of generic methods designed to be extremely flexible in nature. In particular, it aims to model any possible desired interaction with the database in as few methods as possible, through using type parameters.
 
-This allows presenters for different pages to access data by providing the database reference they want the data from, the BaseClass that models that data, and a callback lambda function that takes an instance of that BaseClass as a parameter and performs some action with it.
+This allows presenters for different pages to access data by providing the database reference they want the data from, the BaseClass that models that data, and a callback lambda function that takes an instance of that BaseClass as a parameter and performs some action with it. We define a variety of getting methods, specifically one for an individual instance of a class, one for an array of a class, and one for a map of key-value pairs where keys are strings and values are a given class.
+
+Aside from this, we also have generic setting and removing methods for the database which are straightforward.
 
 #### The AuthModel
 
+The AuthModel contains all logic for interacting with the Firebase Authentication service. It allows us to retrieve current user data and verify permissions throughout the app.
+
 ##### The LoginActivityModel
+
+The LoginActivityModel extends the AuthModel to provide additional functionality such as signing users in or up, and creating new user profiles.
 
 ### The Presenters
 
-The presenters are a series of classes designed to handle the majority of the app logic. The idea behind them is that each presenter contains **exactly** one method to communicate between the View and the Model, replacing the traditional approach where there is one method for each direction. Doing so allows the quantity of methods to be halved in the presenter, but crucially massively reduced in the Model (explained below).
+The presenters are a series of classes designed to handle the majority of the app logic. The idea behind them is that each presenter contains **exactly** one method to communicate between the View and the Model, replacing the traditional approach where there is one method for each direction. Doing so allows the quantity of methods to be halved in the presenter, and massively reduced in the model. That method passes a lambda callback function which defines its future operations with obtained data to the model, which it defines as the listener's trigger function.
+
+## The Pages
+
+### Login
+
+-   Allows users to sign in or sign up for the app
+-   Signups take into account the switch, where users select whether they are signing up as a student or admin.
+-   Signins ignore the switch and sign you into the correct permission based on your existing profile.
+-   Creating a new account can be done with any valid email/password combination. Passwords must be a minimum of 6 characters long in line with Firebase auth requirements.
+-   The page will provide toasts to inform the user of invalid login information.
+-   Full-coverage testing is implemented via MVP.
+
+### Home
+
+-   Provides an overview of recent announcements and events.
+-   Allows the user to logout.
+
+### POSt Screen
+
+-   Allows both students and admins to verify POSt requirements given existing grades for a student.
+
+### Announcements
+
+-   Both students and admins are able to view announcements.
+-   Upon a new event being created by an admin, an 'event' announcement is automatically posted to inform all users.
+-   Admins are able to create new announcements.
+-   Announcements are ordered in reverse-chronological order (most recent at the top)
+
+### Events
+
+-   Both students and admins are able to view current events.
+-   Events are ordered with upcoming events nearest to the top.
+-   Admins are able to create new events with a title, description, location and date.
+-   Students are able to RSVP for events so admins can gain an idea of attendance.
+-   Students are able to write feedback for an event, providing a numerical rating and/or a comment. Attempting to write a second batch of feedback for the same event will load the user's previous feedback for editing.
+-   Admins are able to view feedback statistics, including the average numerical rating and a list of comments/numerical ratings.
+
+### Complaints
+
+-   Students are able to submit a complaint with a title and description.
+-   Admins are able to view all complaints in reverse-chronological order (most recent first).
