@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.text.TextUtils;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,7 @@ public class HomeFragmentView extends BaseFragment {
     private HomePresenter presenter;
 
     protected static final int NUM_ANNOUNCEMENTS = 2;
+    protected static final int MAX_EVENT_LINES = 3;
 
     protected ArrayList<Announcement> announcementList;
     protected RecyclerView recyclerViewAnnouncements;
@@ -101,7 +103,11 @@ public class HomeFragmentView extends BaseFragment {
         eventItemViewHolder.date.setText(Helper.formatTimestamp(event.getDate()));
         eventItemViewHolder.location.setText(event.getLocation());
         eventItemViewHolder.attendees.setText(String.format("Attendees: %d/%d", event.getAttendeeCount(), event.getMaxAttendees()));
+
         eventItemViewHolder.description.setText(event.getDescription());
+        eventItemViewHolder.description.setMaxLines(MAX_EVENT_LINES);
+        eventItemViewHolder.description.setEllipsize(TextUtils.TruncateAt.END);
+
         eventItemViewHolder.rsvpButton.setVisibility(View.GONE);
         eventItemViewHolder.feedbackButton.setText("SEE MORE");
 
