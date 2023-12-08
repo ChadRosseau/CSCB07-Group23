@@ -8,7 +8,7 @@ Cosmos allows you to register for events happening on campus, get notified of an
 ## Developed By:
 #### [Chad Rossouw](https://github.com/ChadRosseau/)
 #### [Adibvafa Fallahpour](https://github.com/Adibvafa)
-#### [David Iskandaryan]((https://github.com/DavidIskandaryan)
+#### [David Iskandaryan](https://github.com/DavidIskandaryan)
 #### [Jane Low](https://github.com/janeloww)
 #### [Jean Luc Imanishimwe](https://github.com/JeanLucI)
 #### [Yixin (Amanda) Yin](https://github.com/amandayin0630)
